@@ -9,6 +9,13 @@ The following list of commands for this tool is under constant progress :constru
 
 **All `--flags` and `commands` are up for renaming**
 
+#### Tasks
+- [`build`](#build)
+- [`init/boilerplate`](#initboilerplate)
+- [`install` ?](#install-)
+- [`lint`](#lint)
+- [`test`](#test)
+
 ## `build`
 
 ```
@@ -50,7 +57,7 @@ Finally, we'll want to add flags to this task, `--watch` to enable the HMR, and 
 - James Long's [Live Editing JavaScript with Webpack](https://jlongster.com/Backend-Apps-with-Webpack--Part-III)
 - Webpack's [HMR Documentation](https://webpack.js.org/concepts/hot-module-replacement/#src/components/Sidebar/Sidebar.jsx)
 
-## `init` or `boilerplate`
+## `init/boilerplate`
 
 Task name up for debate
 
