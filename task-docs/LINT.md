@@ -28,8 +28,8 @@ There are some exceptions, such as Sass `@include` and vendor prefixing rules, b
 We'll also look at adding the `--fix` flag to update our syntax, and have entertained 'recommended editor plugins' to help with this during active development.
 
 ## DOCS
-- [`README`](../../README.md)
-- [`build`](./BUILD.md)
-- [`init/boilerplate`](./INIT-BOILERPLATE.md)
-- [`install`](./INSTALL.md)
-- [`test`](./TEST.md)
+	- [`README`](../../README.md)
+	- [`build`](./BUILD.md)
+	- [`init/boilerplate`](./INIT-BOILERPLATE.md)
+	- [`install`](./INSTALL.md)
+	- [`test`](./TEST.md)

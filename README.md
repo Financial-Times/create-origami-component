@@ -13,23 +13,5 @@ The following list of commands for this tool is under constant progress :constru
 - [`build`](./task-docs/BUILD.md)
 - [`init/boilerplate`](./task-docs/INIT-BOILERPLATE.md)
 - [`install` ?](/task-docs/INSTALL.md)
-- [`lint`](/taks-docs/LINT.md)
-- [`test`](#test)
-
-## `test`
-
-```
-{
-	interactive: false,
-	flags: [
-		--browserstack,
-		--sass (?)
-	],
-	functionality: [
-		'runs unit tests locally',
-		'runs unit tests in browserstack',
-		'runs sass tests (true) locally',
-	],
-	requires: []
-}
-```
+- [`lint`](/task-docs/LINT.md)
+- [`test`](/task-docs/TEST.md)
