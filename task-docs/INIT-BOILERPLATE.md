@@ -227,9 +227,10 @@ workflows:
 - The format of the demos property in the manifest will be up for debate depending on how we start rendering React Demos
 - We can add `--flags` to provide even more granular control or specific boilerplate changes, currently considering `--migration` and `--fixtures`.
 
-## DOCS
-	- [`README`](../README.md)
-	- [`build`](./BUILD.md)
-	- [`install`](./INSTALL.md)
-	- [`lint`](./LINT.md)
-	- [`test`](./TEST.md)
+### DOCS
+
+- [`README`](../README.md)
+- [`build`](./BUILD.md)
+- [`install`](./INSTALL.md)
+- [`lint`](./LINT.md)
+- [`test`](./TEST.md)

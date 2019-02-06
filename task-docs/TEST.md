@@ -18,9 +18,10 @@
 
 This task so far remains the same as the current `obt test` task.
 
-## DOCS
-	- [`README`](../../README.md)
-	- [`build`](./BUILD.md)
-	- [`init/boilerplate`](./INIT-BOILERPLATE.md)
-	- [`install`](./INSTALL.md)
-	- [`lint`](./LINT.md)
+### DOCS
+
+- [`README`](../../README.md)
+- [`build`](./BUILD.md)
+- [`init/boilerplate`](./INIT-BOILERPLATE.md)
+- [`install`](./INSTALL.md)
+- [`lint`](./LINT.md)
