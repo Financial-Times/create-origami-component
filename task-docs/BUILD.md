@@ -39,8 +39,9 @@ Finally, we'll want to add flags to this task, `--watch` to enable the HMR, and 
 - James Long's [Live Editing JavaScript with Webpack](https://jlongster.com/Backend-Apps-with-Webpack--Part-III)
 - Webpack's [HMR Documentation](https://webpack.js.org/concepts/hot-module-replacement/#src/components/Sidebar/Sidebar.jsx)
 
-- [`README`](../../README.md)
-- [`init/boilerplate`](./INIT-BOILERPLATE.md)
-- [`install`](./INSTALL.md)
-- [`lint`](./LINT.md)
-- [`test`](./TEST.md)
+## DOCS
+	- [`README`](../../README.md)
+	- [`init/boilerplate`](./INIT-BOILERPLATE.md)
+	- [`install`](./INSTALL.md)
+	- [`lint`](./LINT.md)
+	- [`test`](./TEST.md)

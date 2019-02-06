@@ -13,29 +13,8 @@ The following list of commands for this tool is under constant progress :constru
 - [`build`](./task-docs/BUILD.md)
 - [`init/boilerplate`](./task-docs/INIT-BOILERPLATE.md)
 - [`install` ?](/task-docs/INSTALL.md)
-- [`lint`](#lint)
+- [`lint`](/taks-docs/LINT.md)
 - [`test`](#test)
-
-## `lint`
-Task name up for debate
-
-```
-{
-	interactive: false,
-	flags: [
-		--fix
-	],
-	functionality: [
-		'syntax consistency check',
-		'correct syntax',
-		'editor plugin ?'
-	],
-	requires: [
-		'prettier',
-		'origami lint config'
-	]
-}
-```
 
 ## `test`
 
