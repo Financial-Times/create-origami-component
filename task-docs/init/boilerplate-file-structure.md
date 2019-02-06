@@ -1,3 +1,4 @@
+```
 .
 ├── MIGRATION.md
 ├── README.md
@@ -26,3 +27,4 @@
     │   ├── _mixins.test.scss
     │   └── index.test.scss
     └── [COMPONENT_NAME].test.js
+```

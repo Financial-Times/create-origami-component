@@ -11,7 +11,7 @@ The following list of commands for this tool is under constant progress :constru
 
 #### Tasks
 - [`build`](./task-docs/BUILD.md)
-- [`init/boilerplate`](./task-docs/INIT-BOILERPLATE.md)
+- [`init/boilerplate`](./task-docs/init/task.md)
 - [`install` ?](/task-docs/INSTALL.md)
 - [`lint`](/task-docs/LINT.md)
 - [`test`](/task-docs/TEST.md)
