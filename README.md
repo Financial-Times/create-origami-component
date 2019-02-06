@@ -12,28 +12,9 @@ The following list of commands for this tool is under constant progress :constru
 #### Tasks
 - [`build`](./task-docs/BUILD.md)
 - [`init/boilerplate`](./task-docs/INIT-BOILERPLATE.md)
-- [`install` ?](#install-)
+- [`install` ?](/task-docs/INSTALL.md)
 - [`lint`](#lint)
 - [`test`](#test)
-
-
-## `install` ?
-
-Do we need this?
-
-```
-{
-	interactive: false,
-	flags: [
-		--no-bower (?)
-	],
-	functionality: [
-		'bower install',
-		'npm install'
-	],
-	requires: []
-}
-```
 
 ## `lint`
 Task name up for debate
