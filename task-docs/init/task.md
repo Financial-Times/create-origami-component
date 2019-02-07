@@ -4,8 +4,8 @@
 {
 	interactive: true,
 	flags: [
-		--migration
-		--fixtures
+		--migration ?
+		--fixtures ?
 	],
 	functionality: [
 		'component boilerplate',

@@ -15,7 +15,7 @@ This folder structure reflects the current working folder structure for all Orig
 ├── origami.json
 ├── src
 │   ├── js
-│   │   └── testy.js
+│   │   └── [COMPONENT_NAME].js
 │   └── scss
 │       ├── _functions.scss
 │       ├── _mixins.scss
