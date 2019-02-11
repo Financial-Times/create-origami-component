@@ -6,8 +6,11 @@ First draft for init prompts
 ? Keywords: ([])
 ? Support email: (origami.support@ft.com)
 ? Support slack: (#ft-origami)
-? component status: (experimental)
-? brands: (master)
+? component status: (experimental, active)
+	//'dead', 'deprecated' and 'maintained' don't really apply to creating a new component, should this be an option that oat can provide when we decide to deprecate a component?
+? brands: (master, internal, whitelabel)
+
+? path: (./)
 
 ? Is this ok? (Y/N)
 
@@ -25,4 +28,6 @@ First draft for init prompts
 	// create scss tests
 ? Will you need demos (Y/N)
 	// create demos/
+
+:emoji: Your new component has been created at/this/path!
 ```
