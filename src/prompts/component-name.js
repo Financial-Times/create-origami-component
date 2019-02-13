@@ -10,7 +10,7 @@ const ask = async (inquirer) => {
 		return await ask(inquirer);
 	} else {
 		answers.name = answers.name.altered;
-		delete answers["confirmName"];
+		delete answers["confirmName"]; // don't need this after name change has been accepted
 		return answers
 	}
 }

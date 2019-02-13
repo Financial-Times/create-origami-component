@@ -13,14 +13,15 @@ module.exports = {
 	confirmName: {
 		name: "confirmName",
 		type: "confirm",
+		// TODO: should there be an explanation for the change?
 		message: answers => `Did you mean ${answers.name.altered}?`,
 		when: answers => {
 			answers.name.altered = answers.name.original
-											.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
-											.toLowerCase()
-											.replace(/([^a-z-])/g, '-')
-											.replace(/(-{2,})/g, '-')
-											.replace(/(^-)/g, '')
+								.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`) // lowers capitalized letters, adds '-' before each (newComponent => new-component)
+								.toLowerCase()
+								.replace(/([^a-z-])/g, '-') // replaces any characters that are not a-z or a '-' with a hyphen
+								.replace(/(-{2,})/g, '-') // replaces double hyphen with single hyphen
+								.replace(/(^-)/g, '') // replaces hyphen if at the beginning of string
 			return answers.name.altered !== answers.name.original;
 		}
 	},
@@ -52,6 +53,7 @@ module.exports = {
 		type: "input",
 		message: "Are there any keywords for this?",
 		filter: value => {
+			// splits the string by ',' and ' ', filters out any rogue spaces & removes duplicate values
 			return [... new Set(value.split(/\s*[\s,]\s*/).filter(Boolean))];
 		}
 	},

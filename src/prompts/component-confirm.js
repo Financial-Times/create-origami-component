@@ -2,9 +2,10 @@ const getName = require("../prompts/component-name");
 const questions = require('./questions');
 
 const ask = async (answers, inquirer) => {
+	// TODO: use a different logger
 	console.log("\n=== Your setup: ===");
 	console.log(answers);
-	console.log("===================\n");
+	console.log("===================");
 
 	let accept = await inquirer.prompt([questions.confirm]);
 	if (!accept.confirmation) {
@@ -14,15 +15,16 @@ const ask = async (answers, inquirer) => {
 		if (answer.change === "name") {
 			change = await getName(inquirer);
 		} else if (answer.change === "path") {
-			change = await inquirer.prompt([questions.path(answers.name)])
+			change = await inquirer.prompt([questions.path(answers.name)]);
 		} else {
 			change = await inquirer.prompt([questions[answer.change]]);
 		}
 
-		Object.assign(answers, change)
+		Object.assign(answers, change);
 		return await ask(answers, inquirer);
 	} else {
 		return answers;
 	}
 }
+
 module.exports = ask;
