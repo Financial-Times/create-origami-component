@@ -13,8 +13,12 @@ class Init extends Command {
 
 		let answers = Object.assign(name, details);
 
-		await confirm(answers, inquirer);
-		console.log(`Great! Building '${answers.name}' into '${answers.path}' ...`)
+		let generate = await confirm(answers, inquirer);
+
+		if (generate) {
+			console.log(`Great! Building '${answers.name}' into '${answers.path}' ...`)
+			// GENERATE ALL TEH THINGS
+		}
 	}
 }
 
