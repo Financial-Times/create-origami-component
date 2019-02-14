@@ -1,5 +1,5 @@
 module.exports = answers => {
-	let name = {
+	const name = {
 		original: answers.name,
 		camelCase: answers.name.replace(/\-+(.)/g, (match, chr) => chr.toUpperCase()),
 		titleCase: answers.name.split('-').map(word => word.replace(word[0], word[0].toUpperCase())).join('')

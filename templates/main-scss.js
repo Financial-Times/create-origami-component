@@ -1,8 +1,9 @@
 module.exports = answers => {
-	let name = {
+	const name = {
 		original: answers.name,
 		camelCase: answers.name.replace(/\-+(.)/g, (match, chr) => chr.toUpperCase())
 	}
+
 	return `@import 'src/scss/variables';
 
 /// Output all ${name.camelCase} features

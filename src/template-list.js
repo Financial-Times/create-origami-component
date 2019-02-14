@@ -30,6 +30,16 @@ module.exports = {
 				path: `./src/js/${name}.js`,
 				template: 'src-js',
 				answers: true
+			},
+			{
+				path: `./test/js/${name}.test.js`,
+				template: 'test-js',
+				answers: true
+			},
+			{
+				path: `./test/js/helpers/fixtures.js`,
+				template: 'test-fixtures',
+				answers: true
 			}
 		]
 	},
@@ -42,6 +52,15 @@ module.exports = {
 		{
 			path: `./src/scss/_variables.scss`,
 			template: 'scss-variables',
+			answers: true
+		},
+		{
+			path: `./test/scss/index.test.scss`,
+			template: 'test-scss-index',
+		},
+		{
+			path: `./test/scss/_main.test.scss`,
+			template: 'test-scss-main',
 			answers: true
 		}
 	],

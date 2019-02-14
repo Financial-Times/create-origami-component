@@ -11,8 +11,8 @@ module.exports = (answers) => {
     "build"
   ],
   "main": [
-    ${answers.scss ? `"main.scss"` : ''}
-    ${answers.javascript ? "main.js": ''}
+    ${answers.scss ? `"main.scss"` : ''}${answers.scss && answers.javascript ? "," : ''}
+    ${answers.javascript ? `"main.js"` : ''}
   ]
 }`;
 };
