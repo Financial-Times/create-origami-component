@@ -9,53 +9,43 @@ const	fs = require('fs-extra');
 const path = require('path');
 
 class Init extends Command {
-	// TODO: should we use args (e.g. for component name)
-	// constructor () {
-	// 	super();
-	// 	this.template = (name) => `../templates/${name}`;
-	// }
+	// TODO: should we use args? (e.g. for component name instead of prompting)
 
 	async run() {
 		let name = await getName(inquirer);
 		let details = await getDetails(name, inquirer);
 
-		let answers = Object.assign(name, details);
+		this.answers = Object.assign(name, details);
 
-		let generate = await confirmation(answers, inquirer);
+		let confirmed = await confirmation(this.answers, inquirer);
 
-		if (generate) {
-			console.log(`Great! Building '${answers.name}' into '${answers.path}'.`)
+		if (confirmed) {
+			console.log(`Great! Building '${this.answers.name}' into '${this.answers.path}'.`)
 			// GENERATE ALL TEH THINGS
-			// fs.ensureDir(answers.path);
+			// fs.ensureDir(this.answers.path);
 			fs.ensureDir('./sandbox-component');
 
-			// start build root config files
-			let origamiManifest = path.join('./sandbox-component', './origami.json');
-			let bowerJSON = path.join('./sandbox-component', './bower.json');
-			let gitIgnore = path.join('./sandbox-component', './.gitignore');
-			let circleConfig = path.join('./sandbox-component', './.circleci/config.yml');
+			const files = require('./template-config.js');
 
-			fs.outputFile(origamiManifest, require('../../templates/origami-manifest')(answers));
-			fs.outputFile(bowerJSON, require('../../templates/bower-json')(answers));
-			fs.outputFile(gitIgnore, require('../../templates/gitignore')());
-			fs.outputFile(circleConfig, require('../../templates/circle-config')());
-			// end build root config files
+			let generate = file => {
+				let template = require(`../../templates/${file.template}`);
+				// let filePath = path.join(this.answers.path, file.path));
+				let filePath = path.join('./sandbox-component', file.path));
+				let content = file.answers ? template(this.answers) : template()
+				fs.outputFile(filepath, content);
+			};
 
-			// start build js files
-			// end build js files
+			const build = files => files.forEach(generate)
 
-			// start build scss files
-			// end build scss files
+			build(files.config);
 
-			// start build test files
-			// end build test files
-
-			// start build demo files
-			// end build demo files
-
-			// start build documentation
-			// end build documentation
-
+			// if (this.answers.javascript) { build(files.javascript); }
+			//
+			// if (this.answers.scss) { build(files.scss); }
+			//
+			// if (this.answers.demos) { build(files.demos); }
+			//
+			// build(files.documentation);
 		}
 	}
 }
