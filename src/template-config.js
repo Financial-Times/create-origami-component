@@ -19,11 +19,18 @@ module.exports = {
 			template: 'circle-config'
 		}
 	],
-	javascript: [
-		{
-			path: './main.js',
-			template: 'main-js',
-			answers: true
-		}
-	]
+	javascript: name => {
+		return [
+			{
+				path: './main.js',
+				template: 'main-js',
+				answers: true
+			},
+			{
+				path: `./src/${name}.js`,
+				template: 'src-js',
+				answers: true
+			}
+		]
+	}
 }

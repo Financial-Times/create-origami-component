@@ -25,21 +25,21 @@ class Init extends Command {
 			// fs.ensureDir(this.answers.path);
 			fs.ensureDir('./sandbox-component');
 
-			const files = require('./template-config.js');
+			const files = require('../template-config.js');
 
 			let generate = file => {
 				let template = require(`../../templates/${file.template}`);
 				// let filePath = path.join(this.answers.path, file.path));
-				let filePath = path.join('./sandbox-component', file.path));
-				let content = file.answers ? template(this.answers) : template()
-				fs.outputFile(filepath, content);
+				let filePath = path.join('./sandbox-component', file.path);
+				let content = file.answers ? template(this.answers) : template();
+				fs.outputFile(filePath, content);
 			};
 
 			const build = files => files.forEach(generate)
 
 			build(files.config);
 
-			// if (this.answers.javascript) { build(files.javascript); }
+			if (this.answers.javascript) { build(files.javascript(this.answers.name)); }
 			//
 			// if (this.answers.scss) { build(files.scss); }
 			//
