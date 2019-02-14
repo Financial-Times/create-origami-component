@@ -21,15 +21,15 @@ class Init extends Command {
 
 		if (confirmed) {
 			console.log(`Great! Building '${this.answers.name}' into '${this.answers.path}'.`)
-			// GENERATE ALL TEH THINGS
+
 			// fs.ensureDir(this.answers.path);
-			fs.ensureDir('./sandbox-component');
+			fs.ensureDir('./sandbox-component'); //for testing, just to avoid overwriting the *actual* src file in oat
 
 			const files = require('../template-list.js');
 
 			let generate = file => {
 				let template = require(`../../templates/${file.template}`);
-				// let filePath = path.join(this.answers.path, file.path));
+				// let filePath = path.join(this.answers.path, file.path);
 				let filePath = path.join('./sandbox-component', file.path);
 				let content = file.answers ? template(this.answers) : template();
 				fs.outputFile(filePath, content);
@@ -45,7 +45,7 @@ class Init extends Command {
 
 			if (this.answers.demos) { build(files.demos); }
 
-			// build(files.documentation);
+			build(files.documentation);
 		}
 	}
 }

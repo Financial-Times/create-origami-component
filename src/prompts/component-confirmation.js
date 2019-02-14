@@ -8,6 +8,7 @@ const ask = async (answers, inquirer) => {
 	console.log("===================");
 
 	let accept = await inquirer.prompt([questions.confirm]);
+
 	if (!accept.confirmation) {
 		let change;
 		let answer = await inquirer.prompt([questions.change(answers)]);

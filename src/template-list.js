@@ -84,5 +84,12 @@ module.exports = {
 			template: 'demos-pa11y',
 			answers: true
 		}
+	],
+	documentation: [
+		{
+			path: './README.md',
+			template: 'readme',
+			answers: true
+		}
 	]
 }
