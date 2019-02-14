@@ -25,7 +25,7 @@ class Init extends Command {
 			// fs.ensureDir(this.answers.path);
 			fs.ensureDir('./sandbox-component');
 
-			const files = require('../template-config.js');
+			const files = require('../template-list.js');
 
 			let generate = file => {
 				let template = require(`../../templates/${file.template}`);
@@ -42,9 +42,9 @@ class Init extends Command {
 			if (this.answers.javascript) { build(files.javascript(this.answers.name)); }
 
 			if (this.answers.scss) { build(files.scss); }
-			//
-			// if (this.answers.demos) { build(files.demos); }
-			//
+
+			if (this.answers.demos) { build(files.demos); }
+
 			// build(files.documentation);
 		}
 	}

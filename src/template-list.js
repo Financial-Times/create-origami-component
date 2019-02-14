@@ -44,5 +44,26 @@ module.exports = {
 			template: 'scss-variables',
 			answers: true
 		}
+	],
+	demos: [
+		{
+			path: './demos/src/demo.js',
+			template: 'demos-js',
+		},
+		{
+			path: './demos/src/demo.scss',
+			template: 'demos-scss',
+			answers: true
+		},
+		{
+			path: './demos/src/demo.mustache',
+			template: 'demos-mustache',
+			answers: true
+		},
+		{
+			path: './demos/src/pa11y.mustache',
+			template: 'demos-pa11y',
+			answers: true
+		}
 	]
 }
