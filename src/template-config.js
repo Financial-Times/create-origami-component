@@ -27,10 +27,22 @@ module.exports = {
 				answers: true
 			},
 			{
-				path: `./src/${name}.js`,
+				path: `./src/js/${name}.js`,
 				template: 'src-js',
 				answers: true
 			}
 		]
-	}
+	},
+	scss: [
+		{
+			path: './main.scss',
+			template: 'main-scss',
+			answers: true
+		},
+		{
+			path: `./src/scss/_variables.scss`,
+			template: 'scss-variables',
+			answers: true
+		}
+	]
 }

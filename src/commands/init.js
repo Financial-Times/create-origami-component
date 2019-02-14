@@ -35,13 +35,13 @@ class Init extends Command {
 				fs.outputFile(filePath, content);
 			};
 
-			const build = files => files.forEach(generate)
+			const build = files => files.forEach(generate);
 
 			build(files.config);
 
 			if (this.answers.javascript) { build(files.javascript(this.answers.name)); }
-			//
-			// if (this.answers.scss) { build(files.scss); }
+
+			if (this.answers.scss) { build(files.scss); }
 			//
 			// if (this.answers.demos) { build(files.demos); }
 			//

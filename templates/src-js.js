@@ -17,7 +17,7 @@ module.exports = answers => {
 		}, opts || ${name.titleCase}.getDataAttributes(${name.camelCase}El));
 	}
 	/**
-	 * Get the data attributes from the ${name.titleCase}Element. If the message is being set up
+	 * Get the data attributes from the ${name.titleCase}Element. If the element is being set up
 	 * declaratively, this method is used to extract the data attributes from the DOM.
 	 * @param {HTMLElement} ${name.camelCase}El - The component element in the DOM
 	 */
