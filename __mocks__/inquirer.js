@@ -41,7 +41,7 @@ exports.inquirer = {
 				answer.choices.forEach((choice, i) => {
 					const expected = choice;
 					if (expected) {
-						expect(prompt.choices[i].name).toContain(expected);
+						expect(prompt.choices[i]).toBe(expected);
 					}
 				});
 			}
@@ -53,12 +53,12 @@ exports.inquirer = {
 
 			if (answer.choose != null) {
 				expect(prompt.type).toBe('list');
-				set(prompt.choices[answer.choose].value)
+				set(prompt.choices[answer.choose])
 			}
 
 			if (answer.check != null) {
 				expect(prompt.type).toBe('checkbox');
-				set(answer.check.map(i => prompt.choices[i].value));
+				set(answer.check.map(i => prompt.choices[i]));
 			}
 
 			if (answer.confirm != null) {
@@ -67,7 +67,7 @@ exports.inquirer = {
 			}
 
 			if (answer.useDefault) {
-				expect('default' in prompt).toBe(true);
+				expect('default'in prompt).toBe(true);
 				set(typeof prompt.default === 'function' ? prompt.default(answers) : prompt.default)
 			}
 		});

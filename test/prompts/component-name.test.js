@@ -1,7 +1,7 @@
-const ask = require('../../src/prompts/component-name');
 jest.mock('inquirer');
-
 const { inquirer, expectPrompts } = require('inquirer');
+const ask = require('../../src/prompts/component-name');
+
 
 describe('Prompt: Component Name', () => {
 	it('should accept a correctly formatted name', async () => {
