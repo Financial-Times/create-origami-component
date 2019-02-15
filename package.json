@@ -20,6 +20,7 @@
     "chai": "^4.1.2",
     "eslint": "^5.13.0",
     "globby": "^8.0.2",
+    "jest": "^24.1.0",
     "mocha": "^5.2.0",
     "nyc": "^13.2.0"
   },
@@ -50,7 +51,7 @@
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint .",
     "prepack": "oclif-dev manifest && oclif-dev readme",
-    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "test": "nyc jest",
     "version": "oclif-dev readme && git add README.md"
   }
 }

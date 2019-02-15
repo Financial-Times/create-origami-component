@@ -1,4 +1,4 @@
-const details = (answers) => {
+const details = answers => {
 	// TODO why don't arrays render here!?
 	return `{
 	"description": "${answers.description}",
