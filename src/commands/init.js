@@ -1,9 +1,6 @@
 const {Command} = require("@oclif/command")
 
-const inquirer = require("inquirer");
-const getName = require("../prompts/component-name");
-const getDetails = require("../prompts/component-details");
-const confirmation = require("../prompts/component-confirmation");
+const Boilerplate = require('../prompts/boilerplate');
 
 const	fs = require('fs-extra');
 const path = require('path');
@@ -12,41 +9,34 @@ class Init extends Command {
 	// TODO: should we use args? (e.g. for component name instead of prompting)
 
 	async run() {
-		let name = await getName(inquirer);
-		let details = await getDetails(name, inquirer);
+		let component = await new Boilerplate().init();
 
-		this.answers = Object.assign(name, details);
+		console.log(`Great! Building '${component.name}' into '${component.path}'.`)
 
-		let confirmed = await confirmation(this.answers, inquirer);
+		// fs.ensureDir(this.answers.path);
+		fs.ensureDir('./sandbox-component'); //for testing, just to avoid overwriting the *actual* src file in oat
 
-		if (confirmed) {
-			console.log(`Great! Building '${this.answers.name}' into '${this.answers.path}'.`)
+		const files = require('../template-list.js');
 
-			// fs.ensureDir(this.answers.path);
-			fs.ensureDir('./sandbox-component'); //for testing, just to avoid overwriting the *actual* src file in oat
+		let generate = file => {
+			let template = require(`../../templates/${file.template}`);
+			// let filePath = path.join(this.answers.path, file.path);
+			let filePath = path.join('./sandbox-component', file.path);
+			let content = file.answers ? template(component) : template();
+			fs.outputFile(filePath, content);
+		};
 
-			const files = require('../template-list.js');
+		const build = files => files.forEach(generate);
 
-			let generate = file => {
-				let template = require(`../../templates/${file.template}`);
-				// let filePath = path.join(this.answers.path, file.path);
-				let filePath = path.join('./sandbox-component', file.path);
-				let content = file.answers ? template(this.answers) : template();
-				fs.outputFile(filePath, content);
-			};
+		build(files.config);
 
-			const build = files => files.forEach(generate);
+		if (component.javascript) { build(files.javascript(component.name)); }
 
-			build(files.config);
+		if (component.scss) { build(files.scss); }
 
-			if (this.answers.javascript) { build(files.javascript(this.answers.name)); }
+		if (component.demos) { build(files.demos); }
 
-			if (this.answers.scss) { build(files.scss); }
-
-			if (this.answers.demos) { build(files.demos); }
-
-			build(files.documentation);
-		}
+		build(files.documentation);
 	}
 }
 
