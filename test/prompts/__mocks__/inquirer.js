@@ -29,7 +29,7 @@ exports.inquirer = {
 				answers[prompt.name] = prompt.filter ? prompt.filter(value) : value;
 			}
 
-			const answer = pendingAssertions[i - skipped]
+			const answer = pendingAssertions[i - skipped];
 
 			if (answer.message) {
 				const message = typeof prompt.message === 'function' ? prompt.message(answers) : prompt.message;

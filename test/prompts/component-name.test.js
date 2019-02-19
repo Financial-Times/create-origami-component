@@ -110,12 +110,13 @@ describe('Prompt: Component Name', () => {
 	// 		},
 	// 		{
 	// 			input: {
-	// 				original: 'o-test-component'
+	// 				original: 'o-new-name'
 	// 			}
 	// 		}
 	// 	])
 	//
 	// 	const name = await ask(inquirer);
+	//
 	// 	expect(name).toEqual({
 	// 		name: 'o-test-component'
 	// 	})
