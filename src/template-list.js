@@ -2,13 +2,11 @@ module.exports = {
 	config: [
 		{
 			path: './origami.json',
-			template: 'origami-manifest',
-			answers: true
+			template: 'origami-manifest'
 		},
 		{
 			path: './bower.json',
-			template: 'bower-json',
-			answers: true
+			template: 'bower-json'
 		},
 		{
 			path: './.gitignore',
@@ -23,36 +21,30 @@ module.exports = {
 		return [
 			{
 				path: './main.js',
-				template: 'main-js',
-				answers: true
+				template: 'main-js'
 			},
 			{
 				path: `./src/js/${name}.js`,
-				template: 'src-js',
-				answers: true
+				template: 'src-js'
 			},
 			{
 				path: `./test/js/${name}.test.js`,
-				template: 'test-js',
-				answers: true
+				template: 'test-js'
 			},
 			{
 				path: `./test/js/helpers/fixtures.js`,
-				template: 'test-fixtures',
-				answers: true
+				template: 'test-fixtures'
 			}
 		]
 	},
 	scss: [
 		{
 			path: './main.scss',
-			template: 'main-scss',
-			answers: true
+			template: 'main-scss'
 		},
 		{
 			path: `./src/scss/_variables.scss`,
-			template: 'scss-variables',
-			answers: true
+			template: 'scss-variables'
 		},
 		{
 			path: `./test/scss/index.test.scss`,
@@ -60,8 +52,7 @@ module.exports = {
 		},
 		{
 			path: `./test/scss/_main.test.scss`,
-			template: 'test-scss-main',
-			answers: true
+			template: 'test-scss-main'
 		}
 	],
 	demos: [
@@ -71,25 +62,21 @@ module.exports = {
 		},
 		{
 			path: './demos/src/demo.scss',
-			template: 'demos-scss',
-			answers: true
+			template: 'demos-scss'
 		},
 		{
 			path: './demos/src/demo.mustache',
-			template: 'demos-mustache',
-			answers: true
+			template: 'demos-mustache'
 		},
 		{
 			path: './demos/src/pa11y.mustache',
-			template: 'demos-pa11y',
-			answers: true
+			template: 'demos-pa11y'
 		}
 	],
 	documentation: [
 		{
 			path: './README.md',
-			template: 'readme',
-			answers: true
+			template: 'readme'
 		}
 	]
 }
