@@ -8,6 +8,11 @@ class Boilerplate extends Questions {
 		this.prompt = inquirer.createPromptModule();
 	}
 
+	async getName () {
+		this.answers.name = await this.prompt([this.questions.name])
+		this.answers.name = await this.isCompliant();
+	}
+
 	async isCompliant() {
 		this.answers.name.sanitized = this.answers.name.original
 					.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`) // lowers capitalized letters, adds '-' before each (newComponent => new-component)
@@ -26,11 +31,6 @@ class Boilerplate extends Questions {
 		}
 
 		return this.answers.name.sanitized;
-	}
-
-	async getName () {
-		this.answers.name = await this.prompt([this.questions.name])
-		this.answers.name = await this.isCompliant();
 	}
 
 	async getDetails () {

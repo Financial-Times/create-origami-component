@@ -1,11 +1,12 @@
+const {cli} = require('cli-ux');
 
 const	fs = require('fs-extra');
 const path = require('path');
-const {cli} = require('cli-ux');
+
 
 class Build {
-	constructor(component) {
-		this.component = component
+	constructor(component, files) {
+		this.component = component;
 		this.run()
 	}
 
@@ -20,20 +21,18 @@ class Build {
 	}
 
 	generate() {
-		// fs.ensureDir(this.answers.path);
-		fs.ensureDir('./sandbox-component'); //for testing, just to avoid overwriting the *actual* src file in oat
+		fs.ensureDir(this.component.path);
 
 		const files = require('../template-list.js');
 
 		let generate = file => {
 			let template = require(`../../templates/${file.template}`);
-			// let filePath = path.join(this.answers.path, file.path);
-			let filePath = path.join('./sandbox-component', file.path);
+			let filePath = path.join(this.component.path, file.path);
 			let content = typeof template === 'function' ? template(this.component) : template();
 			fs.outputFile(filePath, content);
 		};
 
-		const build = files => files.forEach(generate);
+		const build = (files) => files.forEach(generate);
 
 		build(files.config);
 
