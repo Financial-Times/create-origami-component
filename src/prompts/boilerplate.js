@@ -1,42 +1,51 @@
 const inquirer = require("inquirer");
-const Questions = require('../prompts/questions');
+const questions = require("./questions");
 
-class Boilerplate extends Questions {
+class Boilerplate {
 	constructor() {
-		super();
-
 		this.prompt = inquirer.createPromptModule();
+		this.answers = {};
+		this.questions = questions;
+		this.init();
+	}
+
+	async init() {
+		await this.getName();
+		await this.getPath();
+		await this.getDetails();
+		await this.getConfirmation();
+
+		return this.answers;
 	}
 
 	async getName () {
-		this.answers.name = await this.prompt([this.questions.name])
-		this.answers.name = await this.isCompliant();
-	}
+		const response = await this.prompt([this.questions.name]);
 
-	async isCompliant() {
-		this.answers.name.sanitized = this.answers.name.original
-					.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`) // lowers capitalized letters, adds '-' before each (newComponent => new-component)
-					.toLowerCase()
-					.replace(/([^a-z-])/g, '-') // replaces any characters that are not a-z or a '-' with a hyphen
-					.replace(/(-{2,})/g, '-') // replaces double hyphen with single hyphen
-					.replace(/(^-)/g, '') // replaces hyphen if at the beginning of string
+		let sanitized = response.name
+						.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`) // lowers capitalized letters, adds '-' before each (newComponent => new-component)
+						.toLowerCase()
+						.replace(/([^a-z-])/g, '-') // replaces any characters that are not a-z or a '-' with a hyphen
+						.replace(/(-{2,})/g, '-') // replaces double hyphen with single hyphen
+						.replace(/(^-|-$)/g, '') // replaces hyphen if at the beginning or end of string
 
-		this.populateQuestions();
-		if (this.answers.name.sanitized !== this.answers.name.original) {
-			let verify = await this.prompt([this.questions.confirmName]);
+		this.answers.name = sanitized;
 
-			if (!verify.confirmName) {
-				return await this.getName();
+		if (sanitized !== response.name) {
+			const { sanity } = await this.prompt([this.questions.sanityCheck(this.answers.name)]);
+
+			if (!sanity) {
+				await this.getName();
 			}
 		}
-
-		return this.answers.name.sanitized;
 	}
 
-	async getDetails () {
-		this.populateQuestions();
-		Object.assign(this.answers, await this.prompt([
-			this.questions.path,
+	async getPath() {
+		const response = await this.prompt([this.questions.path(this.answers.name)])
+		this.answers = Object.assign(this.answers, response);
+	}
+
+	async getDetails() {
+		const response = await this.prompt([
 			this.questions.description,
 			this.questions.keywords,
 			this.questions.email,
@@ -46,37 +55,30 @@ class Boilerplate extends Questions {
 			this.questions.javascript,
 			this.questions.scss,
 			this.questions.demos
-		]));
+		])
+
+		this.answers = Object.assign(this.answers, response);
 	}
 
-	async confirm () {
+	async getConfirmation() {
 		console.log("\n=== Your setup: ===");
 		console.log(this.answers);
 		console.log("===================\n");
 
-		let accept = await this.prompt([this.questions.confirm]);
+		let response = await this.prompt([this.questions.confirm])
 
-		if (!accept.confirmation) {
-			this.populateQuestions();
-			let answer = await this.prompt([this.questions.change]);
+		if (!response.acceptable) {
+				response = await this.prompt([this.questions.change(this.answers)])
 
-			if (answer.change === "name") {
-				await this.getName();
-				if (this.answers.path !== './') { this.answers.path = `./${this.answers.name}` }
+			if (response.change === 'name') {
+					await this.getName();
+					if (this.answers.path !== './') { this.answers.path = `./${this.answers.name}` }
 			} else {
-				this.answers[answer.change] = await this.prompt([this.questions[answer.change]]);
+				await this.prompt([this.questions[response.change]])
 			}
 
-			await this.confirm()
+			await this.getConfirmation();
 		}
-	}
-
-	async init() {
-		await this.getName();
-		await this.getDetails();
-		await this.confirm();
-
-		return this.answers;
 	}
 }
 

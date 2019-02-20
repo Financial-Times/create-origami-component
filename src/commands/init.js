@@ -9,8 +9,8 @@ class Init extends Command {
 	// TODO: should we use args? (e.g. for component name instead of prompting)
 
 	async run() {
-		let component = await new Boilerplate().init();
-		new Build(component);
+		let component = new Boilerplate();
+		// new Build(component);
 	}
 }
 
