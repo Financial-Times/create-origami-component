@@ -6,7 +6,6 @@ class Boilerplate {
 		this.prompt = inquirer.createPromptModule();
 		this.answers = {};
 		this.questions = questions;
-		this.init();
 	}
 
 	async init() {
