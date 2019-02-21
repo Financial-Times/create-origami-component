@@ -54,7 +54,8 @@
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint .",
     "prepack": "oclif-dev manifest && oclif-dev readme",
-    "test": "nyc jest",
+    "test-unit": "jest test/unit/**/*.test.js",
+		"test-integration": "mocha --forbid-only test/integration/**/*.test.js",
     "version": "oclif-dev readme && git add README.md"
   }
 }

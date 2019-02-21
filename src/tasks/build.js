@@ -13,7 +13,7 @@ class Build {
 	}
 
 	async run() {
-		cli.action.start(chalk.magentaBright('Great!') + ` Building '${this.component.name}' into '${this.component.path}'\n`);
+		cli.action.start(chalk.blueBright(`Great! Building '${this.component.name}' into '${this.component.path}'\n`));
 
 		// timeout to give the impression that we're working hard, the build is practically instantaneous
 		await cli.wait(1000);
@@ -22,7 +22,7 @@ class Build {
 		cli.action.stop(chalk.greenBright(`\nWooo, '${this.component.name}' is ready!`)+ '\nHere\'s your new folder tree:\n');
 
 		await cli.wait(200);
-		console.log(tree(this.component.path))
+		console.log(tree(this.component.path));
 	}
 
 	generate (file) {

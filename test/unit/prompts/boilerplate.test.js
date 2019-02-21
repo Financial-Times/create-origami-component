@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const Boilerplate = require('../../src/prompts/boilerplate');
+const Boilerplate = require('../../../src/prompts/boilerplate');
 jest.mock('inquirer')
 
 describe('Boilerplate', () => {
