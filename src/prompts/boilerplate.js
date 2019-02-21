@@ -20,7 +20,6 @@ class Boilerplate {
 
 	async getName () {
 		const response = await this.prompt([this.questions.name]);
-
 		let sanitized = response.name
 						.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`) // lowers capitalized letters, adds '-' before each (newComponent => new-component)
 						.toLowerCase()
@@ -66,7 +65,6 @@ class Boilerplate {
 		console.log("===================\n");
 
 		let response = await this.prompt([this.questions.confirm])
-
 		if (!response.acceptable) {
 				response = await this.prompt([this.questions.change(this.answers)])
 
