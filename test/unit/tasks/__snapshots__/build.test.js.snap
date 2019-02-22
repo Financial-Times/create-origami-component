@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Build successfully builds a folder tree successfully builds a '.circle' folder 1`] = `
+Array [
+  "config.yml",
+]
+`;
+
+exports[`Build successfully builds a folder tree successfully builds a '.gitignore' 1`] = `
+Array [
+  "config.yml",
+]
+`;
+
+exports[`Build successfully builds a folder tree successfully builds a 'demos/' folder 1`] = `
+Array [
+  "src",
+]
+`;
+
+exports[`Build successfully builds a folder tree successfully builds a 'demos/src' folder 1`] = `
+Array [
+  "demo.js",
+  "demo.mustache",
+  "demo.scss",
+  "pa11y.mustache",
+]
+`;
+
+exports[`Build successfully builds a folder tree successfully builds a demos folder 1`] = `
+Array [
+  "src",
+]
+`;
+
+exports[`Build successfully builds a folder tree successfully builds a demos/src folder 1`] = `
+Array [
+  "demo.js",
+  "demo.mustache",
+  "demo.scss",
+  "pa11y.mustache",
+]
+`;
+
+exports[`Build successfully builds a folder tree successfully builds a root folder 1`] = `
+Array [
+  ".circle",
+  ".gitignore",
+  "README.md",
+  "bower.json",
+  "demos",
+  "main.js",
+  "main.scss",
+  "origami.json",
+  "src",
+  "test",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a '.circle' folder 1`] = `
+Array [
+  "config.yml",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a '.gitignore' 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'bower.json' 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'demos' folder 1`] = `
+Array [
+  "src",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'demos/src' folder 1`] = `
+Array [
+  "demo.js",
+  "demo.mustache",
+  "demo.scss",
+  "pa11y.mustache",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'src/' folder 1`] = `
+Array [
+  "js",
+  "scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'src/js' folder 1`] = `
+Array [
+  "o-test-name.js",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'src/js/component-name' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'src/scss' folder 1`] = `
+Array [
+  "_variables.scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'src/scss/_variables.scss' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'src/scss/_variables.scss' file 2`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test' folder 1`] = `
+Array [
+  "js",
+  "scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test/js' folder 1`] = `
+Array [
+  "helpers",
+  "o-test-name.test.js",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test/js/component-name' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test/js/helpers' folder 1`] = `
+Array [
+  "fixtures.js",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test/js/helpers/fixtures' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test/scss' folder 1`] = `
+Array [
+  "_main.test.scss",
+  "index.test.scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test/scss/index' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a 'test/scss/main' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes a root folder 1`] = `
+Array [
+  ".circle",
+  ".gitignore",
+  "README.md",
+  "bower.json",
+  "demos",
+  "main.js",
+  "main.scss",
+  "origami.json",
+  "src",
+  "test",
+]
+`;
+
+exports[`Build successfully writes a folder tree successfully writes an 'README.md' 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree successfully writes an 'origami.json' 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a '.circle' folder 1`] = `
+Array [
+  "config.yml",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a '.gitignore' 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'bower.json' 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'demos' folder 1`] = `
+Array [
+  "src",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'demos/src' folder 1`] = `
+Array [
+  "demo.js",
+  "demo.mustache",
+  "demo.scss",
+  "pa11y.mustache",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'demos/src/demo.js' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'demos/src/demo.mustache' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'demos/src/demo.scss' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'demos/src/pa11y.mustache' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'src/' folder 1`] = `
+Array [
+  "js",
+  "scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'src/js' folder 1`] = `
+Array [
+  "o-test-name.js",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'src/js/component-name' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'src/scss' folder 1`] = `
+Array [
+  "_variables.scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'src/scss/_variables.scss' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'src/scss/_variables.scss' file 2`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'test' folder 1`] = `
+Array [
+  "js",
+  "scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'test/js' folder 1`] = `
+Array [
+  "helpers",
+  "o-test-name.test.js",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'test/js/component-name' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'test/js/helpers' folder 1`] = `
+Array [
+  "fixtures.js",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'test/js/helpers/fixtures' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'test/scss' folder 1`] = `
+Array [
+  "_main.test.scss",
+  "index.test.scss",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a a 'test/scss/index' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a 'test/scss/main' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a a root folder 1`] = `
+Array [
+  ".circle",
+  ".gitignore",
+  "README.md",
+  "bower.json",
+  "demos",
+  "main.js",
+  "main.scss",
+  "origami.json",
+  "src",
+  "test",
+]
+`;
+
+exports[`Build successfully writes a folder tree with a an 'README.md' 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a an 'origami.json' 1`] = `undefined`;
