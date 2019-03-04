@@ -15,7 +15,7 @@
     "cli-ux": "^5.1.0",
     "fs-extra": "^7.0.1",
     "inquirer": "^6.2.2",
-		"tree-node-cli": "^1.2.5"
+    "tree-node-cli": "^1.2.5"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.21.0",
