@@ -13,7 +13,6 @@ class Init extends Command {
 		if (component) {
 			cli.action.start(chalk.blueBright(`Great! Building '${component.name}' into '${component.path}'\n`));
 
-			await cli.wait(1000);
 
 			new Build(component)
 
