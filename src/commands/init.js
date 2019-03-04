@@ -14,7 +14,6 @@ class Init extends Command {
 		if (component) {
 			cli.action.start(chalk.blueBright(`Great! Building '${component.name}' into '${component.path}'\n`));
 
-			// timeout to give the impression that we're working hard, the build is practically instantaneous
 			await cli.wait(1000);
 
 			new Build(component)
