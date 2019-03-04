@@ -27,6 +27,6 @@ class Init extends Command {
 	}
 }
 
-// TODO: Init.description = ``
+Init.description = `Initialise a new Origami Component using the tools and folder/file structure that Origami-Core Components are built with`
 
 module.exports = Init
