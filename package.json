@@ -55,7 +55,7 @@
     "posttest": "eslint .",
     "prepack": "oclif-dev manifest && oclif-dev readme",
     "test-unit": "jest test/unit/**/*.test.js",
-		"test-integration": "mocha --forbid-only test/integration/**/*.test.js",
+    "test-integration": "mocha --forbid-only test/integration/**/*.test.js",
     "version": "oclif-dev readme && git add README.md"
   }
 }
