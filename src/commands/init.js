@@ -20,7 +20,6 @@ class Init extends Command {
 
 			cli.action.stop(chalk.greenBright(`\nWooo, '${component.name}' is ready!`)+ '\nHere\'s your new folder tree:\n');
 
-			await cli.wait(200);
 			console.log(tree(component.path));
 		}
 	}
