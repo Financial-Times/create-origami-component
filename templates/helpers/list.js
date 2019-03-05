@@ -47,6 +47,10 @@ module.exports = {
 			template: 'scss-variables'
 		},
 		{
+			path: `./src/scss/_brand.scss`,
+			template: 'scss-brand'
+		},
+		{
 			path: `./test/scss/index.test.scss`,
 			template: 'test-scss-index',
 		},

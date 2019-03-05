@@ -41,7 +41,7 @@ module.exports = answers => {
 		}, {});
 	}
 	/**
-	 * Initialise message component.
+	 * Initialise ${name.original} component.
 	 * @param {(HTMLElement|String)} rootElement - The root element to intialise the component in, or a CSS selector for the root element
 	 * @param {Object} [options={}] - An options object for configuring the component
 	 */
