@@ -68,7 +68,7 @@ State | Major Version | Last Minor Release | Migration guide |
 ╳ deprecated | 1 | 1.0 | N/A |
 
 ## Contact
-If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/${name.original}/issues), visit [#ft-origami](https://financialtimes.slack.com/messages/ft-origami/) or email [Origami Support](mailto:origami-support@ft.com).
+If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/${name.original}/issues), visit [#${answers.slack}](https://financialtimes.slack.com/messages/${answers.slack}/) or email [${answers.email}](mailto:${answers.email}).
 
 ## Licence
 This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).`;
