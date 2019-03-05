@@ -1,23 +1,109 @@
-// const {expect, test} = require('@oclif/test')
-// const { Command } = require('@oclif/command')
-// const Init = require('../../../src/commands/init');
-// jest.mock('../../../src/prompts/boilerplate')
-// describe('Init', () => {
-// 	test('should do something', async () => {
-// 		console.log(process.stdout);
-// 		let spy = jest.spyOn(process.stdout, 'write');
-// 		let res = await Init.run([]);
-//
-// 		expect(spy).toHaveBeenCalledTimes(1);
-// 		// console.log(spy, res);
-// 		// test
-// 		// .stdout()
-// 		// .command(['init'])
-// 		// .stdout()
-// 		// .it('runs init', ctx => {
-// 			// 	console.log(ctx.stdout);
-// 			//   expect(ctx.stdout).to.contain('something?')
-// 			// })
-//
-// 	});
-// });
+const nixt = require('nixt');
+
+describe('Init', () => {
+	it('Uses default values where possible to create folder tree', done => {
+    nixt({ colors: false })
+      .run('./bin/run init')
+      .on(/What are you calling your new component/i).respond('bob\n')
+      .on(/folder/i).respond('\033[B\n')
+      .on(/description/i).respond('bla bla\n')
+      .on(/keywords/i).respond('\n')
+      .on(/support email/).respond('\n')
+      .on(/support slack/).respond('\n')
+      .on(/status/).respond('\n')
+      .on(/brands/).respond('\n')
+      .on(/JavaScript/).respond('\n')
+      .on(/SCSS/).respond('\n')
+      .on(/demos/).respond('\n')
+      .on(/ok/).respond('\n')
+      .exist('./bob/')
+      .exist('./bob/src/js')
+      .exist('./bob/src/scss')
+      .exist('./bob/test/js')
+      .exist('./bob/test/scss')
+      .exist('./bob/demos')
+      .exist('./bob/.circle')
+      .exec('rm -rf bob')
+      .end(done)
+  });
+  
+	it('Does not create Javascript files if not requested', (done) => {
+    nixt({ colors: false })
+      .run('./bin/run init')
+      .on(/What are you calling your new component/i).respond('bob\n')
+      .on(/folder/i).respond('\033[B\n')
+      .on(/description/i).respond('bla bla\n')
+      .on(/keywords/i).respond('\n')
+      .on(/support email/).respond('\n')
+      .on(/support slack/).respond('\n')
+      .on(/status/).respond('\n')
+      .on(/brands/).respond('\n')
+      .on(/JavaScript/).respond('n\n')
+      .on(/SCSS/).respond('\n')
+      .on(/demos/).respond('\n')
+      .on(/ok/).respond('\n')
+      .exist('./bob/')
+      .exist('./bob/src/scss')
+      .exist('./bob/test/scss')
+      .exist('./bob/demos')
+      .exist('./bob/.circle')
+      .notExists('./bob/src/js')
+      .notExists('./bob/test/js')
+      .notExists('./bob/demo/demo.js')
+      .exec('rm -rf bob')
+      .end(done)
+  });
+
+	it('Does not create SCSS files if not requested', (done) => {
+    nixt({ colors: false })
+      .run('./bin/run init')
+      .on(/What are you calling your new component/i).respond('bob\n')
+      .on(/folder/i).respond('\033[B\n')
+      .on(/description/i).respond('bla bla\n')
+      .on(/keywords/i).respond('\n')
+      .on(/support email/).respond('\n')
+      .on(/support slack/).respond('\n')
+      .on(/status/).respond('\n')
+      .on(/brands/).respond('\n')
+      .on(/JavaScript/).respond('\n')
+      .on(/SCSS/).respond('n\n')
+      .on(/demos/).respond('\n')
+      .on(/ok/).respond('\n')
+      .exist('./bob/')
+      .exist('./bob/src/js')
+      .exist('./bob/test/js')
+      .exist('./bob/demos')
+      .exist('./bob/.circle')
+      .notExists('./bob/src/scss')
+      .notExists('./bob/test/scss')
+      .notExists('./bob/demo/demo.scss')
+      .exec('rm -rf bob')
+      .end(done)
+	});
+
+	it('Does not create demo files if not requested', (done) => {
+    nixt({ colors: false })
+      .run('./bin/run init')
+      .on(/What are you calling your new component/i).respond('bob\n')
+      .on(/folder/i).respond('\033[B\n')
+      .on(/description/i).respond('bla bla\n')
+      .on(/keywords/i).respond('\n')
+      .on(/support email/).respond('\n')
+      .on(/support slack/).respond('\n')
+      .on(/status/).respond('\n')
+      .on(/brands/).respond('\n')
+      .on(/JavaScript/).respond('\n')
+      .on(/SCSS/).respond('\n')
+      .on(/demos/).respond('n\n')
+      .on(/ok/).respond('\n')
+      .exist('./bob/')
+      .exist('./bob/src/js')
+      .exist('./bob/src/scss')
+      .exist('./bob/test/js')
+      .exist('./bob/test/scss')
+      .exist('./bob/.circle')
+      .notExists('./bob/demos')
+      .exec('rm -rf bob')
+      .end(done)
+	});
+});
