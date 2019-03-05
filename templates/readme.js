@@ -1,8 +1,8 @@
+const stringCasing = require('./helpers/string-casing.js');
+
+
 module.exports = answers => {
-	const name = {
-		original: answers.name,
-		camelCase: answers.name.replace(/\-+(.)/g, (match, chr) => chr.toUpperCase()),
-	}
+	const name = stringCasing(answers.name);
 
 	return `${name.original} [![Circle CI](https://circleci.com/gh/Financial-Times/${name.original}/tree/master.svg?style=svg)](https://circleci.com/gh/Financial-Times/${name.original}/tree/master)[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](#licence)
 =================

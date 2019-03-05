@@ -1,8 +1,7 @@
+const stringCasing = require('./helpers/string-casing.js');
+
 module.exports = answers => {
-	const name = {
-		original: answers.name,
-		camelCase: answers.name.replace(/\-+(.)/g, (match, chr) => chr.toUpperCase()),
-	}
+	const name = stringCasing(answers.name);
 
 	return `@include describe('${name.camelCase} mixins') {
 	@include describe('${name.camelCase}') {

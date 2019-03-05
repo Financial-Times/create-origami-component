@@ -20,7 +20,7 @@ class Build {
 	async buildFolder () {
 		await fs.ensureDir(this.component.path);
 
-		const files = require(this.templatePath + 'list.js');
+		const files = require(this.templatePath + 'helpers/list.js');
 
 		this.build(files.config);
 
