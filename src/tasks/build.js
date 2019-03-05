@@ -1,10 +1,8 @@
-
-const	fs = require('fs-extra');
+const fs = require('fs-extra');
 const path = require('path');
 
-
 class Build {
-	constructor(component, files) {
+	constructor(component) {
 		this.component = component;
 		this.templatePath = '../../templates/';
 		this.buildFolder()

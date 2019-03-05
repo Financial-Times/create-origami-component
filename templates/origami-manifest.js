@@ -1,23 +1,18 @@
 const details = answers => {
-	// TODO why don't arrays render here!?
 	return `{
 	"description": "${answers.description}",
-	"keywords": ${answers.keywords},
+	"keywords": ${JSON.stringify(answers.keywords)},
 	"origamiType": "module",
 	"origamiCategory": "components",
 	"origamiVersion": 1,
-	"brands": ${answers.brands},
+	"brands": ${JSON.stringify(answers.brands)},
 	"support": "https://github.com/Financial-Times/${answers.name}/issues",
 	"supportContact": {
 		"email": "${answers.email}",
 		"slack": "financialtimes/${answers.slack}"
 	},
 	"supportStatus": "${answers.status}",
-	"browserFeatures": {},
-
-	"ci": {
-		"circle": "https://circleci.com/api/v1/project/Financial-Times/${answers.name}"
-	}`;
+	"browserFeatures": {}`;
 }
 
 const demos = (answers) => {
