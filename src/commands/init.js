@@ -11,13 +11,13 @@ class Init extends Command {
 	async run() {
 		let component = await new Boilerplate().init();
 		if (component) {
-			cli.action.start(chalk.blueBright(`Great! Building '${component.name}' into '${component.path}'\n`));
-
+			cli.action.start(chalk.greenBright(`Great! Building '${component.name}' into '${component.path}'\n`));
 
 			new Build(component)
 
-			cli.action.stop(chalk.greenBright(`\nWooo, '${component.name}' is ready!`)+ '\nHere\'s your new folder tree:\n');
+			await cli.wait(200)
 
+			cli.action.stop(chalk.yellowBright(`\nHooray, '${component.name}' is ready!`)+ '\nHere\'s your new folder tree:\n');
 			console.log(tree(component.path));
 		}
 	}
