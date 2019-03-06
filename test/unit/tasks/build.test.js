@@ -4,8 +4,8 @@ const Build = require('../../../src/tasks/build');
 describe('Build', () => {
 	let mockDetails;
 	let rootPath;
-	describe('successfully writes a folder tree', async () => {
-		beforeAll(() => {
+	describe('successfully writes a folder tree', () => {
+		beforeAll(async () => {
 			mockDetails = {
 				name: 'o-test-name',
 				path: './o-test-name',
@@ -21,12 +21,12 @@ describe('Build', () => {
 			}
 
 			rootPath = mockDetails.path;
+			await (new Build(mockDetails).buildFolder());
 
-			new Build(mockDetails);
 		});
 
-		afterAll(() => {
-			fs.remove(rootPath)
+		afterAll(async () => {
+			await fs.remove(rootPath)
 		})
 
 		test("with a root folder", async () => {
