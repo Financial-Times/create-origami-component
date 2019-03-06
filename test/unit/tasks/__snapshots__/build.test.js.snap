@@ -1,20 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Build successfully writes a folder tree with a root folder 1`] = `
-Array [
-  ".circle",
-  ".gitignore",
-  "README.md",
-  "bower.json",
-  "demos",
-  "main.js",
-  "main.scss",
-  "origami.json",
-  "src",
-  "test",
-]
-`;
-
 exports[`Build successfully writes a folder tree with a '.circle' folder 1`] = `
 Array [
   "config.yml",
@@ -65,13 +50,14 @@ exports[`Build successfully writes a folder tree with a 'src/js/component-name' 
 
 exports[`Build successfully writes a folder tree with a 'src/scss' folder 1`] = `
 Array [
+  "_brand.scss",
   "_variables.scss",
 ]
 `;
 
-exports[`Build successfully writes a folder tree with a 'src/scss/_variables.scss' file 1`] = `undefined`;
+exports[`Build successfully writes a folder tree with a 'src/scss/_brand.scss' file 1`] = `undefined`;
 
-exports[`Build successfully writes a folder tree with a 'src/scss/_variables.scss' file 2`] = `undefined`;
+exports[`Build successfully writes a folder tree with a 'src/scss/_variables.scss' file 1`] = `undefined`;
 
 exports[`Build successfully writes a folder tree with a 'test' folder 1`] = `
 Array [
@@ -107,6 +93,21 @@ Array [
 exports[`Build successfully writes a folder tree with a 'test/scss/index' file 1`] = `undefined`;
 
 exports[`Build successfully writes a folder tree with a 'test/scss/main' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a root folder 1`] = `
+Array [
+  ".circle",
+  ".gitignore",
+  "README.md",
+  "bower.json",
+  "demos",
+  "main.js",
+  "main.scss",
+  "origami.json",
+  "src",
+  "test",
+]
+`;
 
 exports[`Build successfully writes a folder tree with an 'README.md' 1`] = `undefined`;
 
