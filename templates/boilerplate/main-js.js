@@ -1,4 +1,4 @@
-const stringCasing = require('./helpers/string-casing.js');
+const stringCasing = require('../helpers/string-casing.js');
 
 module.exports = answers => {
 	const name = stringCasing(answers.name);
