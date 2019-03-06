@@ -1,0 +1,33 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: npm clean-install-test
+  # publish_to_npm:
+  #   docker:
+  #     - image: circleci/node:10
+  #   steps:
+  #     - checkout
+  #     - run: npm ci
+  #     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+  #     - run: npm publish
+
+workflows:
+  test:
+    jobs:
+      - test:
+          filters:
+            tags:
+              ignore: /^v.*/
+            branches:
+              ignore: master
+      # - publish_to_npm:
+      #     filters:
+      #       tags:
+      #         only: /^v.*/
+      #       branches:
+      #         ignore: /.*/

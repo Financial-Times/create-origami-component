@@ -2,6 +2,7 @@ First draft for init prompts
 ```
 > Init will create the folder structure for a new Origami component ...
 ? Name: (required)
+? path: (./)
 ? Description: (required)
 ? Keywords: ([])
 ? Support email: (origami.support@ft.com)
@@ -10,8 +11,12 @@ First draft for init prompts
 	//'dead', 'deprecated' and 'maintained' don't really apply to creating a new component, should this be an option that oat can provide when we decide to deprecate a component?
 ? brands: (master, internal, whitelabel)
 
-? path: (./)
+? Will your component use JS (Y/N)
+? Will your component use SCSS (Y/N)
+? Will you need demos (Y/N)
 
+
+	//Show tree
 ? Is this ok? (Y/N)
 
 	// create origami.json
@@ -20,14 +25,15 @@ First draft for init prompts
 	// create README
 	// create circleci/config.yml
 
-? Will your component use JS (Y/N)
-	// create component js
-	// create js tests
-? Will your component use SCSS (Y/N)
-	// create component scss
-	// create scss tests
-? Will you need demos (Y/N)
-	// create demos/
+	if JS
+		// create component js
+		// create js tests
 
+	if SCSS
+		// create component scss
+		// create scss tests
+
+	if demos
+		// create demos/
 :emoji: Your new component has been created at/this/path!
 ```
