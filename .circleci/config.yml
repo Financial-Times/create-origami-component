@@ -17,9 +17,9 @@ jobs:
   #     - run: npm publish
 
 workflows:
-  build:
+  test:
     jobs:
-      - test:
+      - build:
           filters:
             tags:
               ignore: /^v.*/
