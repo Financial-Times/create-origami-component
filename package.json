@@ -25,7 +25,7 @@
     "globby": "^8.0.2",
     "jest": "^24.1.0",
     "mocha": "^5.2.0",
-    "nixt": "^0.5.1",
+    "nixt": "github:vesln/nixt#d2075099ecf935c870705fa5d5de437113d4d272",
     "nyc": "^13.2.0"
   },
   "engines": {
