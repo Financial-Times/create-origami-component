@@ -15,6 +15,7 @@
     "react": "^16.8.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
     "@oclif/dev-cli": "^1.21.0",
     "@oclif/test": "^1.2.2",
     "chai": "^4.1.2",
@@ -22,6 +23,7 @@
     "eslint-config-oclif": "^3.1.0",
     "globby": "^8.0.2",
     "inquirer": "^6.2.2",
+    "jest": "^24.1.0",
     "mocha": "^5.2.0",
     "nyc": "^13.2.0",
     "qoa": "^0.2.0"
@@ -53,7 +55,8 @@
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint .",
     "prepack": "oclif-dev manifest && oclif-dev readme",
-    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "test-unit": "jest test/unit/**/*.test.js --watch",
+    "test-integration": "mocha --forbid-only test/integration/**/*.test.js",
     "version": "oclif-dev readme && git add README.md"
   }
 }
