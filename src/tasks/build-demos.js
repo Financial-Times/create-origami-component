@@ -2,16 +2,25 @@ class BuildDemos {
   constructor (config) {
     this.config = config;
     this.data = {};
+    this.init();
+  }
+
+  init() {
     this.getTemplate();
+    this.setVariants();
   }
   
   getTemplate () {
     this.data.template = this.config.demosDefaults.template;
   };
 
-  // setVariants () {
+  setVariants () {
+    if (!this.config.demosDefaults.variants) {
+      throw new Error("The 'demosDefaults.variants' property is required");
+    }
 
-  // }
+    this.data.varianta = this.config.demosDefaults.variants;
+  }
 
   // setBrowserFeatures () {
   //   let features = [];

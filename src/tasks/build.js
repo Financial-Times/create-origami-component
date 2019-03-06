@@ -4,7 +4,7 @@ const path = require('path');
 class Build {
 	constructor(component) {
 		this.component = component;
-		this.templatePath = '../../templates/';
+		this.templatePath = '../../templates/boilerplate/';
 	}
 
 	async generate(file) {
