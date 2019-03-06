@@ -1,7 +1,7 @@
-version: 2
+version: 2.1
 
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/node
     steps:
@@ -19,7 +19,7 @@ jobs:
 workflows:
   test:
     jobs:
-      - build:
+      - test:
           filters:
             tags:
               ignore: /^v.*/
