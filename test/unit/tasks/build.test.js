@@ -85,8 +85,8 @@ describe('Build', () => {
 		});
 
 
-		test("with a 'src/scss/_variables.scss' file", async () => {
-			let componentSCSS = await fs.access(`${rootPath}/src/scss/_variables.scss`);
+		test("with a 'src/scss/_brand.scss' file", async () => {
+			let componentSCSS = await fs.access(`${rootPath}/src/scss/_brand.scss`);
 			expect(componentSCSS).toMatchSnapshot();
 		});
 
