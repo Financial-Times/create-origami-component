@@ -1,7 +1,7 @@
-version: 2.1
+version: 2
 
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/node
     steps:
@@ -17,7 +17,7 @@ jobs:
   #     - run: npm publish
 
 workflows:
-  test:
+  build:
     jobs:
       - test:
           filters:
