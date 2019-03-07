@@ -7,8 +7,9 @@ describe('BuildDemos', () => {
     mockData = {
       demosDefaults: {
         template: 'path/to/template',
-        variants: []
-      }
+        variants: [],
+      },
+      demos: [{}]
     }
   });
 
@@ -35,7 +36,28 @@ describe('BuildDemos', () => {
       test("sets ['default'] browser features if none present", () => {
         let build = new BuildDemos(mockData);
         expect(build.data.browserFeatures).toEqual(['default'])
-      })
+      });
+
+      test("sets ['default'] browser features if none present", () => {
+        mockData.browserFeatures= {
+          required: ['feature-1'],
+          optional: ['feature-2']
+        }
+        
+        let build = new BuildDemos(mockData);
+        expect(build.data.browserFeatures).toEqual(['feature-1', 'feature-2', 'default'])
+      });
   });
 
+  describe('.setDemos', () => {
+    test('sets demos to build', () => {
+      let build = new BuildDemos(mockData);
+      expect(build.data.demos).toEqual([{}])
+    });
+
+    test('throws an error if variant rules are not defined', () => {
+      mockData.demos = null;
+      expect(() => new BuildDemos(mockData)).toThrowError("No demos found")
+    });
+  })
 });

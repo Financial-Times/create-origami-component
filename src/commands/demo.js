@@ -29,19 +29,6 @@ class Demo extends Command {
     }
 
     new BuildDemos(demos);
-  //   this.data.defaults = demos.demosDefaults;
-
-  //   let browserFeatures = []
-  //   if (demos.browserFeatures) {
-  //     this.data.defaults.browserFeatures = browserFeatures.concat(demos.browserFeatures.required || []).concat(demos.browserFeatures.optional || []);
-  //   }
-  //   this.data.defaults.browserFeatures.push('default');
-    
-
-  //   if (!this.data.defaults.variants) {
-  //     //throw Error, variants are required, there is probably a better way to do this.
-  //   }
-  //   this.data.variants = this.data.defaults.variants;
 
   //   this.data.demos = demos.demos;
 

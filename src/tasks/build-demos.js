@@ -9,6 +9,7 @@ class BuildDemos {
     this.getTemplate();
     this.setVariants();
     this.setBrowserFeatures();
+    this.setDemos();
   }
   
   getTemplate () {
@@ -32,6 +33,14 @@ class BuildDemos {
     }
 
     this.data.browserFeatures.push('default');
+  }
+
+  setDemos () {
+    if (!Array.isArray(this.config.demos) || this.config.demos.length === 0) {
+      throw new Error ('No demos found')
+    }
+
+    this.data.demos = this.config.demos;
   }
 }
 
