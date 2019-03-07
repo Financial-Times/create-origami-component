@@ -8,6 +8,7 @@ class BuildDemos {
   init() {
     this.getTemplate();
     this.setVariants();
+    this.setBrowserFeatures();
   }
   
   getTemplate () {
@@ -18,20 +19,20 @@ class BuildDemos {
     if (!this.config.demosDefaults.variants) {
       throw new Error("The 'demosDefaults.variants' property is required");
     }
-
-    this.data.varianta = this.config.demosDefaults.variants;
+    
+    this.data.variants = this.config.demosDefaults.variants;
   }
 
-  // setBrowserFeatures () {
-  //   let features = [];
-  //   if (this.config.browserFeatures) {
-  //     this.data.defaults.browserFeatures = features
-  //       .concat(this.config.browserFeatures.required || [])
-  //       .concat(this.config.browserFeatures.optional || [])
-  //   }
+  setBrowserFeatures () {
+    this.data.browserFeatures = [];
+    if (this.config.browserFeatures) {
+      this.data.browserFeatures = []
+        .concat(this.config.browserFeatures.required || [])
+        .concat(this.config.browserFeatures.optional || [])
+    }
 
-  //   this.data.defaults.browserFeatures.push('default')
-  // }
+    this.data.browserFeatures.push('default');
+  }
 }
 
 module.exports = BuildDemos;

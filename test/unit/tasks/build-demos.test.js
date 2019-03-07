@@ -22,7 +22,7 @@ describe('BuildDemos', () => {
   describe('.setVariants', () => {
     test('sets component variant rules ', () => {
       let build = new BuildDemos(mockData);
-      expect(build.data.variants).toBe([])
+      expect(build.data.variants).toEqual([])
     });
 
     test('throws an error if variant rules are not defined', () => {
@@ -30,4 +30,12 @@ describe('BuildDemos', () => {
       expect(() => new BuildDemos(mockData)).toThrowError("The 'demosDefaults.variants' property is required")
     });
   });
+  
+  describe('.setBrowserFeatures', () => {
+      test("sets ['default'] browser features if none present", () => {
+        let build = new BuildDemos(mockData);
+        expect(build.data.browserFeatures).toEqual(['default'])
+      })
+  });
+
 });
