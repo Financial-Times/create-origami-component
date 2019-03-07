@@ -1,6 +1,6 @@
-const BuildDemos = require('../../../src/tasks/build-demos');
+const Config = require('../../../src/tasks/config');
 
-describe('BuildDemos', () => {
+describe('Config', () => {
   let mockData;
 
   beforeEach(() => {
@@ -15,27 +15,27 @@ describe('BuildDemos', () => {
 
   describe('.getTemplate', () => {
     test('sets default demo template path', () => {
-      let build = new BuildDemos(mockData);
-      expect(build.data.template).toBe('path/to/template')
+      let config = new Config(mockData);
+      expect(config.shared.template).toBe('path/to/template')
     });
   });
 
   describe('.setVariants', () => {
     test('sets component variant rules ', () => {
-      let build = new BuildDemos(mockData);
-      expect(build.data.variants).toEqual([])
+      let config = new Config(mockData);
+      expect(config.shared.variants).toEqual([])
     });
 
     test('throws an error if variant rules are not defined', () => {
       mockData.demosDefaults.variants = null;
-      expect(() => new BuildDemos(mockData)).toThrowError("The 'demosDefaults.variants' property is required")
+      expect(() => new Config(mockData)).toThrowError("The 'demosDefaults.variants' property is required")
     });
   });
   
   describe('.setBrowserFeatures', () => {
       test("sets ['default'] browser features if none present", () => {
-        let build = new BuildDemos(mockData);
-        expect(build.data.browserFeatures).toEqual(['default'])
+        let config = new Config(mockData);
+        expect(config.shared.browserFeatures).toEqual(['default'])
       });
 
       test("sets ['default'] browser features if none present", () => {
@@ -44,20 +44,20 @@ describe('BuildDemos', () => {
           optional: ['feature-2']
         }
         
-        let build = new BuildDemos(mockData);
-        expect(build.data.browserFeatures).toEqual(['feature-1', 'feature-2', 'default'])
+        let config = new Config(mockData);
+        expect(config.shared.browserFeatures).toEqual(['feature-1', 'feature-2', 'default'])
       });
   });
 
   describe('.setDemos', () => {
-    test('sets demos to build', () => {
-      let build = new BuildDemos(mockData);
-      expect(build.data.demos).toEqual([{}])
+    test('sets demos to config', () => {
+      let config = new Config(mockData);
+      expect(config.demos).toEqual([{}])
     });
 
     test('throws an error if variant rules are not defined', () => {
       mockData.demos = null;
-      expect(() => new BuildDemos(mockData)).toThrowError("No demos found")
+      expect(() => new Config(mockData)).toThrowError("No demos found")
     });
   })
 });

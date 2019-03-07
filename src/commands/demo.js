@@ -2,7 +2,7 @@ const {Command, flags} = require('@oclif/command');
 const path = require('path');
 const fs = require('fs-extra');
 
-const BuildDemos = require('../tasks/build-demos');
+const Config = require('../tasks/config');
 
 class Demo extends Command {
   constructor(argv, config) {
@@ -20,16 +20,16 @@ class Demo extends Command {
   async readData () {
     const configPath = path.join(this.cwd, 'origami.json');
     let file = await fs.readFile(configPath, 'utf-8')
-    let demos;
+    let origamiJson;
 
     try {
-      demos = await JSON.parse(file);
+      origamiJson = await JSON.parse(file);
     } catch (error) {
       // handle error
     }
 
-    new BuildDemos(demos);
-
+    const { demos, shared } = await new Config(origamiJson);
+  }
   //   this.data.demos = demos.demos;
 
 
@@ -42,7 +42,7 @@ class Demo extends Command {
   //   let destination  = path.join('demos', 'local');
   //   let demoName = demo.name + '.html';
   //   fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(demo, this.data.defaults), 'utf-8');
-  }
+  // }
 }
 
 // Demo.description = `Describe the command here
