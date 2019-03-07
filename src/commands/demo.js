@@ -29,20 +29,17 @@ class Demo extends Command {
     }
 
     const { demos, shared } = await new Config(origamiJson);
+
+    demos.forEach(demo => this.generateHTML(demo, shared));
   }
-  //   this.data.demos = demos.demos;
 
-
-  //   this.data.demos.forEach(demo => this.generateHTML(demo))
-  // }
-
-  // async generateHTML (demo) {
-  //   // let templatePath = path.join(this.cwd, this.data.defaults.template);
-  //   let baseFile = require(path.join(__dirname, this.templatePath, 'base.js'));
-  //   let destination  = path.join('demos', 'local');
-  //   let demoName = demo.name + '.html';
-  //   fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(demo, this.data.defaults), 'utf-8');
-  // }
+  async generateHTML (demo, shared) {
+    // let templatePath = path.join(this.cwd, this.data.defaults.template);
+    let baseFile = require(path.join(__dirname, this.templatePath, 'base.js'));
+    let destination  = path.join('demos', 'local');
+    let demoName = demo.name + '.html';
+    fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(demo, shared), 'utf-8');
+  }
 }
 
 // Demo.description = `Describe the command here

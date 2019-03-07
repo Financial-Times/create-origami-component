@@ -1,12 +1,12 @@
-module.exports = (demo, defaults) => {
+module.exports = (demo, shared) => {
   return`<!DOCTYPE html>
-<html lang="en"  class="o-hoverable-on ${defaults.documentClasses}">
+<html lang="en"  class="o-hoverable-on ${shared.documentClasses}">
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>${demo.title}</title>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${defaults.browserFeatures}"></script> <style>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${shared.browserFeatures}"></script> <style>
 		body {
 			margin: 0;
 		}
