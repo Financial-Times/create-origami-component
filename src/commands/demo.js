@@ -9,7 +9,6 @@ class Demo extends Command {
     super(argv, config);
     this.data = {};
     this.cwd = process.cwd();
-    this.templatePath = '../../templates/demo/'
   }
 
   async run () {
@@ -19,7 +18,7 @@ class Demo extends Command {
 
   async readData () {
     const configPath = path.join(this.cwd, 'origami.json');
-    let file = await fs.readFile(configPath, 'utf-8')
+    let file = await fs.readFile(configPath, 'utf-8');
     let origamiJson;
 
     try {
@@ -28,17 +27,29 @@ class Demo extends Command {
       // handle error
     }
 
-    const { demos, shared } = await new Config(origamiJson);
+    const { demos, shared } = new Config(origamiJson);
 
-    demos.forEach(demo => this.generateHTML(demo, shared));
+    demos.forEach(demo => {
+      let config = {
+        demo,
+        shared
+      };
+      this.generateHTML(config)});
   }
 
-  async generateHTML (demo, shared) {
+  async generateHTML (config) {
     // let templatePath = path.join(this.cwd, this.data.defaults.template);
-    let baseFile = require(path.join(__dirname, this.templatePath, 'base.js'));
+    let baseFile = require(path.join(__dirname, '../../templates/demo/base-html.js'));
     let destination  = path.join('demos', 'local');
-    let demoName = demo.name + '.html';
-    fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(demo, shared), 'utf-8');
+    let demoName = config.demo.name + '.html';
+    await fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(config, 'utf-8'));
+
+    this.generateReactTemplate(config);
+  }
+
+  async generateReactTemplate (config) {
+    let templateFile = await fs.readFile(path.join(this.cwd, config.shared.template), 'utf-8');
+    console.log(templateFile);
   }
 }
 
