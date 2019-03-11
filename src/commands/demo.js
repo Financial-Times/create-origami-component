@@ -34,13 +34,13 @@ class Demo extends Command {
         demo,
         shared
       };
-      this.generateHTML(config)});
+      this.generateHTML(config)
+    });
   }
 
   async generateHTML (config) {
-    // let templatePath = path.join(this.cwd, this.data.defaults.template);
     let baseFile = require(path.join(__dirname, '../../templates/demo/base-html.js'));
-    let destination  = path.join('demos', 'local');
+    let destination  = path.join('demos', 'tmp');
     let demoName = config.demo.name + '.html';
     await fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(config, 'utf-8'));
 
@@ -48,8 +48,21 @@ class Demo extends Command {
   }
 
   async generateReactTemplate (config) {
-    let templateFile = await fs.readFile(path.join(this.cwd, config.shared.template), 'utf-8');
-    console.log(templateFile);
+    let mainJS = require(path.join(__dirname, '../../templates/demo/index.js'))
+    await fs.outputFile(path.join(this.cwd, 'demos/tmp', config.demo.name + '.js'), mainJS(config, 'utf-8'));
+
+    this.serve()
+  }
+
+  async serve () {
+    const entry = path.join(this.cwd, 'demos/tmp/*.html');
+    const Bundler = require('parcel-bundler');
+    const bundle = new Bundler(entry, {
+      outDir: 'demos/local', 
+      sourceMaps: false, 
+      minify: false
+    });
+    await bundle.serve();
   }
 }
 

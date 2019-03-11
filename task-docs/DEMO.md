@@ -28,7 +28,8 @@ Setup:
   │
   ├─ generates shared styles [file]
   │
-  └─ generates sandbox for each demo 
+  └─ generates sandbox for each demo (bundle with Parcel) 
+  <!-- └─ generates sandbox for each demo 
       ├─ outputs React sandbox structure [file|folder]
       │   ├─ sandbox component [file]
       │   └─ form elements [folder]
@@ -41,7 +42,7 @@ Setup:
       └─ outputs {demo-name.js(x)} [file]
           ├─ sandbox component
           ├─ component react template
-          └─ render functionality
+          └─ render functionality -->
 
 Server
 	¯\_(ツ)_/¯

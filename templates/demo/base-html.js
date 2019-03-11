@@ -24,7 +24,8 @@ module.exports = (config) => {
 
 <body>
   <main id="root"></main>
-  <script src="https://registry.origami.ft.com/embedapi?autoload=resize"></script>
+	<script src="./${config.demo.name}.js"></script>
+	<script src="https://registry.origami.ft.com/embedapi?autoload=resize"></script>
 </body>
 
 </html>`;
