@@ -1,6 +1,7 @@
 import React from "react";
 import FormInputs from './form-inputs/form-inputs.js';
 import { renderToStaticMarkup } from "react-dom/server";
+import './main.scss';
 
 class DemoSandbox extends React.Component {
   constructor(props) {

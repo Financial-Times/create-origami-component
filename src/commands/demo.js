@@ -76,10 +76,11 @@ class Demo extends Command {
     });
 
     await bundle.serve(); //temporarily to see the result of the single file
+
+    // cleanup .sassrc
+    // cleaup demos/tmp/
   }
 
-  // cleanup .sassrc
-  // cleaup demos/tmp/
 }
 
 // Demo.description = `Describe the command here
