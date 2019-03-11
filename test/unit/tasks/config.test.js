@@ -7,6 +7,7 @@ describe('Config', () => {
     mockData = {
       demosDefaults: {
         template: 'path/to/template',
+        dependencies: ['dep-1'],
         variants: [],
       },
       demos: [{}]
@@ -16,7 +17,7 @@ describe('Config', () => {
   describe('.getTemplate', () => {
     test('sets default demo template path', () => {
       let config = new Config(mockData);
-      expect(config.shared.template).toBe('path/to/template')
+      expect(config.shared.templatePath).toBe('path/to/template')
     });
   });
 
@@ -31,6 +32,20 @@ describe('Config', () => {
       expect(() => new Config(mockData)).toThrowError("The 'demosDefaults.variants' property is required")
     });
   });
+
+  describe('.setDependencies', () => {
+    test('sets component and sanbox dependencies ', () => {
+      let config = new Config(mockData);
+      expect(config.shared.dependencies).toEqual(['o-forms@styles', 'o-buttons', 'dep-1'])
+    });
+
+    test('dedupes dependencies', () => {
+      mockData.demosDefaults.dependencies = ['dep-1', 'o-buttons'];
+      let config = new Config(mockData);
+
+      expect(config.shared.dependencies).toEqual(['o-forms@styles', 'o-buttons', 'dep-1'])
+    });
+  });
   
   describe('.setBrowserFeatures', () => {
       test("sets ['default'] browser features if none present", () => {
@@ -38,8 +53,8 @@ describe('Config', () => {
         expect(config.shared.browserFeatures).toEqual(['default'])
       });
 
-      test("sets ['default'] browser features if none present", () => {
-        mockData.browserFeatures= {
+      test("sets requestsed (required and options) browser features", () => {
+        mockData.browserFeatures = {
           required: ['feature-1'],
           optional: ['feature-2']
         }

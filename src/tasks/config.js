@@ -41,6 +41,7 @@ class Config {
 
   setBrowserFeatures () {
     this.shared.browserFeatures = [];
+
     if (this.config.browserFeatures) {
       this.shared.browserFeatures = []
         .concat(this.config.browserFeatures.required || [])
@@ -49,7 +50,7 @@ class Config {
 
     this.shared.browserFeatures.push('default');
   }
-
+  
   setDemos () {
     if (!Array.isArray(this.config.demos) || this.config.demos.length === 0) {
       throw new Error ('No demos found')
