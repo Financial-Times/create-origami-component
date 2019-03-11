@@ -14,6 +14,7 @@ class Demo extends Command {
   async run () {
     console.log('Building demos...')
     this.readData();
+    this.serve();
   }
 
   async readData () {
@@ -50,19 +51,19 @@ class Demo extends Command {
   async generateReactTemplate (config) {
     let mainJS = require(path.join(__dirname, '../../templates/demo/index.js'))
     await fs.outputFile(path.join(this.cwd, 'demos/tmp', config.demo.name + '.js'), mainJS(config, 'utf-8'));
-
-    this.serve()
   }
 
   async serve () {
-    const entry = path.join(this.cwd, 'demos/tmp/*.html');
+    // const entry = path.join(this.cwd, 'demos/tmp/*.html'); // only needs to be called once,  
+    const entry = path.join(this.cwd, 'demos/tmp/alert-error.html'); //to test
     const Bundler = require('parcel-bundler');
     const bundle = new Bundler(entry, {
       outDir: 'demos/local', 
       sourceMaps: false, 
       minify: false
     });
-    await bundle.serve();
+
+    await bundle.serve(); //temporarily to see the result of the single file
   }
 }
 

@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = (config) => {
-  console.log('this', config);
   return `
 import React from "react";
 import ReactDOM from "react-dom";
