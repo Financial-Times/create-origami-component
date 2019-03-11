@@ -9,6 +9,7 @@ class Config {
   init() {
     this.getTemplate();
     this.setVariants();
+    this.setDependencies();
     this.setBrowserFeatures();
     this.setDemos();
 
@@ -28,6 +29,12 @@ class Config {
     }
     
     this.shared.variants = this.config.demosDefaults.variants;
+  }
+
+  setDependencies () {
+    let sandboxDependencies = ['o-forms@styles', 'o-buttons']; //change @styles when o-forms 7 is released
+    let dependencies = sandboxDependencies.concat(this.config.demosDefaults.dependencies);
+    this.shared.dependencies = [... new Set(dependencies)];
   }
 
   setBrowserFeatures () {

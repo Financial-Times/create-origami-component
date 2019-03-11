@@ -20,11 +20,13 @@ module.exports = (config) => {
 			d.className = d.className + ' demo-js';
 		})(document.documentElement);
 	</script>
+	${config.shared.dependencies ? `<link rel="stylesheet" href="https://origami-build.ft.com/v2/bundles/css?modules=${config.shared.dependencies.toString()}"/>` : ''}
 </head>
 
 <body>
   <main id="root"></main>
 	<script src="./${config.demo.name}.js"></script>
+	${config.shared.dependencies ? `<script src="https://origami-build.ft.com/v2/bundles/js?modules=${config.shared.dependencies.toString()}"></script>` : ''}
 	<script src="https://registry.origami.ft.com/embedapi?autoload=resize"></script>
 </body>
 
