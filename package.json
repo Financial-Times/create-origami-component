@@ -20,6 +20,7 @@
     "tree-node-cli": "^1.2.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@oclif/dev-cli": "^1.21.0",
     "@oclif/test": "^1.2.2",

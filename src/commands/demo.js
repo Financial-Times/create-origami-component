@@ -13,8 +13,17 @@ class Demo extends Command {
 
   async run () {
     console.log('Building demos...')
-    this.readData();
-    this.serve();
+
+    await fs.writeFile(path.join(this.cwd, '.sassrc'), JSON.stringify({
+      "includePaths": [
+        path.join(process.cwd(), 'bower_components')
+      ]
+    }))
+
+
+
+    await this.readData();
+    await this.serve();
   }
 
   async readData () {
@@ -23,20 +32,22 @@ class Demo extends Command {
     let origamiJson;
 
     try {
-      origamiJson = await JSON.parse(file);
+      origamiJson = JSON.parse(file);
     } catch (error) {
       // handle error
     }
 
     const { demos, shared } = new Config(origamiJson);
 
-    demos.forEach(demo => {
+    await Promise.all(demos.map(demo => {
       let config = {
         demo,
         shared
       };
-      this.generateHTML(config)
-    });
+
+      return this.generateHTML(config)
+      })
+    )
   }
 
   async generateHTML (config) {
@@ -45,7 +56,7 @@ class Demo extends Command {
     let demoName = config.demo.name + '.html';
     await fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(config, 'utf-8'));
 
-    this.generateReactTemplate(config);
+    return this.generateReactTemplate(config);
   }
 
   async generateReactTemplate (config) {
@@ -55,16 +66,20 @@ class Demo extends Command {
 
   async serve () {
     // const entry = path.join(this.cwd, 'demos/tmp/*.html'); // only needs to be called once,  
-    const entry = path.join(this.cwd, 'demos/tmp/alert-error.html'); //to test
+    const entry = path.join(this.cwd, 'demos/tmp/alert-error.html'); // to test
     const Bundler = require('parcel-bundler');
     const bundle = new Bundler(entry, {
-      outDir: 'demos/local', 
+      outDir: 'demos/local',
+      cache: false,
       sourceMaps: false, 
       minify: false
     });
 
     await bundle.serve(); //temporarily to see the result of the single file
   }
+
+  // cleanup .sassrc
+  // cleaup demos/tmp/
 }
 
 // Demo.description = `Describe the command here

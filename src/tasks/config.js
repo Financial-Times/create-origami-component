@@ -19,7 +19,7 @@ class Config {
   }
   
   getTemplate () {
-    this.shared.template = this.config.demosDefaults.template;
+    this.shared.templatePath = this.config.demosDefaults.template;
   };
 
   setVariants () {
