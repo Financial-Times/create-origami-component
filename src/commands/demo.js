@@ -1,7 +1,7 @@
 const {Command, flags} = require('@oclif/command');
 const path = require('path');
 const fs = require('fs-extra');
-
+const execa = require('execa');
 const Config = require('../tasks/config');
 
 class Demo extends Command {
@@ -14,6 +14,7 @@ class Demo extends Command {
 
   async run () {
     console.log('Building demos...')
+    // this.flags.brand ? this.flags.brand : 'master';
 
     await this.generateSCSSRc();
     await this.readData();
@@ -41,6 +42,8 @@ class Demo extends Command {
 
     const { demos, shared } = new Config(origamiJson);
 
+    await this.installDeps(shared.dependencies);
+
     await Promise.all(demos.map(demo => {
       let config = {
         demo,
@@ -52,12 +55,18 @@ class Demo extends Command {
     )
   }
 
+  async installDeps(dependencies) {
+    let {stdout} = await execa('bower', ['install',
+      ...dependencies
+    ]);
+    console.log(stdout);
+  }
+
   async generateHTML (config) {
     let baseFile = require(path.join(__dirname, '../../templates/demo/base-html.js'));
     let destination  = path.join('demos', 'tmp');
     let demoName = config.demo.name + '.html';
     await fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(config, 'utf-8'));
-
     return this.generateReactTemplate(config);
   }
 
@@ -73,18 +82,21 @@ class Demo extends Command {
       outDir: 'demos/local',
       cache: false,
       sourceMaps: false, 
-      minify: false
+      minify: false,
+      watch: this.flags.watch
     });
 
     if (this.flags.serve) {
       await bundle.serve(8999);
     } else {
-      await bundle.bundle()
+      await bundle.bundle();
     }
 
     try {
-      await fs.remove(path.join(this.cwd, '.sassrc'));
       await fs.remove(path.join(this.cwd, 'demos/tmp/'));
+      if (!this.flags.watch) {
+        await fs.remove(path.join(this.cwd, '.sassrc'));
+      }
     } catch (err) {
        // TODO: handle error
     }
@@ -98,6 +110,7 @@ class Demo extends Command {
 
 Demo.flags = {
   serve: flags.boolean({char: 's', description: 'run local development server (port: 8999)'}),
+  watch: flags.boolean({char: 'w', description: 'rebuild files on server'})
 }
 
 module.exports = Demo

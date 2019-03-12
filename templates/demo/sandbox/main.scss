@@ -1,3 +1,4 @@
+html,
 body {
   margin: 0;
   height: 100%;
@@ -23,16 +24,16 @@ main {
   overflow-y: scroll;
   padding: 0;
   width: 19em;
-  // transform: translateX(-100%);
+  transform: translateX(-100%);
   transition: 
-    padding 0.1s ease,
-    // transform 0.1s ease-in-out,
-    flex-basis 0.4s ease;
+    padding 0s ease,
+    transform 0.01s ease-in-out,
+    flex-basis 0.2s ease;
 }
 
 .sidebar--open {
   padding: 0.7em; 
-  // transform: translateX(0%);
+  transform: translateX(0%);
   flex-basis: auto;
 }
 

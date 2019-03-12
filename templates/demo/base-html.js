@@ -1,12 +1,15 @@
 module.exports = (config) => {
+	const shared = config.shared;
+	const demo = config.demo;
+
   return`<!DOCTYPE html>
-<html lang="en"  class="o-hoverable-on ${config.shared.documentClasses}">
+<html lang="en"  class="o-hoverable-on ${shared.documentClasses}">
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>${config.demo.title}</title>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${config.shared.browserFeatures}"></script> <style>
+  <title>${demo.title}</title>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${shared.browserFeatures}"></script> <style>
 		body {
 			margin: 0;
 		}
@@ -20,13 +23,13 @@ module.exports = (config) => {
 			d.className = d.className + ' demo-js';
 		})(document.documentElement);
 	</script>
-	${config.shared.dependencies ? `<link rel="stylesheet" href="https://origami-build.ft.com/v2/bundles/css?modules=${config.shared.dependencies.toString()}"/>` : ''}
+	${shared.dependencies ? `<link rel="stylesheet" href="https://origami-build.ft.com/v2/bundles/css?modules=${shared.dependencies.toString()}${shared.brand ? `&brand=${shared.brand}` : ''}"/>` : ''}
 </head>
 
 <body>
   <main id="root"></main>
-	<script src="./${config.demo.name}.js"></script>
-	${config.shared.dependencies ? `<script src="https://origami-build.ft.com/v2/bundles/js?modules=${config.shared.dependencies.toString()}"></script>` : ''}
+	<script src="./${demo.name}.js"></script>
+	${shared.dependencies ? `<script src="https://origami-build.ft.com/v2/bundles/js?modules=${shared.dependencies.toString()}"></script>` : ''}
 	<script src="https://registry.origami.ft.com/embedapi?autoload=resize"></script>
 </body>
 
