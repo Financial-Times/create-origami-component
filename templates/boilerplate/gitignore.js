@@ -7,5 +7,6 @@ return `.DS_Store
 /build/
 .idea/
 /demos/local
+/demos/tmp
 /coverage`;
 };

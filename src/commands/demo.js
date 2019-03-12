@@ -9,21 +9,23 @@ class Demo extends Command {
     super(argv, config);
     this.data = {};
     this.cwd = process.cwd();
+    this.flags = this.parse(Demo).flags;
   }
 
   async run () {
     console.log('Building demos...')
 
+    await this.generateSCSSRc();
+    await this.readData();
+    await this.bundlerSetup();
+  }
+
+  async generateSCSSRc () {
     await fs.writeFile(path.join(this.cwd, '.sassrc'), JSON.stringify({
       "includePaths": [
         path.join(process.cwd(), 'bower_components')
       ]
     }))
-
-
-
-    await this.readData();
-    await this.serve();
   }
 
   async readData () {
@@ -34,7 +36,7 @@ class Demo extends Command {
     try {
       origamiJson = JSON.parse(file);
     } catch (error) {
-      // handle error
+      // TODO: handle error
     }
 
     const { demos, shared } = new Config(origamiJson);
@@ -64,9 +66,8 @@ class Demo extends Command {
     await fs.outputFile(path.join(this.cwd, 'demos/tmp', config.demo.name + '.js'), mainJS(config, 'utf-8'));
   }
 
-  async serve () {
-    // const entry = path.join(this.cwd, 'demos/tmp/*.html'); // only needs to be called once,  
-    const entry = path.join(this.cwd, 'demos/tmp/alert-error.html'); // to test
+  async bundlerSetup () {
+    const entry = path.join(this.cwd, 'demos/tmp/*.html');
     const Bundler = require('parcel-bundler');
     const bundle = new Bundler(entry, {
       outDir: 'demos/local',
@@ -75,12 +76,19 @@ class Demo extends Command {
       minify: false
     });
 
-    await bundle.serve(); //temporarily to see the result of the single file
+    if (this.flags.serve) {
+      await bundle.serve(8999);
+    } else {
+      await bundle.bundle()
+    }
 
-    // cleanup .sassrc
-    // cleaup demos/tmp/
+    try {
+      await fs.remove(path.join(this.cwd, '.sassrc'));
+      await fs.remove(path.join(this.cwd, 'demos/tmp/'));
+    } catch (err) {
+       // TODO: handle error
+    }
   }
-
 }
 
 // Demo.description = `Describe the command here
@@ -88,8 +96,8 @@ class Demo extends Command {
 // Extra documentation goes here
 // `
 
-// Demo.flags = {
-//   name: flags.string({char: 'n', description: 'name to print'}),
-// }
+Demo.flags = {
+  serve: flags.boolean({char: 's', description: 'run local development server (port: 8999)'}),
+}
 
 module.exports = Demo

@@ -39,7 +39,7 @@ describe('Config', () => {
       expect(config.shared.dependencies).toEqual(['o-forms@styles', 'o-buttons', 'dep-1'])
     });
 
-    test('dedupes dependencies', () => {
+    test('dedupes dependencies array', () => {
       mockData.demosDefaults.dependencies = ['dep-1', 'o-buttons'];
       let config = new Config(mockData);
 
