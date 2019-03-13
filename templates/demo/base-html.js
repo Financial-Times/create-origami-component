@@ -3,7 +3,7 @@ module.exports = (config) => {
 	const demo = config.demo;
 
   return`<!DOCTYPE html>
-<html lang="en"  class="o-hoverable-on ${shared.documentClasses}">
+<html lang="en" class="o-hoverable-on ${shared.documentClasses ? shared.documentClasses : ''}">
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
@@ -23,7 +23,6 @@ module.exports = (config) => {
 			d.className = d.className + ' demo-js';
 		})(document.documentElement);
 	</script>
-	${shared.dependencies ? `<link rel="stylesheet" href="https://origami-build.ft.com/v2/bundles/css?modules=${shared.dependencies.toString()}${shared.brand ? `&brand=${shared.brand}` : ''}"/>` : ''}
 </head>
 
 <body>

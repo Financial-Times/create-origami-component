@@ -1,7 +1,27 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import FormInputs from './form-inputs/form-inputs.js';
 import { renderToStaticMarkup } from "react-dom/server";
 import './main.scss';
+
+//TODO: move into own file
+class Sidebar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.shadowRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.shadowRoot = this.shadowRef.current.attachShadow({ mode: 'open' });
+    ReactDOM.render(<FormInputs {...this.props} />, this.shadowRoot);
+  }
+
+  render() {
+    return <div ref={this.shadowRef} className={`sidebar ${this.props.state.sidebarVisible ? 'sidebar--open' : ''}`} state={this.state}>
+    </div>
+  }
+}
 
 class DemoSandbox extends React.Component {
   constructor(props) {
@@ -44,9 +64,7 @@ class DemoSandbox extends React.Component {
     const variant = this.props.variants.find(variant => variant.type === demo.type);
     const component = <this.props.component state={this.state} demo={demo} />
     return <>
-      <this.Sidebar state={this.state}>
-        <FormInputs data={variant} state={this.state} handleChange={this.handleChange} />
-      </this.Sidebar>
+      <Sidebar state={this.state} data={variant} handleChange={this.handleChange}></Sidebar>
       <this.DemoArea>
         <button className="o-buttons o-buttons--mono" onClick={this.toggleSidebar}>Customise this demo</button>
         <button className="o-buttons o-buttons--mono" onClick={() => this.toggleHTML(component)}>HTML</button>

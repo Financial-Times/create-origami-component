@@ -84,11 +84,13 @@ class FormInputs extends React.Component {
   }
 
   render () {
-    return Object.entries(this.props.data.config).map(([type, config]) => {
-      return this.buildInputType(config);
-
-      // return some error message?
-    });
+    return <>
+      <link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^3.3.0,o-forms@styles&brand=internal" />
+      {
+        Object.entries(this.props.data.config).map(([type, config]) => this.buildInputType(config))
+        // return some error message?
+      }
+    </>
   }
 
 }

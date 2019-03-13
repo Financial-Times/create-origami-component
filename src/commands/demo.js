@@ -14,54 +14,52 @@ class Demo extends Command {
 
   async run () {
     console.log('Building demos...')
-    // this.flags.brand ? this.flags.brand : 'master';
-
     await this.generateSCSSRc();
     await this.readData();
+    // await this.installDeps();
+    await this.buildDemoFiles();
     await this.bundlerSetup();
   }
 
   async generateSCSSRc () {
     await fs.writeFile(path.join(this.cwd, '.sassrc'), JSON.stringify({
       "includePaths": [
-        path.join(process.cwd(), 'bower_components')
+        path.join(this.cwd, 'bower_components')
       ]
     }))
   }
 
   async readData () {
     const configPath = path.join(this.cwd, 'origami.json');
-    let file = await fs.readFile(configPath, 'utf-8');
     let origamiJson;
-
+    
     try {
-      origamiJson = JSON.parse(file);
+      let file1 = await fs.readFile(configPath, 'utf-8');
+      origamiJson = JSON.parse(file1);
     } catch (error) {
       // TODO: handle error
     }
 
-    const { demos, shared } = new Config(origamiJson);
+    this.config = new Config(origamiJson);
+  }
 
-    await this.installDeps(shared.dependencies);
+  // may not need this?
+  // async installDeps() {
+  //   let {stdout} = await execa('bower', ['install',
+  //     ...this.config.shared.dependencies
+  //   ]);
+  //   console.log(stdout);
+  // }
 
-    await Promise.all(demos.map(demo => {
-      let config = {
+  async buildDemoFiles() {
+    await Promise.all(this.config.demos.map(demo => {
+      return this.generateHTML({
         demo,
-        shared
-      };
-
-      return this.generateHTML(config)
-      })
-    )
+        shared: this.config.shared
+      });
+    }));
   }
-
-  async installDeps(dependencies) {
-    let {stdout} = await execa('bower', ['install',
-      ...dependencies
-    ]);
-    console.log(stdout);
-  }
-
+  
   async generateHTML (config) {
     let baseFile = require(path.join(__dirname, '../../templates/demo/base-html.js'));
     let destination  = path.join('demos', 'tmp');
@@ -94,7 +92,7 @@ class Demo extends Command {
 
     try {
       await fs.remove(path.join(this.cwd, 'demos/tmp/'));
-      if (!this.flags.watch) {
+      if (!this.flags.serve && !this.flags.watch) {
         await fs.remove(path.join(this.cwd, '.sassrc'));
       }
     } catch (err) {
