@@ -8,7 +8,6 @@ import './main.scss';
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.props = props;
     this.shadowRef = React.createRef();
   }
 
@@ -29,7 +28,7 @@ class DemoSandbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    Object.assign(this.state, props.demo, { sidebarVisible: false })
+    Object.assign(this.state, props.config.demo.data, { sidebarVisible: false })
   }
 
   handleChange = (event) => {
@@ -56,9 +55,11 @@ class DemoSandbox extends React.Component {
   }
 
   render() {
-    const demo = this.props.demo;
-    const variant = this.props.variants.find(variant => variant.type === demo.type);
+    const demo = this.props.config.demo.data;
+    const variant = this.props.config.shared.variants.find(variant => variant.type === demo.type);
+
     const component = <this.props.component state={this.state} demo={demo} />
+
     return <>
       <Sidebar state={this.state} data={variant} handleChange={this.handleChange}></Sidebar>
       <this.DemoArea>
