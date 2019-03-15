@@ -45,7 +45,6 @@ class Demo extends Command {
 
   async buildDemoFiles() {
     await Promise.all(this.config.demos.map(demo => {
-      console.log(demo.brands)
       if (!demo.brands || demo.brands && demo.brands.find(brand => brand === this.brand)) {
         return this.generateHTML({
           demo,

@@ -1,31 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import FormInputs from './form-inputs/form-inputs.js';
 import { renderToStaticMarkup } from "react-dom/server";
+import Sidebar from './sidebar';
 import './main.scss';
 
-//TODO: move into own file
-class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.shadowRef = React.createRef();
-    console.log(this.props)
-  }
-
-  componentDidMount() {
-    this.shadowRoot = this.shadowRef.current.attachShadow({ mode: 'open' });
-    ReactDOM.render(<FormInputs {...this.props}/>, this.shadowRoot);
-  }
-
-  render() {
-    return <div className={`sidebar${this.props.state.sidebarVisible ? ' sidebar--open' : ''}`} state={this.state}>
-      <link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^3.3.0&brand=internal" />
-      <div ref={this.shadowRef}></div>
-    </div>
-  }
-}
-
-class DemoSandbox extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -72,4 +50,4 @@ class DemoSandbox extends React.Component {
   }
 }
 
-export default DemoSandbox;
+export default App;

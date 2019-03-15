@@ -5,10 +5,10 @@ return `
 import React from "react";
 import ReactDOM from "react-dom";
 
-import DemoSandbox from '${path.relative('demos/local', __dirname + '/sandbox/demo-sandbox.js')}'; //TODO: change relative path
+import App from '${path.relative('demos/local', __dirname + '/sandbox/app.js')}'; //TODO: change relative path
 import OMessage from '../../${config.shared.templatePath}'; // TODO: decide where to get component name later to set here and in render
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<DemoSandbox config={${JSON.stringify(config)}} component={OMessage} />, rootElement);
+ReactDOM.render(<App config={${JSON.stringify(config)}} component={OMessage} />, rootElement);
 `
 };
