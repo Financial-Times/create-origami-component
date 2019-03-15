@@ -7,15 +7,15 @@ class RadioInput extends React.Component {
         <span className="o-forms__label">{this.props.name}</span>
       </legend>
       {this.props.options.map(opt => {
-        return <label key={opt}>
+        return <label key={opt.name}>
           <input type="radio"
             name={this.props.name}
             onChange={this.props.handleChange}
             required={this.props.required}
-            defaultChecked={this.props.state[this.props.name] === opt}
-            value={opt}
+            defaultChecked={this.props.state[this.props.name] === opt.name}
+            value={opt.name}
           />
-          <span>{opt}</span>
+          <span>{opt.name}</span>
         </label>
       })}
     </fieldset>

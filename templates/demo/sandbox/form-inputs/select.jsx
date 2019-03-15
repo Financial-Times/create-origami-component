@@ -14,7 +14,7 @@ class SelectInput extends React.Component {
           value={this.props.state.value}
         >
           {this.props.options.map(opt => {
-            return <option key={opt} value={opt}>{opt}</option>
+            return <option key={opt.name} value={opt.name}>{opt.name}</option>
           })}
         </select>
       </label>
