@@ -16,7 +16,6 @@ class Demo extends Command {
     console.log('Building demos...')
     await this.generateSCSSRc();
     await this.readData();
-    // await this.installDeps();
     await this.buildDemoFiles();
     await this.bundlerSetup();
   }
@@ -43,19 +42,12 @@ class Demo extends Command {
     this.config = new Config(origamiJson);
   }
 
-  // may not need this?
-  // async installDeps() {
-  //   let {stdout} = await execa('bower', ['install',
-  //     ...this.config.shared.dependencies
-  //   ]);
-  //   console.log(stdout);
-  // }
-
   async buildDemoFiles() {
     await Promise.all(this.config.demos.map(demo => {
       return this.generateHTML({
         demo,
-        shared: this.config.shared
+        shared: this.config.shared,
+        brand: this.flags.brand
       });
     }));
   }
@@ -108,7 +100,8 @@ class Demo extends Command {
 
 Demo.flags = {
   serve: flags.boolean({char: 's', description: 'run local development server (port: 8999)'}),
-  watch: flags.boolean({char: 'w', description: 'rebuild files on server'})
+  watch: flags.boolean({char: 'w', description: 'rebuild files on server'}),
+  brand: flags.string({char: 'b', description: 'brand to render the component under'})
 }
 
 module.exports = Demo

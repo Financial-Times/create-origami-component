@@ -9,11 +9,12 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.shadowRef = React.createRef();
+    console.log(this.props)
   }
 
   componentDidMount() {
     this.shadowRoot = this.shadowRef.current.attachShadow({ mode: 'open' });
-    ReactDOM.render(<FormInputs {...this.props} />, this.shadowRoot);
+    ReactDOM.render(<FormInputs {...this.props}/>, this.shadowRoot);
   }
 
   render() {
@@ -61,7 +62,7 @@ class DemoSandbox extends React.Component {
     const component = <this.props.component state={this.state} demo={demo} />
 
     return <>
-      <Sidebar state={this.state} data={variant} handleChange={this.handleChange}></Sidebar>
+      <Sidebar state={this.state} data={variant} brand={this.props.config.brand} handleChange={this.handleChange}></Sidebar>
       <this.DemoArea>
         <button className="o-buttons o-buttons--mono" onClick={this.toggleSidebar}>Customise this demo</button>
         <button className="o-buttons o-buttons--mono" onClick={() => this.toggleHTML(component)}>HTML</button>

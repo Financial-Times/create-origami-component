@@ -1,7 +1,6 @@
 module.exports = (config) => {
 	const shared = config.shared;
 	const demo = config.demo;
-
   return`<!DOCTYPE html>
 <html lang="en" class="o-hoverable-on ${shared.documentClasses ? shared.documentClasses : ''}">
 <head>
@@ -10,7 +9,7 @@ module.exports = (config) => {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <title>${demo.title}</title>
 	<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${shared.browserFeatures}"></script>
-	${shared.dependencies ? `<link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-buttons,${shared.dependencies.toString()}"/>` : ''}
+	${shared.dependencies ? `<link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-buttons,${shared.dependencies.toString()}${config.brand ? `&brand=${config.brand}` : ''}"/>` : ''}
 
 	<style>
 		body {

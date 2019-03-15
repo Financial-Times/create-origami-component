@@ -12,11 +12,12 @@ class FormInputs extends React.Component {
     this.state = props.state;
     this.handleChange = props.handleChange;
   }
-
+  
   buildInputType (config) {
     const inputType = config.inputType
     config.handleChange = this.handleChange;
     config.state = this.state;
+    config.brand = this.props.brand;
 
     if (inputType === 'select') {
       return <SelectInput key={config.name} {...config}/>
