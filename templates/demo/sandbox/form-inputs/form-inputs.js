@@ -15,71 +15,31 @@ class FormInputs extends React.Component {
 
   buildInputType (config) {
     const inputType = config.inputType
+    config.handleChange = this.handleChange;
+    config.state = this.state;
 
     if (inputType === 'select') {
-      return <SelectInput
-        name={config.name}
-        key={config.name}
-        required={config.required}
-        options={config.options}
-        handleChange={this.handleChange}
-        state={this.state}
-      />
+      return <SelectInput key={config.name} {...config}/>
     }
 
     if (inputType === 'checkbox') {
-      return <CheckboxInput
-        name={config.name}
-        key={config.name}
-        required={config.required}
-        options={config.options}
-        handleChange={this.handleChange}
-        state={this.state}
-      />
+      return <CheckboxInput key={config.name} {...config}/>
     }
 
     if (inputType === 'radio') {
-      return <RadioInput
-        name={config.name}
-        key={config.name}
-        required={config.required}
-        options={config.options}
-        handleChange={this.handleChange}
-        state={this.state}
-      />
+      return <RadioInput key={config.name} {...config}/>
     }
 
     if (inputType === 'text') {
-      return <TextInput
-        name={config.name}
-        key={config.name}
-        required={config.required}
-        options={config.options}
-        handleChange={this.handleChange}
-        state={this.state}
-      />
+      return <TextInput key={config.name} {...config}/>
     }
 
     if (inputType === 'textarea') {
-      return <TextAreaInput
-        name={config.name}
-        key={config.name}
-        required={config.required}
-        options={config.options}
-        handleChange={this.handleChange}
-        state={this.state}
-      />
+      return <TextAreaInput key={config.name} {...config}/>
     }
 
     if (inputType === 'url') {
-      return <URLInput
-        name={config.name}
-        key={config.name}
-        required={config.required}
-        options={config.options}
-        handleChange={this.handleChange}
-        state={this.state}
-      />
+      return <URLInput key={config.name} {...config}/>
     }
   }
 
