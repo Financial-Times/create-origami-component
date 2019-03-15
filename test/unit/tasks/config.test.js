@@ -36,14 +36,7 @@ describe('Config', () => {
   describe('.setDependencies', () => {
     test('sets component and sanbox dependencies ', () => {
       let config = new Config(mockData);
-      expect(config.shared.dependencies).toEqual(['o-forms@styles', 'o-buttons', 'dep-1'])
-    });
-
-    test('dedupes dependencies array', () => {
-      mockData.demosDefaults.dependencies = ['dep-1', 'o-buttons'];
-      let config = new Config(mockData);
-
-      expect(config.shared.dependencies).toEqual(['o-forms@styles', 'o-buttons', 'dep-1'])
+      expect(config.shared.dependencies).toEqual(['dep-1'])
     });
   });
   
