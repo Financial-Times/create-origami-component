@@ -7,9 +7,12 @@ module.exports = (config) => {
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <title>${demo.title}</title>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${shared.browserFeatures}"></script> <style>
+	<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${shared.browserFeatures}"></script>
+	${shared.dependencies ? `<link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-buttons,${shared.dependencies.toString()}"/>` : ''}
+
+	<style>
 		body {
 			margin: 0;
 		}

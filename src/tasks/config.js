@@ -32,12 +32,7 @@ class Config {
   }
 
   setDependencies () {
-    // TODO: Not sure how we'll approach this (other than changing the design?), 
-    // but we can't have two brands going at once—the form will end up reflecting 
-    // the brand that the user has chosen to edit ?
-    let sandboxDependencies = ['o-forms', 'o-buttons']; //TODO: change @styles when o-forms 7 is released
-    let dependencies = sandboxDependencies.concat(this.config.demosDefaults.dependencies);
-    this.shared.dependencies = Array.from(new Set(dependencies));
+    this.shared.dependencies = this.config.demosDefaults.dependencies;
   }
 
   setBrowserFeatures () {

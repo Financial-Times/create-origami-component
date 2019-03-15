@@ -18,7 +18,9 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    return <div ref={this.shadowRef} className={`sidebar ${this.props.state.sidebarVisible ? 'sidebar--open' : ''}`} state={this.state}>
+    return <div className={`sidebar${this.props.state.sidebarVisible ? ' sidebar--open' : ''}`} state={this.state}>
+      <link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^3.3.0&brand=internal" />
+      <div ref={this.shadowRef}></div>
     </div>
   }
 }
@@ -35,12 +37,6 @@ class DemoSandbox extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name || target.id;
     this.setState({ [name]: value });
-  }
-
-  Sidebar(props) {
-    return <div className={`sidebar ${props.state.sidebarVisible ? 'sidebar--open' : ''}`}>
-      {props.children}
-    </div>
   }
 
   toggleSidebar = () => {

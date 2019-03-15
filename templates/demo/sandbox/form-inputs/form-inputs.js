@@ -85,10 +85,10 @@ class FormInputs extends React.Component {
 
   render () {
     return <>
-      <link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^3.3.0,o-forms@styles&brand=internal" />
+      <link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-forms@styles&brand=internal" />
       {
         Object.entries(this.props.data.config).map(([type, config]) => this.buildInputType(config))
-        // return some error message?
+        // TODO: handle error
       }
     </>
   }
