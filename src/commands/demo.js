@@ -40,15 +40,19 @@ class Demo extends Command {
     }
 
     this.config = new Config(origamiJson);
+    this.brand = this.flags.brand ? this.flags.brand : 'master';
   }
 
   async buildDemoFiles() {
     await Promise.all(this.config.demos.map(demo => {
-      return this.generateHTML({
-        demo,
-        shared: this.config.shared,
-        brand: this.flags.brand
-      });
+      console.log(demo.brands)
+      if (!demo.brands || demo.brands && demo.brands.find(brand => brand === this.brand)) {
+        return this.generateHTML({
+          demo,
+          shared: this.config.shared,
+          brand: this.brand
+        });
+      }
     }));
   }
   
