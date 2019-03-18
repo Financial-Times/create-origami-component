@@ -13,7 +13,7 @@ This must be an array of objects. Each object will set the type and configuratio
 - `config`: type `Array`. Holds all of the config for a rule. 
 
 e.g.: `o-message` variants include 'alert', 'notice' and 'action' which all have individual conditions (layout or brand support, for example)
-```json
+```
 "variants": [
   {
     "type": "action", 
@@ -37,7 +37,7 @@ This must be an array of objects. All properties that dictate configurable aspec
 - `required`: type `Boolean`. Whether or not this field must be filled out.
 - `options`: type `Array`. This is required for `select`, `checkbox` and `radio` input types only.
 
-```json
+```
 {
   "name": "status",
   "inputType": "select",
@@ -59,7 +59,7 @@ This must be an array of objects. It will determine what options are visible in 
 - `name`: type `String`. This is required and denotes the name of the option.
 - `brands`: type `Array`. The brand that this option is available for. This property is optional, and defaults to 'master'
 
-```json
+```
 "options": [
   {
     "name": "inform",
@@ -83,7 +83,7 @@ This must be an array of objects. It will determine what options are visible in 
 Altogether with the examples above, and an additional variant, this config looks like:
 
 (this is a trimmed example)
-```json
+```
 "variants": [
   {
     "type": "action", 
@@ -143,7 +143,7 @@ Altogether with the examples above, and an additional variant, this config looks
 
 This doesn't change the configuration for the `demos` array within `origami.json`. However, it is important that the `data` in each demo reflects the property names in the `variants` configuration.
 
-```json
+```
 "demos": {
   "type": "notice",
   "status": "inform"
