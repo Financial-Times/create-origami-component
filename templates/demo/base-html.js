@@ -9,7 +9,7 @@ module.exports = (config) => {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <title>${demo.title}</title>
 	<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=${shared.browserFeatures}"></script>
-	${shared.dependencies ? `<link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-buttons,${shared.dependencies.toString()},${shared.name.original}${config.brand ? `&brand=${config.brand}` : ''}"/>` : ''}
+	${shared.dependencies ? `<link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-buttons,o-syntax-highlight,${shared.dependencies.toString()},${shared.name.original}${config.brand ? `&brand=${config.brand}` : ''}"/>` : ''}
 
 	<style>
 		body {
@@ -30,7 +30,7 @@ module.exports = (config) => {
 <body>
   <main id="root"></main>
 	<script src="./${demo.name}.js"></script>
-	${shared.dependencies ? `<script src="https://origami-build.ft.com/v2/bundles/js?modules=${shared.dependencies.toString()}"></script>` : ''}
+	${shared.dependencies ? `<script src="https://origami-build.ft.com/v2/bundles/js?modules=o-syntax-highlight,${shared.dependencies.toString()}"></script>` : ''}
 	<script src="https://registry.origami.ft.com/embedapi?autoload=resize"></script>
 </body>
 

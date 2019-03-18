@@ -2,12 +2,44 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import Sidebar from './sidebar';
 import './main.scss';
+import OSyntaxHighlight from '@financial-times/o-syntax-highlight';
 
-class App extends React.Component {
+const Component = React.forwardRef((props, ref) => {
+  let component;
+  if (props.state.showHTML) {
+    component = <pre><code className="o-syntax-highlight--html" dangerouslySetInnerHTML={{__html: props.state.HTML}}></code></pre>
+  } else {
+    component = <props.component ref={ref} state={props.state} demo={props.demo} />
+  }
+
+  return component;
+});
+
+class DemoArea extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
-    Object.assign(this.state, props.config.demo.data, { sidebarVisible: false })
+    this.ref = React.createRef();
+  }
+
+  render() {
+    return <div className="demo-area" data-o-component="o-syntax-highlight">
+      <button className="o-buttons o-buttons--mono" onClick={() => this.props.toggleSidebar()}>Customise this demo</button>
+      <button className="o-buttons o-buttons--mono" onClick={() => this.props.toggleHTML(this.ref)}>HTML</button>
+      <Component component={this.props.component} ref={this.ref} state={this.props.state} demo={this.props.demo}/>
+    </div>
+  }
+}
+
+
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      ...props.config.demo.data, 
+      sidebarVisible: false, 
+      showHTML: false,
+      HTML: null
+    }
   }
 
   handleChange = (event) => {
@@ -23,29 +55,23 @@ class App extends React.Component {
   }
 
   toggleHTML = (element) => {
-    //TODO: swap demo-area content for component HTML
-    console.log(renderToStaticMarkup(element));
-  }
-
-  DemoArea(props) {
-    return <div className="demo-area">
-      {props.children}
-    </div>
+    let highlightedHTML = null;
+    if (element.current) {
+      const highlighter = new OSyntaxHighlight(element.current.outerHTML, { language: 'html' })
+      highlightedHTML = highlighter.tokenise();
+    }
+    this.setState({
+      showHTML: !this.state.showHTML,
+      HTML: highlightedHTML
+    })
   }
 
   render() {
     const demo = this.props.config.demo.data;
     const variant = this.props.config.shared.variants.find(variant => variant.type === demo.type);
-
-    const component = <this.props.component state={this.state} demo={demo} />
-
     return <>
       <Sidebar state={this.state} data={variant} brand={this.props.config.brand} handleChange={this.handleChange}></Sidebar>
-      <this.DemoArea>
-        <button className="o-buttons o-buttons--mono" onClick={this.toggleSidebar}>Customise this demo</button>
-        <button className="o-buttons o-buttons--mono" onClick={() => this.toggleHTML(component)}>HTML</button>
-        {component}
-      </this.DemoArea>
+      <DemoArea state={this.state} demo={demo} toggleHTML={this.toggleHTML} component={this.props.component} toggleSidebar={this.toggleSidebar}></DemoArea>
     </>
   }
 }

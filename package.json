@@ -8,6 +8,7 @@
   },
   "bugs": "https://github.com/Financial-Times/origami-authoring-tools/issues",
   "dependencies": {
+    "@financial-times/o-syntax-highlight": "^1.6.0",
     "@oclif/command": "^1.5.8",
     "@oclif/config": "^1.12.4",
     "@oclif/plugin-help": "^2.1.6",
