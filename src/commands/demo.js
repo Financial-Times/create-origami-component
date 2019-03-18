@@ -21,55 +21,82 @@ class Demo extends Command {
   }
 
   async generateSCSSRc () {
-    await fs.writeFile(path.join(this.cwd, '.sassrc'), JSON.stringify({
-      "includePaths": [
-        path.join(this.cwd, 'bower_components')
-      ]
-    }))
+    try {
+      await fs.writeFile(path.join(this.cwd, '.sassrc'), JSON.stringify({
+        "includePaths": [
+          path.join(this.cwd, 'bower_components')
+        ]
+      }))
+    } catch (err) {
+      // TODO: handle error
+    }
   }
 
   async readData () {
-    const configPath = path.join(this.cwd, 'origami.json');
-    let origamiJson;
-    
+    let origamiJSON;
+    let bowerJSON;
+
     try {
-      let file1 = await fs.readFile(configPath, 'utf-8');
-      origamiJson = JSON.parse(file1);
+      origamiJSON = await this.readJSON('origami.json');
+      bowerJSON = await this.readJSON('bower.json');
     } catch (error) {
       // TODO: handle error
     }
-
-    this.config = new Config(origamiJson);
+    this.config = new Config(origamiJSON);
+    this.config.shared.name = bowerJSON.name;
     this.brand = this.flags.brand ? this.flags.brand : 'master';
   }
 
+  async readJSON (filePath) {
+    const configPath = path.join(this.cwd, filePath);
+    try {
+      let file = await fs.readFile(configPath, 'utf-8');
+      return JSON.parse(file);
+    } catch (error) {
+      // TODO: handle error
+    }
+  }
+
   async buildDemoFiles() {
-    await Promise.all(this.config.demos.map(demo => {
-      if (!demo.brands || demo.brands && demo.brands.find(brand => brand === this.brand)) {
-        return this.generateHTML({
-          demo,
-          shared: this.config.shared,
-          brand: this.brand
-        });
-      }
-    }));
+    try {
+      return await Promise.all(this.config.demos.map(demo => {
+        if (!demo.brands || demo.brands && demo.brands.find(brand => brand === this.brand)) {
+          return this.generateHTML({
+            demo,
+            shared: this.config.shared,
+            brand: this.brand
+          });
+        }
+      }));
+    } catch (err) {
+      // TODO: handle error
+    }
   }
   
   async generateHTML (config) {
     let baseFile = require(path.join(__dirname, '../../templates/demo/base-html.js'));
-    let destination  = path.join('demos', 'tmp');
+    let destination = path.join(this.cwd, 'demos/tmp');
     let demoName = config.demo.name + '.html';
-    await fs.outputFile(path.join(this.cwd, destination, demoName), baseFile(config, 'utf-8'));
-    return this.generateReactTemplate(config);
+    try {
+      await fs.outputFile(path.join(destination, demoName), baseFile(config, 'utf-8'));
+      return this.generateReactTemplate(config);
+    } catch (err) {
+      // TODO: handle error
+    }
   }
-
+  
   async generateReactTemplate (config) {
-    let mainJS = require(path.join(__dirname, '../../templates/demo/index.js'))
-    await fs.outputFile(path.join(this.cwd, 'demos/tmp', config.demo.name + '.js'), mainJS(config, 'utf-8'));
+    try {
+      let mainJS = require(path.join(__dirname, '../../templates/demo/index.js'))
+      await fs.outputFile(path.join(this.cwd, 'demos/tmp', config.demo.name + '.js'), mainJS(config, 'utf-8'));
+    } catch (err) {
+      // TODO: handle error
+    }
   }
-
+  
   async bundlerSetup () {
     const entry = path.join(this.cwd, 'demos/tmp/*.html');
+    console.log(await fs.exists(path.join(this.cwd, 'demos/tmp/')))
     const Bundler = require('parcel-bundler');
     const bundle = new Bundler(entry, {
       outDir: 'demos/local',
