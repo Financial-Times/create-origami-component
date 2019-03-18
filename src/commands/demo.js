@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const execa = require('execa');
 const Config = require('../tasks/config');
+const stringCasing = require('../../templates/boilerplate/helpers/string-casing');
 
 class Demo extends Command {
   constructor(argv, config) {
@@ -43,8 +44,11 @@ class Demo extends Command {
       // TODO: handle error
     }
     this.config = new Config(origamiJSON);
-    this.config.shared.name = bowerJSON.name;
+    
+    this.config.shared.name = stringCasing(bowerJSON.name);
+    console.log(this.flags.brand)
     this.brand = this.flags.brand ? this.flags.brand : 'master';
+    console.log(this.brand)
   }
 
   async readJSON (filePath) {
@@ -96,7 +100,6 @@ class Demo extends Command {
   
   async bundlerSetup () {
     const entry = path.join(this.cwd, 'demos/tmp/*.html');
-    console.log(await fs.exists(path.join(this.cwd, 'demos/tmp/')))
     const Bundler = require('parcel-bundler');
     const bundle = new Bundler(entry, {
       outDir: 'demos/local',
