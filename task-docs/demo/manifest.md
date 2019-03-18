@@ -77,9 +77,12 @@ This must be an array of objects. It will determine what options are visible in 
   ...
 ]
 ```
+
 ## Example
 
-Altogether with the examples above, and an additional variant, this config looks like (this is a trimmed example):
+Altogether with the examples above, and an additional variant, this config looks like:
+
+(this is a trimmed example)
 ```json
 "variants": [
   {
@@ -134,3 +137,15 @@ Altogether with the examples above, and an additional variant, this config looks
   }
 ]
 ```
+
+
+## demos
+
+This doesn't change the configuration for the `demos` array within `origami.json`. However, it is important that the `data` in each demo reflects the property names in the `variants` configuration.
+
+```json
+"demos": {
+  "type": "notice",
+  "status": "inform"
+  ...
+}
