@@ -1,45 +1,15 @@
 import React from "react";
 import Sidebar from './sidebar';
-import OSyntaxHighlight from '@financial-times/o-syntax-highlight';
-import beautify from 'js-beautify';
+import DemoArea from './demo-area';
 
 import './main.scss';
-
-const Component = React.forwardRef((props, ref) => {
-  let component;
-  if (props.state.showHTML) {
-    component = <pre><code className="o-syntax-highlight--html" dangerouslySetInnerHTML={{__html: props.state.HTML}}></code></pre>
-  } else {
-    component = <props.component ref={ref} state={props.state} demo={props.demo} />
-  }
-
-  return component;
-});
-
-class DemoArea extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.ref = React.createRef();
-  }
-
-  render() {
-    return <div className="demo-area" data-o-component="o-syntax-highlight">
-      <button className="o-buttons o-buttons--mono" onClick={() => this.props.toggleSidebar()}>Customise this demo</button>
-      <button className="o-buttons o-buttons--mono" onClick={() => this.props.toggleHTML(this.ref)}>HTML</button>
-      <Component component={this.props.component} ref={this.ref} state={this.props.state} demo={this.props.demo}/>
-    </div>
-  }
-}
-
 
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { 
       ...props.config.demo.data, 
-      sidebarVisible: false, 
-      showHTML: false,
-      HTML: null
+      sidebarVisible: false
     }
   }
 
@@ -53,20 +23,6 @@ class App extends React.PureComponent {
   toggleSidebar = () => {
     let toggle = this.state.sidebarVisible ? false : true;
     this.setState({ sidebarVisible: toggle })
-  }
-
-  toggleHTML = (element) => {
-    let componentNode = element.current;
-
-    if (componentNode) {
-      let beaut = beautify.html(componentNode.outerHTML, { inline: [] })
-      const highlighter = new OSyntaxHighlight(beaut, { language: 'html' })
-      componentNode = highlighter.tokenise();
-    }
-    this.setState({
-      showHTML: !this.state.showHTML,
-      HTML: componentNode
-    })
   }
 
   render() {
