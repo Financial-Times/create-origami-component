@@ -34,6 +34,7 @@
     "mocha": "^5.2.0",
     "nixt": "github:vesln/nixt#d2075099ecf935c870705fa5d5de437113d4d272",
     "parcel-bundler": "^1.12.0",
+    "prettier": "1.16.4",
     "sass": "^1.17.2"
   },
   "engines": {
