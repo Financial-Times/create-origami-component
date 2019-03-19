@@ -16,7 +16,7 @@ class Sidebar extends React.Component {
   render() {
     return <div className={`sidebar${this.props.state.sidebarVisible ? ' sidebar--open' : ''}`} state={this.state}>
       <link rel="stylesheet" href="https://www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^3.3.0&brand=internal" />
-      <div ref={this.shadowRef}></div>
+      <div ref={this.shadowRef} />
     </div>
   }
 }

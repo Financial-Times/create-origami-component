@@ -23,7 +23,7 @@ class Build {
 	async buildFolder() {
 		await fs.ensureDir(this.component.path);
 
-		const files = require(this.templatePath + 'helpers/list.js');
+		const files = require(path.join(this.templatePath + '../helpers/boilerplate-template-list.js'));
 
 		await this.build(files.config);
 

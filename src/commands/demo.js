@@ -2,7 +2,7 @@ const {Command, flags} = require('@oclif/command');
 const path = require('path');
 const fs = require('fs-extra');
 const Config = require('../tasks/config');
-const stringCasing = require('../../templates/boilerplate/helpers/string-casing');
+const stringCasing = require('../../templates/helpers/string-casing');
 
 class Demo extends Command {
   constructor(argv, config) {
@@ -45,9 +45,7 @@ class Demo extends Command {
     this.config = new Config(origamiJSON);
     
     this.config.shared.name = stringCasing(bowerJSON.name);
-    console.log(this.flags.brand)
     this.brand = this.flags.brand ? this.flags.brand : 'master';
-    console.log(this.brand)
   }
 
   async readJSON (filePath) {
