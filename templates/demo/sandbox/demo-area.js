@@ -52,7 +52,10 @@ class DemoArea extends React.PureComponent {
       }
       <button 
         className="o-buttons o-buttons--mono" 
-        onClick={() => this.toggleHTML(this.ref)}>
+        onClick={() => {
+          this.props.state.sidebarVisible ? this.props.toggleSidebar() : null;
+          this.toggleHTML(this.ref);
+        }}>
           {this.state.buttonText}
       </button>
       <Component 

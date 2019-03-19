@@ -1,6 +1,10 @@
 ## `demo`
 
 `oat demo`
+flags: 
+- `--serve` or `s` [Boolean]
+- `--watch` or `w` [Boolean]
+- `--brand` or `b` [String] One of 'master', 'internal', 'whitelabel'. Defaults to 'master'.
 Setup:
   ├─ gets component's `origami.json`
   │    ├─ shared demo config [object]
@@ -26,23 +30,13 @@ Setup:
   │        ├─ entry element with id [body:<main>]
   │        └─ demo-name.js(x) [body:<script>] (output below)
   │
-  ├─ generates shared styles [file]
+  ├─ generates SCSS for each demo styles [file]
+  │    └─ outputs {demo-name}.scss [file]
+  │        ├─ brand
+  │        ├─ main.scss [component styles]
+  │        └─ demo.scss [demo styles]
   │
-  └─ generates sandbox for each demo (bundle with Parcel) 
-  <!-- └─ generates sandbox for each demo 
-      ├─ outputs React sandbox structure [file|folder]
-      │   ├─ sandbox component [file]
-      │   └─ form elements [folder]
-      │       ├─ main form component [file]
-      │       ├─ text component [file]
-      │       ├─ textarea component [file]
-      │       ├─ select component [file]
-      │       ├─ checkbox component [file]
-      │       └─ ...
-      └─ outputs {demo-name.js(x)} [file]
-          ├─ sandbox component
-          ├─ component react template
-          └─ render functionality -->
+  └─ generates sandbox for each demo (bundled with Parcel) 
 
 Server
 	¯\_(ツ)_/¯

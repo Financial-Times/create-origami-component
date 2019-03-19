@@ -82,9 +82,23 @@ class Demo extends Command {
     let demoName = config.demo.name + '.html';
     try {
       await fs.outputFile(path.join(destination, demoName), baseFile(config, 'utf-8'));
+      await this.generateCSS(config);
       return this.generateReactTemplate(config);
     } catch (err) {
       // TODO: handle error
+    }
+  }
+
+  async generateCSS (config) {
+    let demoSass = await fs.readFile(path.join(this.cwd, 'demos/src/demo.scss'), 'utf-8')
+    let destination = path.join(this.cwd, 'demos/tmp');
+    let demoName = config.demo.name + '.scss';
+    let brand = `$o-brand: ${config.brand};\n`;
+
+    try {
+      await fs.outputFile(path.join(destination, demoName), brand + demoSass)
+    } catch (err) {
+      // TODO: handle
     }
   }
   

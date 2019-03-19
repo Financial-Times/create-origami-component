@@ -75,10 +75,15 @@ And now the demo specific data:
 ]
 ```
 
-Looking back up at the [template example](#template-example), we should see that the properties are constant throughout. If the `type` is `button`, we will have a button rendered with the `buttonColor` and `buttonText` properties. If the demos doesn't outline these, the demo won't be constructed with a button.
+Looking back up at the [template example](#template-example), we should see that the properties are constant throughout. If the `type` is `button`, we will have a button rendered with the `buttonColor` and `buttonText` properties. If the demos doesn't outline these, the demo won't be constructed with a button, or will be constructed incorrectly.
 
 ### `export default`
 
 Finally, the component needs to be exported as described in order to be picked up by the demo app. It relies on that specific title casing, as that is the variable the demo will be looking for when it is being built. 
+
+
+### styling
+
+Note that the React template no longer imports `demos.scss`. While specific demo styling is still supported, the demo app is now responsible for the styling, because it will also determine the brand that the demo is going to be rendered in. 
 
 Happy templating!

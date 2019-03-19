@@ -28,9 +28,19 @@ class App extends React.PureComponent {
   render() {
     const demo = this.props.config.demo.data;
     const variant = this.props.config.shared.variants.find(variant => variant.type === demo.type);
+
     return <>
-      <Sidebar state={this.state} data={variant} brand={this.props.config.brand} handleChange={this.handleChange}></Sidebar>
-      <DemoArea state={this.state} demo={demo} toggleHTML={this.toggleHTML} component={this.props.component} toggleSidebar={this.toggleSidebar}></DemoArea>
+      <Sidebar 
+        data={variant} 
+        brand={this.props.config.brand} 
+        state={this.state} 
+        handleChange={this.handleChange}/>
+      <DemoArea 
+        demo={demo} 
+        component={this.props.component} 
+        state={this.state} 
+        toggleHTML={this.toggleHTML} 
+        toggleSidebar={this.toggleSidebar} />
     </>
   }
 }

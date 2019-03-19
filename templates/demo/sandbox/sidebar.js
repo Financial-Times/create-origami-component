@@ -6,7 +6,6 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.shadowRef = React.createRef();
-    console.log(this.props)
   }
 
   componentDidMount() {
