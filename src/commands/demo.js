@@ -1,7 +1,6 @@
 const {Command, flags} = require('@oclif/command');
 const path = require('path');
 const fs = require('fs-extra');
-const execa = require('execa');
 const Config = require('../tasks/config');
 const stringCasing = require('../../templates/boilerplate/helpers/string-casing');
 

@@ -1,8 +1,9 @@
 import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
 import Sidebar from './sidebar';
-import './main.scss';
 import OSyntaxHighlight from '@financial-times/o-syntax-highlight';
+import beautify from 'js-beautify';
+
+import './main.scss';
 
 const Component = React.forwardRef((props, ref) => {
   let component;
@@ -55,14 +56,16 @@ class App extends React.PureComponent {
   }
 
   toggleHTML = (element) => {
-    let highlightedHTML = null;
-    if (element.current) {
-      const highlighter = new OSyntaxHighlight(element.current.outerHTML, { language: 'html' })
-      highlightedHTML = highlighter.tokenise();
+    let componentNode = element.current;
+
+    if (componentNode) {
+      let beaut = beautify.html(componentNode.outerHTML, { inline: [] })
+      const highlighter = new OSyntaxHighlight(beaut, { language: 'html' })
+      componentNode = highlighter.tokenise();
     }
     this.setState({
       showHTML: !this.state.showHTML,
-      HTML: highlightedHTML
+      HTML: componentNode
     })
   }
 
