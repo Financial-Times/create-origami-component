@@ -45,9 +45,7 @@ class Demo extends Command {
     this.config = new Config(origamiJSON);
     
     this.config.shared.name = stringCasing(bowerJSON.name);
-    console.log(this.flags.brand)
     this.brand = this.flags.brand ? this.flags.brand : 'master';
-    console.log(this.brand)
   }
 
   async readJSON (filePath) {
