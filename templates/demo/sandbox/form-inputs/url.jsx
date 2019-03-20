@@ -2,13 +2,15 @@ import React from "react";
 
 class URLInput extends React.Component {
   render() {
+    const name = this.props.name;
+
     return <label className="o-forms o-forms--text-input">
-      <span className="o-forms__label">{this.props.name}</span>
+      <span className="o-forms__label">{name.label}</span>
       <input type={this.props.inputType}
-        name={this.props.name}
+        name={name.original}
         onChange={this.props.handleChange}
         required={this.props.required}
-        defaultValue={this.props.state[this.props.name]}
+        defaultValue={this.props.state[name.original]}
         value={this.props.state.value}
       />
     </label>

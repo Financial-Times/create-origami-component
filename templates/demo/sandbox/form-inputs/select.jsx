@@ -2,15 +2,17 @@ import React from "react";
 
 class SelectInput extends React.Component {
   render() {
+    const name = this.props.name;
+
     return <>
       <label className="o-forms o-forms--select">
-        <span className="o-forms__label">{this.props.name}</span>
+        <span className="o-forms__label">{name.label}</span>
         {this.props.required ? <span className="o-forms__prompt">required</span> : ''}
         <select
-          name={this.props.name}
+          name={name.original}
           onChange={this.props.handleChange}
           required={this.props.required}
-          defaultValue={this.props.state[this.props.name]}
+          defaultValue={this.props.state[name.original]}
           value={this.props.state.value}
         >
           {this.props.options.map(opt => {

@@ -6,6 +6,8 @@ import TextInput from './text';
 import TextAreaInput from './textarea';
 import URLInput from './url';
 
+const label = (string) => string.replace(/(^[a-z])|([A-Z]+)/g, match => ` ${match.toUpperCase()}`).trim();
+
 class FormInputs extends React.Component {
   constructor (props) {
     super(props);
@@ -18,6 +20,10 @@ class FormInputs extends React.Component {
     config.handleChange = this.handleChange;
     config.state = this.state;
     config.brand = this.props.brand;
+    config.name = {
+      original: config.name,
+      label: label(config.name)
+    };
 
     if (inputType === 'select') {
       return <SelectInput key={config.name} {...config}/>
