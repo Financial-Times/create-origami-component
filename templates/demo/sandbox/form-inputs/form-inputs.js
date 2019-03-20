@@ -26,27 +26,27 @@ class FormInputs extends React.Component {
     };
 
     if (inputType === 'select') {
-      return <SelectInput key={config.name} {...config}/>
+      return <SelectInput key={config.name.original} {...config}/>
     }
 
     if (inputType === 'checkbox') {
-      return <CheckboxInput key={config.name} {...config}/>
+      return <CheckboxInput key={config.name.original} {...config}/>
     }
 
     if (inputType === 'radio') {
-      return <RadioInput key={config.name} {...config}/>
+      return <RadioInput key={config.name.original} {...config}/>
     }
 
     if (inputType === 'text') {
-      return <TextInput key={config.name} {...config}/>
+      return <TextInput key={config.name.original} {...config}/>
     }
 
     if (inputType === 'textarea') {
-      return <TextAreaInput key={config.name} {...config}/>
+      return <TextAreaInput key={config.name.original} {...config}/>
     }
 
     if (inputType === 'url') {
-      return <URLInput key={config.name} {...config}/>
+      return <URLInput key={config.name.original} {...config}/>
     }
   }
 

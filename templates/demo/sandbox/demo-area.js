@@ -48,7 +48,12 @@ class DemoArea extends React.PureComponent {
           onClick={() => this.props.toggleSidebar()}>
             Customise this demo
         </button>
-        : ''
+        : 
+        <button
+          className="o-buttons o-buttons--mono"
+          onClick={() => alert('technically this would select this beautiful markup')}>
+          Select Full Code Snippet
+        </button>
       }
       <button 
         className="o-buttons o-buttons--mono" 
