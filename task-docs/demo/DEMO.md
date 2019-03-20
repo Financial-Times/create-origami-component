@@ -5,6 +5,8 @@ flags:
 - `--serve` or `s` [Boolean]
 - `--watch` or `w` [Boolean]
 - `--brand` or `b` [String] One of 'master', 'internal', 'whitelabel'. Defaults to 'master'.
+
+```
 Setup:
   ├─ gets component's `origami.json`
   │    ├─ shared demo config [object]
@@ -40,3 +42,4 @@ Setup:
 
 Server
 	¯\_(ツ)_/¯
+```
