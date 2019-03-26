@@ -18,17 +18,13 @@ class Config {
       shared: this.shared
     };
   }
-  
+
   getTemplate () {
     this.shared.templatePath = this.config.demosDefaults.template;
   };
 
   setVariants () {
-    if (!this.config.demosDefaults.variants) {
-      throw new Error("The 'demosDefaults.variants' property is required");
-    }
-    
-    this.shared.variants = this.config.demosDefaults.variants;
+    this.shared.variants = this.config.demosDefaults.variants || null;
   }
 
   setDependencies () {

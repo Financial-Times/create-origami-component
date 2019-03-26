@@ -27,9 +27,10 @@ describe('Config', () => {
       expect(config.shared.variants).toEqual([])
     });
 
-    test('throws an error if variant rules are not defined', () => {
-      mockData.demosDefaults.variants = null;
-      expect(() => new Config(mockData)).toThrowError("The 'demosDefaults.variants' property is required")
+    test('sets component variants to null if rules are not defined', () => {
+      mockData.demosDefaults.variants = undefined;
+      let config = new Config(mockData);
+      expect(config.shared.variants).toBeNull()
     });
   });
 
