@@ -44,21 +44,26 @@ class DemoArea extends React.PureComponent {
   render() {
 
 
-    const sidebarToggleButton = (
-      <button
-        className="o-buttons o-buttons--mono"
-        onClick={() => this.props.toggleSidebar()}>
-          Customise this demo
-      </button>
-    );
+    let selectFullCodeSnippetButton = '';
+    let sidebarToggleButton = '';
 
-    const selectFullCodeSnippetButton = (
-      <button
-        className="o-buttons o-buttons--mono"
-        onClick={() => alert('technically this would select this beautiful markup')}>
-        Select Full Code Snippet
-      </button>
-    );
+    if (this.state.showHTML) {
+      selectFullCodeSnippetButton = (
+        <button
+          className="o-buttons o-buttons--mono"
+          onClick={() => alert('technically this would select this beautiful markup')}>
+          Select Full Code Snippet
+        </button>
+      );
+    } else if (this.state.sidebarEnabled) {
+      sidebarToggleButton = (
+        <button
+          className="o-buttons o-buttons--mono"
+          onClick={() => this.props.toggleSidebar()}>
+            Customise this demo
+        </button>
+      );
+    }
 
     const componentHtmlToggleButton = (
       <button
@@ -72,14 +77,8 @@ class DemoArea extends React.PureComponent {
     );
 
     return <div className="demo-area" data-o-component="o-syntax-highlight">
-      {
-        this.state.showHTML ?
-        selectFullCodeSnippetButton : (
-          this.state.sidebarEnabled ?
-          sidebarToggleButton :
-          ''
-        )
-      }
+      {selectFullCodeSnippetButton}
+      {sidebarToggleButton}
       {componentHtmlToggleButton}
       <Component
         component={this.props.component}
