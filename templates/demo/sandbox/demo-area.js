@@ -43,7 +43,6 @@ class DemoArea extends React.PureComponent {
 
   render() {
 
-    console.log(this.state.sidebarEnabled);
 
     const sidebarToggleButton = (
       <button
