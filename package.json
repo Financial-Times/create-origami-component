@@ -12,7 +12,7 @@
     "@oclif/config": "^1.14.0",
     "@oclif/plugin-help": "^2.2.3",
     "chalk": "^3.0.0",
-    "cli-ux": "^5.4.4",
+    "cli-ux": "^5.4.5",
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.4",
     "tree-node-cli": "^1.2.5"
