@@ -20,7 +20,7 @@
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
     "@oclif/test": "^1.2.5",
-    "jest": "^25.2.0",
+    "jest": "^25.2.3",
     "mocha": "^7.1.1",
     "nixt": "github:vesln/nixt#d2075099ecf935c870705fa5d5de437113d4d272"
   },
