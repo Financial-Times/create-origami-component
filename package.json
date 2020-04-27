@@ -1,10 +1,10 @@
 {
-  "name": "origami-authoring-tools",
-  "description": "A command line tool for authoring Origami components",
-  "version": "0.0.1",
+  "name": "create-origami-component",
+  "description": "A command line tool for creating Origami components",
+  "version": "1.0.0",
   "author": "Gabrielle von Koss @gvonkoss",
   "bin": {
-    "oat": "./bin/run"
+    "create-origami-component": "./bin/run"
   },
   "bugs": "https://github.com/Financial-Times/origami-authoring-tools/issues",
   "dependencies": {
