@@ -1,7 +1,7 @@
 {
   "name": "create-origami-component",
   "description": "A command line tool for creating Origami components",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "author": "Gabrielle von Koss @gvonkoss",
   "bin": {
     "create-origami-component": "./bin/run"
@@ -22,11 +22,6 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "files": [
-    "/bin",
-    "/npm-shrinkwrap.json",
-    "/src"
-  ],
   "homepage": "https://github.com/Financial-Times/create-origami-component",
   "license": "MIT",
   "main": "src/index.js",
