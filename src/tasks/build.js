@@ -8,10 +8,17 @@ class Build {
 	}
 
 	async generate(file) {
-		let template = require(this.templatePath + file.template);
 		let filePath = path.join(this.component.path, file.path);
-		let content = typeof template === 'function' ? template(this.component) : template();
-		await fs.outputFile(filePath, content);
+		if (file.directory) {
+			await fs.mkdirp(filePath);
+			await fs.copy(path.join(__dirname, this.templatePath, file.directory), filePath);
+		} else if (file.template) {
+			let template = require(path.join(this.templatePath, file.template));
+			let content = typeof template === 'function' ? template(this.component) : template();
+			await fs.outputFile(filePath, content);
+		} else {
+			throw new Error("file must have `template` or `directory`, got: " + JSON.stringify(file));
+		}
 	}
 
 	async build(files) {
@@ -35,9 +42,7 @@ class Build {
 			await this.build(files.scss);
 		}
 
-		if (this.component.demos) {
-			await this.build(files.demos);
-		}
+		await this.build(files.demos);
 
 		await this.build(files.documentation);
 	}

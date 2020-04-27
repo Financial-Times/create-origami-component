@@ -46,20 +46,20 @@ class Boilerplate {
 		const response = await this.prompt([
 			this.questions.description,
 			this.questions.keywords,
-			this.questions.email,
-			this.questions.slack,
-			this.questions.status,
+			this.questions.category,
 			this.questions.brands,
 			this.questions.javascript,
 			this.questions.scss,
-			this.questions.demos
+			this.questions.status,
+			this.questions.email,
+			this.questions.slack
 		])
 
 		this.answers = Object.assign(this.answers, response);
 	}
 
 	async getConfirmation() {
-		console.log("\n=== Your setup: ===");
+		console.log("\n=== Your component: ===");
 		console.log(this.answers);
 		console.log("===================\n");
 

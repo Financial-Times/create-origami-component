@@ -13,8 +13,8 @@ module.exports = {
 			template: 'gitignore'
 		},
 		{
-			path: './.circle/config.yml',
-			template: 'circle-config'
+			path: './.github/workflows',
+			directory: 'workflows'
 		}
 	],
 	javascript: name => {

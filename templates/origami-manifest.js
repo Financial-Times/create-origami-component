@@ -3,7 +3,7 @@ const details = answers => {
 	"description": "${answers.description}",
 	"keywords": ${JSON.stringify(answers.keywords)},
 	"origamiType": "module",
-	"origamiCategory": "components",
+	"origamiCategory": "${answers.category}",
 	"origamiVersion": 1,
 	"brands": ${JSON.stringify(answers.brands)},
 	"support": "https://github.com/Financial-Times/${answers.name}/issues",
@@ -21,7 +21,7 @@ const demos = (answers) => {
 		${answers.scss ? `"sass": "demos/src/demo.scss",` : ''}
 		${answers.javascript ? `"js": "demos/src/demo.js",` : ''}
 		"documentClasses": "",
-		"dependencies": ""
+		"dependencies": []
 	},
 	"demos": [
 		{
