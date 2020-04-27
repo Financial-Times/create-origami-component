@@ -8,9 +8,6 @@
   },
   "bugs": "https://github.com/Financial-Times/origami-authoring-tools/issues",
   "dependencies": {
-    "@oclif/command": "^1.5.19",
-    "@oclif/config": "^1.14.0",
-    "@oclif/plugin-help": "^2.2.3",
     "chalk": "^3.0.0",
     "cli-ux": "^5.4.5",
     "fs-extra": "^9.0.0",
@@ -18,41 +15,25 @@
     "tree-node-cli": "^1.2.5"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2",
-    "@oclif/test": "^1.2.5",
     "jest": "^25.2.6",
     "mocha": "^7.1.1",
     "nixt": "github:vesln/nixt#d2075099ecf935c870705fa5d5de437113d4d272"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "files": [
     "/bin",
     "/npm-shrinkwrap.json",
-    "/oclif.manifest.json",
     "/src"
   ],
-  "homepage": "https://github.com/Financial-Times/origami-authoring-tools",
-  "keywords": [
-    "oclif"
-  ],
+  "homepage": "https://github.com/Financial-Times/create-origami-component",
   "license": "MIT",
   "main": "src/index.js",
-  "oclif": {
-    "commands": "./src/commands",
-    "bin": "oat",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
-  },
   "repository": "Financial-Times/origami-authoring-tools",
   "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "prepack": "oclif-dev manifest && oclif-dev readme",
     "test": "npm run test-unit && npm run test-integration",
     "test-unit": "jest test/unit/**/*.test.js",
-    "test-integration": "mocha --forbid-only test/integration/**/*.test.js",
-    "version": "oclif-dev readme && git add README.md"
+    "test-integration": "mocha --forbid-only test/integration/**/*.test.js"
   }
 }
