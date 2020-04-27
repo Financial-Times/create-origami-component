@@ -2,10 +2,10 @@ module.exports = {
 	name: {
 		name: "name",
 		type: "input",
-		message: "What's the component called? (required)",
+		message: "name (required)",
 		validate: value => {
 			if (!value) {
-				return "Please enter a name for your component. "
+				return "please enter a name for your component\nhttps://origami.ft.com/spec/v1/components/#naming-conventions"
 			}
 			return true
 		}
@@ -14,14 +14,14 @@ module.exports = {
 		return {
 			name: "sanity",
 			type: "confirm",
-			message: `Is "${name}" okay?`
+			message: `is "${name}" okay?`
 		}
 	},
 	path: (name) => {
 		return {
 			name: "path",
 			type: "list",
-			message: "Should we start this component in the current directory, or a subdirectory?",
+			message: "Should we create this component in the current directory, or a subdirectory?",
 			default: "./",
 			choices: [
 				"./",
@@ -32,10 +32,10 @@ module.exports = {
 	description: {
 		name: "description",
 		type: "input",
-		message: "Enter a short description of what your component does",
+		message: "description (required)",
 		validate: value => {
 			if (!value) {
-				return "Please enter a description for your component. https://origami.ft.com/spec/v1/manifest/#description"
+				return "please enter a description for your component\nhttps://origami.ft.com/spec/v1/manifest/#description"
 			}
 			return true
 		}
@@ -43,7 +43,7 @@ module.exports = {
 	keywords: {
 		name: "keywords",
 		type: "input",
-		message: "Enter some keywords related to your component to help discoverability in the registry",
+		message: "keywords (to help discoverability in the registry)",
 		filter: value => {
 			// splits the string by ',' and ' ', filters out any rogue spaces & removes duplicate values
 			return [... new Set(value.split(/\s*[\s,]\s*/).filter(Boolean))];
@@ -52,11 +52,11 @@ module.exports = {
 	email: {
 		name: "email",
 		type: "input",
-		message: "What's the email address for the team that will be supporting this component?",
+		message: "support team email (required)",
 		default: "origami.support@ft.com",
 		validate: value => {
 			if (!value.includes("@")) {
-				return "Please enter a valid email address";
+				return "please enter a valid email address for the team that will support this component";
 			}
 			return true;
 		}
@@ -64,13 +64,13 @@ module.exports = {
 	slack: {
 		name: "slack",
 		type: "input",
-		message: "What is slack channel for the team who will support this component?",
-		default: "#ft-origami"
+		message: "support team slack channel (required)",
+		default: "#origami-support"
 	},
 	status: {
 		name: "status",
 		type: "list",
-		message: "What is the status of this component? https://origami.ft.com/spec/v1/manifest/#supportstatus",
+		message: "support status (https://origami.ft.com/spec/v1/manifest/#supportstatus)",
 		default: "experimental",
 		choices: [
 			"active",
@@ -81,7 +81,7 @@ module.exports = {
 	category: {
 		name: "category",
 		type: "list",
-		message: "What category does this component fall under? https://origami.ft.com/spec/v1/manifest/#origamicategory",
+		message: "component category (https://origami.ft.com/spec/v1/manifest/#origamicategory)",
 		default: "components",
 		choices: [
 			"components",
@@ -93,7 +93,7 @@ module.exports = {
 	brands: {
 		name: "brands",
 		type: "checkbox",
-		message: "What brands will this component support?",
+		message: "supported brands (https://origami.ft.com/docs/components/branding/)",
 		default: ["master"],
 		choices: [
 			"master",
@@ -104,19 +104,19 @@ module.exports = {
 	javascript: {
 		name: "javascript",
 		type: "confirm",
-		message: "Will your component use JavaScript? (this will add some helpful Origami JavaScript boilerplate)",
+		message: "will your component use JavaScript? (this will add some helpful Origami JavaScript boilerplate)",
 		default: true
 	},
 	scss: {
 		name: "scss",
 		type: "confirm",
-		message: "Will your component use Sass? (this will add some helpful Origami Sass boilerplate)",
+		message: "will your component use Sass? (this will add some helpful Origami Sass boilerplate)",
 		default: true
 	},
 	confirm: {
 		name: "acceptable",
 		type: "confirm",
-		message: "Is this ok?"
+		message: "is this right?"
 	},
 	change: (answers) => {
 		return {
