@@ -1,2 +1,7 @@
-# origami-authoring-tools
-OAT: A command line tool for authoring Origami components
+# create-origami-component
+
+## Usage
+
+```shell
+npm init origami-component
+```
