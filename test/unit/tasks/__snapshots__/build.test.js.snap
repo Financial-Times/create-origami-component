@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Build successfully writes a folder tree with a '.circle' folder 1`] = `
+exports[`Build successfully writes a folder tree with a '.github' folder 1`] = `
 Array [
-  "config.yml",
+  "CODEOWNERS",
+  "ISSUE_TEMPLATE.md",
+  "workflows",
 ]
 `;
 
@@ -96,7 +98,7 @@ exports[`Build successfully writes a folder tree with a 'test/scss/main' file 1`
 
 exports[`Build successfully writes a folder tree with a root folder 1`] = `
 Array [
-  ".circle",
+  ".github",
   ".gitignore",
   "README.md",
   "bower.json",

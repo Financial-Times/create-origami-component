@@ -150,7 +150,7 @@ describe('Boilerplate', () => {
 				expect(component).toEqual((Object.assign({name: 'o-test-name', path: './o-test-name'}, response)));
 		});
 
-		describe('Offers to change answers when confirmation false', async () => {
+		describe('Offers to change answers when confirmation false', () => {
 			test('and changes name + path', async () => {
 				boilerplate.prompt
 					.mockReturnValueOnce(Promise.resolve({ acceptable: false }))

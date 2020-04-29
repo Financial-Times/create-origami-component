@@ -34,9 +34,9 @@ describe('Build', () => {
 			expect(root).toMatchSnapshot();
 		});
 
-		test("with a '.circle' folder", async () => {
-			let circle = await fs.readdir(`${rootPath}/.circle`);
-			expect(circle).toMatchSnapshot();
+		test("with a '.github' folder", async () => {
+			let github = await fs.readdir(`${rootPath}/.github`);
+			expect(github).toMatchSnapshot();
 		});
 
 		test("with a '.gitignore'", async () => {
