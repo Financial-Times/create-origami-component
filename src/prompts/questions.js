@@ -2,7 +2,7 @@ module.exports = {
 	name: {
 		name: "name",
 		type: "input",
-		message: "name (required)",
+		message: "component name (required)",
 		validate: value => {
 			if (!value) {
 				return "please enter a name for your component\nhttps://origami.ft.com/spec/v1/components/#naming-conventions"
