@@ -15,6 +15,14 @@ module.exports = {
 		{
 			path: './.github/workflows',
 			directory: 'workflows'
+		},
+		{
+			path: './.github/CODEOWNERS',
+			template: 'codeowners'
+		},
+		{
+			path: './.github/ISSUE_TEMPLATE.md',
+			template: 'issue-template-md'
 		}
 	],
 	javascript: name => {
