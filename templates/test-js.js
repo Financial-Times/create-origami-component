@@ -7,7 +7,7 @@ module.exports = answers => {
 import proclaim from 'proclaim';
 import sinon from 'sinon/pkg/sinon';
 import * as fixtures from './helpers/fixtures';
-import ${name.titleCase} from './../main';
+import ${name.titleCase} from '../../main';
 
 describe("${name.titleCase}", () => {
 	it('is defined', () => {
