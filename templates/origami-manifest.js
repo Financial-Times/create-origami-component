@@ -42,6 +42,6 @@ const demos = (answers) => {
 }
 module.exports = (answers) => {
 	let detailJSON = details(answers);
-	let demosJSON = answers.demos ? `,${demos(answers)}}` : '}';
+	let demosJSON = `,${demos(answers)}}`;
 	return detailJSON + demosJSON;
 };
