@@ -29,7 +29,7 @@ module.exports = answers => {
 				return options;
 			}
 			// Build a concise key and get the option value
-			const shortKey = key.replace(/^${name.camelCase}(\w)(\w+)$/, (m, m1, m2) => m1.toLowerCase() + m2);
+			const shortKey = key.replace(/^${name.camelCase}(\\w)(\\w+)$/, (m, m1, m2) => m1.toLowerCase() + m2);
 			const value = ${name.camelCase}El.dataset[key];
 			// Try parsing the value as JSON, otherwise just set it as a string
 			try {
