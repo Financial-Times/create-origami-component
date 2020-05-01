@@ -14,6 +14,9 @@ module.exports = answers => {
 ///		))
 @mixin ${name.camelCase} ($opts: ()) {
 	// content of primary mixin
+	.${name.lowercase} {
+		display: block;
+	}
 }
 
 @if ($${name.original}-is-silent == false) {
