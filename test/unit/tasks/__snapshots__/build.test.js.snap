@@ -106,6 +106,7 @@ Array [
   "main.js",
   "main.scss",
   "origami.json",
+  "package.json",
   "src",
   "test",
 ]
