@@ -5,6 +5,10 @@ module.exports = {
 			template: 'origami-manifest'
 		},
 		{
+			path: './package.json',
+			template: 'package-json'
+		},
+		{
 			path: './bower.json',
 			template: 'bower-json'
 		},
