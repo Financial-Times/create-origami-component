@@ -4,7 +4,7 @@ module.exports = answers => {
 	const name = stringCasing(answers.name);
 
 	return `/* eslint-env mocha */
-import proclaim from ';
+import proclaim from 'proclaim';
 import sinon from 'sinon/pkg/sinon';
 import * as fixtures from './helpers/fixtures';
 import ${name.titleCase} from './../main';
