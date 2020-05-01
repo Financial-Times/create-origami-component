@@ -6,13 +6,13 @@ module.exports = answers => {
 	return `@import 'src/scss/variables';
 
 /// Output all ${name.camelCase} features
-/// @param {Map} $opts - A map of options to configure the output
+/// @param {Map} $opts [()] - A map of options to configure the output
 /// @access public
 /// @example scss
 ///		@include ${name.camelCase}($opts: (
 ///			// your opts here
 ///		))
-@mixin ${name.camelCase} ($opts) {
+@mixin ${name.camelCase} ($opts: ()) {
 	// content of primary mixin
 }
 
