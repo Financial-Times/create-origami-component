@@ -7,8 +7,8 @@ describe('Build', () => {
 	describe('successfully writes a folder tree', () => {
 		beforeAll(async () => {
 			mockDetails = {
-				name: 'o-test-name',
-				path: './o-test-name',
+				name: 'test-name',
+				path: './test-name',
 				description: 'description',
 				keywords: [],
 				email: 'origami.support@ft.com',
