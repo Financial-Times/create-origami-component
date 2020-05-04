@@ -1,10 +1,10 @@
-const stringCasing = require('./helpers/string-casing.js');
+const { camelCase } = require('./helpers/name-formats.js');
 
 
 module.exports = answers => {
-	const name = stringCasing(answers.name);
+	const name = answers.name;
 
-	return `${name.original} [![Circle CI](https://circleci.com/gh/Financial-Times/${name.original}/tree/master.svg?style=svg)](https://circleci.com/gh/Financial-Times/${name.original}/tree/master)[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](#licence)
+	return `${name} [![Circle CI](https://circleci.com/gh/Financial-Times/${name}/tree/master.svg?style=svg)](https://circleci.com/gh/Financial-Times/${name}/tree/master)[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](#licence)
 =================
 _A short description of what this component does._
 _A table of contents to help people find things_
@@ -22,7 +22,7 @@ _Whatever usage instructions your component has. We've broken this down by Marku
 _Common templating can go here, especially if there is only one template, but people can always check the demos for more._
 _Remember to start your codeblocks with three backticks and "html" so your markup is syntax highlighted correctly._
 \`\`\`html
-<div data-o-component="${name.original}" class='${name.original}'>
+<div data-o-component="${name}" class='${name}'>
 </div>
 \`\`\`
 
@@ -30,17 +30,17 @@ _Remember to start your codeblocks with three backticks and "html" so your marku
 _Remember to start your codeblocks with three backticks and "js" so your js is syntax highlighted correctly._
 _Though it's not practical to repeat every aspect of Origami modules convention for every component, **A LOT** of people get tripped up by modules not auto initialising, so this line is useful if you have JavaScript:_
 No code will run automatically unless you are using the Build Service.
-You must either construct an \`${name.original}\` object or fire the \`o.DOMContentLoaded\` event, which oComponent listens for.
+You must either construct an \`${name}\` object or fire the \`o.DOMContentLoaded\` event, which oComponent listens for.
 
-#### Constructing an ${name.original}
+#### Constructing an ${name}
 \`\`\`js
-const ${name.camelCase} = require('${name.original}');
-${name.camelCase}.init();
+const ${camelCase(name)} = require('${name}');
+${camelCase(name)}.init();
 \`\`\`
 
 #### Firing an oDomContentLoaded event
 \`\`\`js
-require('${name.original}');
+require('${name}');
 document.addEventListener('DOMContentLoaded', function() {
 	document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'));
 });
@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### Sass
 _Remember to start your codeblocks with three backticks and "sass" so your markup is syntax highlighted correctly._
-_Though it's not practical to repeat every aspect of Origami modules convention for every component, **A LOT** of people get tripped up by silent mode, so this line (remember to change the ${name.original} to your component name) is useful if you have Sass:_
-As with all Origami components, ${name.original} has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set \`$${name.original}-is-silent : false;\` in your Sass before you import the ${name.original} Sass.
+_Though it's not practical to repeat every aspect of Origami modules convention for every component, **A LOT** of people get tripped up by silent mode, so this line (remember to change the ${name} to your component name) is useful if you have Sass:_
+As with all Origami components, ${name} has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set \`$${name}-is-silent : false;\` in your Sass before you import the ${name} Sass.
 
 ## Troubleshooting
 _This is a good place to put problems that come up repeatedly_
@@ -68,7 +68,7 @@ State | Major Version | Last Minor Release | Migration guide |
 ╳ deprecated | 1 | 1.0 | N/A |
 
 ## Contact
-If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/${name.original}/issues), visit [#${answers.slack}](https://financialtimes.slack.com/messages/${answers.slack}/) or email [${answers.email}](mailto:${answers.email}).
+If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/${name}/issues), visit [#${answers.slack}](https://financialtimes.slack.com/messages/${answers.slack}/) or email [${answers.email}](mailto:${answers.email}).
 
 ## Licence
 This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).`;

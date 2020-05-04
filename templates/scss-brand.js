@@ -1,17 +1,17 @@
-const stringCasing = require('./helpers/string-casing.js');
+const { camelCase } = require('./helpers/name-formats.js');
 
 module.exports = answers => {
-	const name = stringCasing(answers.name);
+	const name = answers.name;
 
 	return `/// Helper for \`o-brand\` function.
 /// @access private
-@function _${name.camelCase}Get($variables, $from: null) {
-	@return oBrandGet($component: '${name.original}', $variables: $variables, $from: $from);
+@function _${camelCase(name)}Get($variables, $from: null) {
+	@return oBrandGet($component: '${name}', $variables: $variables, $from: $from);
 }
 /// Helper for \`o-brand\` function.
 /// @access private
-@function _${name.camelCase}Supports($variant) {
-	@return oBrandSupportsVariant($component: '${name.original}', $variant: $variant);
+@function _${camelCase(name)}Supports($variant) {
+	@return oBrandSupportsVariant($component: '${name}', $variant: $variant);
 }
 `
 };

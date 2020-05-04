@@ -1,13 +1,13 @@
-const stringCasing = require('./helpers/string-casing.js');
+const { withoutPrefix, camelCase} = require('./helpers/name-formats.js');
 
 module.exports = answers => {
-	const name = stringCasing(answers.name);
+	const name = answers.name;
 
-	return `import ${name.camelCase} from './src/js/${name.original}';
+	return `import ${camelCase(name)} from './src/js/${withoutPrefix(name)}';
 const constructAll = function () {
-	${name.camelCase}.init();
+	${camelCase(name)}.init();
 	document.removeEventListener('o.DOMContentLoaded', constructAll);
 };
 document.addEventListener('o.DOMContentLoaded', constructAll);
-export default ${name.camelCase};`;
+export default ${camelCase(name)};`;
 };

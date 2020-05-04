@@ -1,36 +1,38 @@
-const stringCasing = require('./helpers/string-casing.js');
+const { withoutPrefix, camelCase, titleCase} = require('./helpers/name-formats.js');
 
 module.exports = answers => {
-	const name = stringCasing(answers.name);
+	const name = answers.name;
+	const className = titleCase(withoutPrefix(name));
+	const elementName = `${camelCase(withoutPrefix(name))}El`;
 
-	return `class ${name.titleCase} {
+	return `class ${className} {
 	/**
 	 * Class constructor.
-	 * @param {HTMLElement} [${name.camelCase}El] - The component element in the DOM
+	 * @param {HTMLElement} [${elementName}] - The component element in the DOM
 	 * @param {Object} [options={}] - An options object for configuring the component
 	 */
-	constructor (${name.camelCase}El, opts) {
-		this.${name.camelCase}El = ${name.camelCase}El;
+	constructor (${elementName}, opts) {
+		this.${elementName} = ${elementName};
 		this.options = Object.assign({}, {
-		}, opts || ${name.titleCase}.getDataAttributes(${name.camelCase}El));
+		}, opts || ${className}.getDataAttributes(${elementName}));
 	}
 	/**
-	 * Get the data attributes from the ${name.titleCase}Element. If the element is being set up
+	 * Get the data attributes from the ${className}Element. If the element is being set up
 	 * declaratively, this method is used to extract the data attributes from the DOM.
-	 * @param {HTMLElement} ${name.camelCase}El - The component element in the DOM
+	 * @param {HTMLElement} ${elementName} - The component element in the DOM
 	 */
-	static getDataAttributes (${name.camelCase}El) {
-		if (!(${name.camelCase}El instanceof HTMLElement)) {
+	static getDataAttributes (${elementName}) {
+		if (!(${elementName} instanceof HTMLElement)) {
 			return {};
 		}
-		return Object.keys(${name.camelCase}El.dataset).reduce((options, key) => {
+		return Object.keys(${elementName}.dataset).reduce((options, key) => {
 			// Ignore data-o-component
 			if (key === 'oComponent') {
 				return options;
 			}
 			// Build a concise key and get the option value
-			const shortKey = key.replace(/^${name.camelCase}(\\w)(\\w+)$/, (m, m1, m2) => m1.toLowerCase() + m2);
-			const value = ${name.camelCase}El.dataset[key];
+			const shortKey = key.replace(/^${camelCase(name)}(\\w)(\\w+)$/, (m, m1, m2) => m1.toLowerCase() + m2);
+			const value = ${elementName}.dataset[key];
 			// Try parsing the value as JSON, otherwise just set it as a string
 			try {
 				options[shortKey] = JSON.parse(value.replace(/\'/g, '"'));
@@ -41,7 +43,7 @@ module.exports = answers => {
 		}, {});
 	}
 	/**
-	 * Initialise ${name.original} component.
+	 * Initialise ${name} component.
 	 * @param {(HTMLElement|String)} rootElement - The root element to intialise the component in, or a CSS selector for the root element
 	 * @param {Object} [options={}] - An options object for configuring the component
 	 */
@@ -52,12 +54,12 @@ module.exports = answers => {
 		if (!(rootEl instanceof HTMLElement)) {
 			rootEl = document.querySelector(rootEl);
 		}
-		if (rootEl instanceof HTMLElement && rootEl.matches('[data-o-component=${name.original}]')) {
-			return new ${name.titleCase}(rootEl, opts);
+		if (rootEl instanceof HTMLElement && rootEl.matches('[data-o-component=${name}]')) {
+			return new ${className}(rootEl, opts);
 		}
-		return Array.from(rootEl.querySelectorAll('[data-o-component="${name.original}"]'), rootEl => new ${name.titleCase}(rootEl, opts));
+		return Array.from(rootEl.querySelectorAll('[data-o-component="${name}"]'), rootEl => new ${className}(rootEl, opts));
 	}
 }
 
-export default ${name.titleCase};`;
+export default ${className};`;
 }

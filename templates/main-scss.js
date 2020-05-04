@@ -1,29 +1,29 @@
-const stringCasing = require('./helpers/string-casing.js');
+const { camelCase, lowercase } = require('./helpers/name-formats.js');
 
 module.exports = answers => {
-	const name = stringCasing(answers.name);
+	const name = answers.name;
 
 	return `@import 'src/scss/variables';
 
-/// Output all ${name.camelCase} features
+/// Output all ${camelCase(name)} features
 /// @param {Map} $opts [()] - A map of options to configure the output
 /// @access public
 /// @example scss
-///		@include ${name.camelCase}($opts: (
+///		@include ${camelCase(name)}($opts: (
 ///			// your opts here
 ///		))
-@mixin ${name.camelCase} ($opts: ()) {
+@mixin ${camelCase(name)} ($opts: ()) {
 	// content of primary mixin
-	.${name.lowercase} {
+	.${lowercase(name)} {
 		display: block;
 	}
 }
 
-@if ($${name.original}-is-silent == false) {
-	@include ${name.camelCase}();
+@if ($${name}-is-silent == false) {
+	@include ${camelCase(name)}();
 
 	// Set to silent again to avoid being output twice
-	$${name.original}-is-silent: true !global;
+	$${name}-is-silent: true !global;
 }
 `;
 };
