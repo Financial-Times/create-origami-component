@@ -44,7 +44,7 @@ Array [
 
 exports[`Build successfully writes a folder tree with a 'src/js' folder 1`] = `
 Array [
-  "o-test-name.js",
+  "test-name.js",
 ]
 `;
 
@@ -71,7 +71,7 @@ Array [
 exports[`Build successfully writes a folder tree with a 'test/js' folder 1`] = `
 Array [
   "helpers",
-  "o-test-name.test.js",
+  "test-name.test.js",
 ]
 `;
 

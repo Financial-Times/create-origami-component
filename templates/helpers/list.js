@@ -1,3 +1,5 @@
+const { withoutPrefix } = require('./name-formats.js');
+
 module.exports = {
 	config: [
 		{
@@ -36,11 +38,11 @@ module.exports = {
 				template: 'main-js'
 			},
 			{
-				path: `./src/js/${name}.js`,
+				path: `./src/js/${withoutPrefix(name)}.js`,
 				template: 'src-js'
 			},
 			{
-				path: `./test/js/${name}.test.js`,
+				path: `./test/js/${withoutPrefix(name)}.test.js`,
 				template: 'test-js'
 			},
 			{
