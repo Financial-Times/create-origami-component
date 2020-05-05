@@ -16,7 +16,7 @@
     "snyk": "^1.316.2"
   },
   "devDependencies": {
-    "jest": "^25.2.6",
+    "jest": "^26.0.0",
     "mocha": "^7.1.1",
     "nixt": "github:vesln/nixt#d2075099ecf935c870705fa5d5de437113d4d272"
   },
