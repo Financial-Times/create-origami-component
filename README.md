@@ -16,6 +16,6 @@ If you have any questions or comments about this project, or need help using it,
 
 ## License
 
-Copyright (c) 2016 Financial Times Ltd. All rights reserved.
+Copyright (c) 2020 Financial Times Ltd. All rights reserved.
 
 This software is published under the [MIT licence](http://opensource.org/licenses/MIT).
