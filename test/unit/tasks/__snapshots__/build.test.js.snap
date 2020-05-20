@@ -98,8 +98,10 @@ exports[`Build successfully writes a folder tree with a 'test/scss/main' file 1`
 
 exports[`Build successfully writes a folder tree with a root folder 1`] = `
 Array [
+  ".eslintrc.js",
   ".github",
   ".gitignore",
+  ".stylelintrc.js",
   "README.md",
   "bower.json",
   "demos",

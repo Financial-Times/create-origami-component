@@ -19,6 +19,14 @@ module.exports = {
 			template: 'gitignore'
 		},
 		{
+			path: './.eslintrc.js',
+			template: 'eslintrc-js'
+		},
+		{
+			path: './.stylelintrc.js',
+			template: 'stylelintrc-js'
+		},
+		{
 			path: './.github/workflows',
 			directory: 'workflows'
 		},
