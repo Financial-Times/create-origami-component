@@ -27,6 +27,10 @@ module.exports = {
 			template: 'stylelintrc-js'
 		},
 		{
+			path: './.dependabot',
+			directory: 'dependabot'
+		},
+		{
 			path: './.github/workflows',
 			directory: 'workflows'
 		},
