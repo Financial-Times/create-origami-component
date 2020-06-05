@@ -12,7 +12,7 @@ module.exports = (answers) => {
 		${answers.javascript ? `"main.js"` : ''}
 	],
 	"dependencies": {
-		${answers.brand ? `"o-brand": "*"` : ''}
+		${answers.brand ? `"o-brand": "^3.2.10"` : ''}
 	}
 }`;
 };
