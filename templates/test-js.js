@@ -5,8 +5,7 @@ module.exports = answers => {
 	const className = titleCase(withoutPrefix(name));
 
 	return `/* eslint-env mocha */
-import proclaim from 'proclaim';
-import sinon from 'sinon/pkg/sinon';
+/* global proclaim sinon */
 import * as fixtures from './helpers/fixtures';
 import ${className} from '../../main';
 
