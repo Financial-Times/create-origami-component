@@ -67,6 +67,12 @@ module.exports = {
 		message: "support team slack channel (required)",
 		default: "#origami-support"
 	},
+	githubTeam: {
+		name: "githubTeam",
+		type: "input",
+		message: "support Github team (required)",
+		default: "origami-core"
+	},
 	status: {
 		name: "status",
 		type: "list",

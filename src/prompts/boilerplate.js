@@ -52,7 +52,8 @@ class Boilerplate {
 			this.questions.scss,
 			this.questions.status,
 			this.questions.email,
-			this.questions.slack
+			this.questions.slack,
+			this.questions.githubTeam
 		])
 
 		this.answers = Object.assign(this.answers, response);
