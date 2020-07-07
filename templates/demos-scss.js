@@ -1,5 +1,8 @@
+const { camelCase } = require('./helpers/name-formats.js');
+
 module.exports = answers => {
-	return `$${answers.name}-is-silent: false;
-@import '../../main';
+	return `@import '../../main';
+
+@include ${camelCase(answers.name)}();
 `;
 };
