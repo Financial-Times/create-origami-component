@@ -12,12 +12,14 @@ class Build {
 		if (file.directory) {
 			await fs.mkdirp(filePath);
 			await fs.copy(path.join(__dirname, this.templatePath, file.directory), filePath);
+		} else if (file.original) {
+			await fs.copy(path.join(__dirname, this.templatePath, file.original), filePath);
 		} else if (file.template) {
 			let template = require(path.join(this.templatePath, file.template));
 			let content = typeof template === 'function' ? template(this.component) : template();
 			await fs.outputFile(filePath, content);
 		} else {
-			throw new Error("file must have `template` or `directory`, got: " + JSON.stringify(file));
+			throw new Error("file must have `template`, `directory`, or `original`, got: " + JSON.stringify(file));
 		}
 	}
 
@@ -33,6 +35,8 @@ class Build {
 		const files = require(this.templatePath + 'helpers/list.js');
 
 		await this.build(files.config);
+
+		await this.build(files.workflows(this.component.githubTeam));
 
 		if (this.component.javascript) {
 			await this.build(files.javascript(this.component.name));
