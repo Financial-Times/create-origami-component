@@ -141,7 +141,7 @@ describe('Boilerplate', () => {
 				.mockReturnValueOnce(Promise.resolve(response))
 		});
 
-		test('Outputs answers when confimation true', async () => {
+		test('Outputs answers when confirmation true', async () => {
 			boilerplate.prompt
 				.mockReturnValueOnce(Promise.resolve({ acceptable: true }))
 
@@ -166,15 +166,16 @@ describe('Boilerplate', () => {
 			test('and changes other value', async () => {
 				boilerplate.prompt
 					.mockReturnValueOnce(Promise.resolve({ acceptable: false }))
-					.mockReturnValueOnce(Promise.resolve({ change: 'javacript' }))
+					.mockReturnValueOnce(Promise.resolve({ change: 'javascript' }))
 					.mockReturnValueOnce(Promise.resolve({ javascript: false }))
 					.mockReturnValueOnce(Promise.resolve({ acceptable: true }))
 
-					response.javascript = false;
+				let component = await boilerplate.init();
 
-					let component = await boilerplate.init();
-
-					expect(component).toEqual((Object.assign({name: 'o-test-name', path: './o-test-name'}, response)));
+				expect(component).toEqual((Object.assign({
+					name: 'o-test-name',
+					path: './o-test-name'
+				}, response, { javascript: false })));
 			});
 		});
 	});

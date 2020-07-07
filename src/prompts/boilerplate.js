@@ -70,9 +70,12 @@ class Boilerplate {
 
 			if (response.change === 'name') {
 					await this.getName();
-					if (this.answers.path !== './') { this.answers.path = `./${this.answers.name}` }
+					if (this.answers.path !== './') {
+						this.answers.path = `./${this.answers.name}`
+					}
 			} else {
-				await this.prompt([this.questions[response.change]])
+				const newResponse = await this.prompt([this.questions[response.change]])
+				this.answers[response.change] = newResponse[response.change];
 			}
 
 			await this.getConfirmation();
