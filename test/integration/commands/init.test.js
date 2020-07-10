@@ -63,10 +63,7 @@ describe('Init', function() {
 
 		it('is a valid origami component', done => {
 			test
-				.exec("npx obt install")
-				.exec("npx obt demo")
-				.exec("npx obt verify")
-				.exec("npx obt test")
+				.exec("cd bob && npx obt install && npx obt demo && npx obt verify && npx obt test")
 				.end(done);
 		})
 	});
@@ -106,10 +103,7 @@ describe('Init', function() {
 
 		it('is a valid origami component', done => {
 			test
-				.exec("npx obt install")
-				.exec("npx obt demo")
-				.exec("npx obt verify")
-				.exec("npx obt test")
+				.exec("cd bob && npx obt install && npx obt demo && npx obt verify && npx obt test")
 				.end(done);
 		})
 	});
@@ -150,10 +144,7 @@ describe('Init', function() {
 
 		it('is a valid origami component', done => {
 			test
-				.exec("npx obt install")
-				.exec("npx obt demo")
-				.exec("npx obt verify")
-				.exec("npx obt test")
+				.exec("cd bob && npx obt install && npx obt demo && npx obt verify && npx obt test")
 				.end(done);
 		});
 	});
