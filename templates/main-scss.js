@@ -4,7 +4,7 @@ module.exports = answers => {
 	const name = answers.name;
 
 	return `@import 'src/scss/variables';
-${answers.brands ? `@import 'src/scss/_brand.scss';` : ''}
+${answers.brands ? `@import 'src/scss/brand';` : ''}
 
 /// Output all ${camelCase(name)} features
 /// @param {Map} $opts [()] - A map of options to configure the output
