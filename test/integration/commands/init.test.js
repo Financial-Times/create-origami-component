@@ -1,88 +1,11 @@
 const nixt = require('nixt');
+const rimraf = require('rimraf');
 
-describe('Init', () => {
-	it('Uses default values where possible to create folder tree', done => {
-		nixt({ colors: false })
-			.run('./bin/run')
-			.on(/name/i).respond('bob\n')
-			.on(/current directory/i).respond('\033[B\n')
-			.on(/description/i).respond('bla bla\n')
-			.on(/keywords/i).respond('\n')
-			.on(/category/).respond('\n')
-			.on(/brands/).respond('\n')
-			.on(/JavaScript/).respond('\n')
-			.on(/Sass/).respond('\n')
-			.on(/status/).respond('\n')
-			.on(/team email/).respond('\n')
-			.on(/slack channel/).respond('\n')
-			.on(/Github team/).respond('\n')
-			.on(/right/).respond('\n')
-			.exist('./bob/')
-			.exist('./bob/src/js')
-			.exist('./bob/src/scss')
-			.exist('./bob/test/js')
-			.exist('./bob/test/scss')
-			.exist('./bob/demos')
-			.exist('./bob/.github')
-			.exec('rm -rf bob')
-			.end(done)
-	});
+describe('Init', function() {
+	this.timeout(100 * 1000);
 
-	it('Does not create Javascript files if not requested', (done) => {
-		nixt({ colors: false })
-			.run('./bin/run')
-			.on(/name/i).respond('bob\n')
-			.on(/directory/i).respond('\033[B\n')
-			.on(/description/i).respond('bla bla\n')
-			.on(/keywords/i).respond('\n')
-			.on(/category/i).respond('\n')
-			.on(/brands/).respond('\n')
-			.on(/JavaScript/).respond('n\n')
-			.on(/Sass/).respond('\n')
-			.on(/status/).respond('\n')
-			.on(/team email/).respond('\n')
-			.on(/slack channel/).respond('\n')
-			.on(/Github team/).respond('\n')
-			.on(/right/).respond('\n')
-			.exist('./bob/')
-			.exist('./bob/src/scss')
-			.exist('./bob/test/scss')
-			.exist('./bob/demos')
-			.exist('./bob/.github')
-			.notExist('./bob/src/js')
-			.notExist('./bob/test/js')
-			.notExist('./bob/demo/demo.js')
-			.exec('rm -rf bob')
-			.end(done)
-	});
-
-	it('Does not create SCSS files if not requested', (done) => {
-		nixt({ colors: false })
-			.run('./bin/run')
-			.on(/name/i).respond('bob\n')
-			.on(/directory/i).respond('\033[B\n')
-			.on(/description/i).respond('bla bla\n')
-			.on(/keywords/i).respond('\n')
-			.on(/category/i).respond('\n')
-			.on(/brands/).respond('\n')
-			.on(/JavaScript/).respond('\n')
-			.on(/Sass/).respond('n\n')
-			.on(/status/).respond('\n')
-			.on(/team email/).respond('\n')
-			.on(/slack channel/).respond('\n')
-			.on(/Github team/).respond('\n')
-			.on(/right/).respond('\n')
-			.exist('./bob/')
-			.exist('./bob/src/js')
-			.exist('./bob/test/js')
-			.exist('./bob/demos')
-			.exist('./bob/.github')
-			.exist('./bob/.github/workflows/add-new-issues-and-pull-requests-to-origami-project-board.yml')
-			.notExist('./bob/src/scss')
-			.notExist('./bob/test/scss')
-			.notExist('./bob/demo/demo.scss')
-			.exec('rm -rf bob')
-			.end(done)
+	afterEach((done) => {
+		rimraf('./bob', done);
 	});
 
 	it('Does not create the project board github action when `origami-core` are not Github owners', (done) => {
@@ -103,7 +26,135 @@ describe('Init', () => {
 			.on(/right/).respond('\n')
 			.exist('./bob/.github')
 			.notExist('./bob/.github/workflows/add-new-issues-and-pull-requests-to-origami-project-board.yml')
-			.exec('rm -rf bob')
 			.end(done)
+	});
+
+	context('with default values', () => {
+		let test;
+		beforeEach(() => {
+			test = nixt({ colors: false })
+			.run('./bin/run')
+			.on(/name/i).respond('bob\n')
+			.on(/current directory/i).respond('\033[B\n')
+			.on(/description/i).respond('bla bla\n')
+			.on(/keywords/i).respond('\n')
+			.on(/category/).respond('\n')
+			.on(/brands/).respond('\n')
+			.on(/JavaScript/).respond('\n')
+			.on(/Sass/).respond('\n')
+			.on(/status/).respond('\n')
+			.on(/team email/).respond('\n')
+			.on(/slack channel/).respond('\n')
+			.on(/Github team/).respond('\n')
+			.on(/right/).respond('\n');
+		});
+
+		it('Uses default values where possible to create folder tree', done => {
+			test
+				.exist('./bob/')
+				.exist('./bob/src/js')
+				.exist('./bob/src/scss')
+				.exist('./bob/test/js')
+				.exist('./bob/test/scss')
+				.exist('./bob/demos')
+				.exist('./bob/.github')
+				.end(done)
+		});
+
+		it('is a valid origami component', done => {
+			test
+				.exec("npx obt install")
+				.exec("npx obt demo")
+				.exec("npx obt verify")
+				.exec("npx obt test")
+				.end(done);
+		})
+	});
+
+	context('without javascript', () => {
+		let test;
+		beforeEach(() => {
+			test = nixt({ colors: false })
+			.run('./bin/run')
+			.on(/name/i).respond('bob\n')
+			.on(/directory/i).respond('\033[B\n')
+			.on(/description/i).respond('bla bla\n')
+			.on(/keywords/i).respond('\n')
+			.on(/category/i).respond('\n')
+			.on(/brands/).respond('\n')
+			.on(/JavaScript/).respond('n\n')
+			.on(/Sass/).respond('\n')
+			.on(/status/).respond('\n')
+			.on(/team email/).respond('\n')
+			.on(/slack channel/).respond('\n')
+			.on(/Github team/).respond('\n')
+			.on(/right/).respond('\n');
+		});
+
+		it('Does not create Javascript files if not requested', (done) => {
+			test
+				.exist('./bob/')
+				.exist('./bob/src/scss')
+				.exist('./bob/test/scss')
+				.exist('./bob/demos')
+				.exist('./bob/.github')
+				.notExist('./bob/src/js')
+				.notExist('./bob/test/js')
+				.notExist('./bob/demo/demo.js')
+				.end(done)
+		});
+
+		it('is a valid origami component', done => {
+			test
+				.exec("npx obt install")
+				.exec("npx obt demo")
+				.exec("npx obt verify")
+				.exec("npx obt test")
+				.end(done);
+		})
+	});
+
+	context('without sass', () => {
+		let test;
+		beforeEach(() => {
+			test = nixt({ colors: false })
+			.run('./bin/run')
+			.on(/name/i).respond('bob\n')
+			.on(/directory/i).respond('\033[B\n')
+			.on(/description/i).respond('bla bla\n')
+			.on(/keywords/i).respond('\n')
+			.on(/category/i).respond('\n')
+			.on(/brands/).respond('\n')
+			.on(/JavaScript/).respond('\n')
+			.on(/Sass/).respond('n\n')
+			.on(/status/).respond('\n')
+			.on(/team email/).respond('\n')
+			.on(/slack channel/).respond('\n')
+			.on(/Github team/).respond('\n')
+			.on(/right/).respond('\n');
+		});
+
+		it('Does not create SCSS files if not requested', (done) => {
+			test
+				.exist('./bob/')
+				.exist('./bob/src/js')
+				.exist('./bob/test/js')
+				.exist('./bob/demos')
+				.exist('./bob/.github')
+				.exist('./bob/.github/workflows/add-new-issues-and-pull-requests-to-origami-project-board.yml')
+				.notExist('./bob/src/scss')
+				.notExist('./bob/test/scss')
+				.notExist('./bob/demo/demo.scss')
+				.end(done)
+		});
+
+		it('is a valid origami component', done => {
+			test
+				.exec("npx obt install")
+				.exec("npx obt demo")
+				.exec("npx obt verify")
+				.exec("npx obt test")
+				.end(done);
+		});
 	});
 });
