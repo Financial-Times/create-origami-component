@@ -11,10 +11,10 @@ module.exports = answers => {
 	 * @param {HTMLElement} [${elementName}] - The component element in the DOM
 	 * @param {Object} [options={}] - An options object for configuring the component
 	 */
-	constructor (${elementName}, opts) {
+	constructor (${elementName}, options) {
 		this.${elementName} = ${elementName};
 		this.options = Object.assign({}, {
-		}, opts || ${className}.getDataAttributes(${elementName}));
+		}, options || ${className}.getDataAttributes(${elementName}));
 	}
 	/**
 	 * Get the data attributes from the ${className}Element. If the element is being set up
