@@ -46,7 +46,7 @@ module.exports = answers => {
 	 * Initialise ${name} component/s.
 	 * @param {(HTMLElement|String)} rootElement - The root element to intialise the component in, or a CSS selector for the root element
 	 * @param {Object} [options={}] - An options object for configuring the component
-	 * @returns {Example|Example[]} The newly constructed Example components
+	 * @returns {${className}|${className}[]} The newly constructed ${className} components
 	 */
 	static init (rootElement, options) {
 		if (!rootElement) {
