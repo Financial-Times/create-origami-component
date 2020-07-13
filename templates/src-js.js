@@ -20,6 +20,7 @@ module.exports = answers => {
 	 * Get the data attributes from the ${className}Element. If the element is being set up
 	 * declaratively, this method is used to extract the data attributes from the DOM.
 	 * @param {HTMLElement} ${elementName} - The component element in the DOM
+	 * @returns {Object} An options object which can be used for configuring the component
 	 */
 	static getDataAttributes (${elementName}) {
 		if (!(${elementName} instanceof HTMLElement)) {
