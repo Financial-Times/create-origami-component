@@ -56,10 +56,10 @@ module.exports = answers => {
 		if (!(rootElement instanceof HTMLElement)) {
 			rootElement = document.querySelector(rootElement);
 		}
-		if (rootElement instanceof HTMLElement && rootElement.matches('[data-o-component=o-example]')) {
-			return new Example(rootElement, options);
+		if (rootElement instanceof HTMLElement && rootElement.matches('[data-o-component=${name}]')) {
+			return new ${className}(rootElement, options);
 		}
-		return Array.from(rootElement.querySelectorAll('[data-o-component="o-example"]'), rootEl => new Example(rootEl, options));
+		return Array.from(rootElement.querySelectorAll('[data-o-component="${name}"]'), rootEl => new ${className}(rootEl, options));
 	}
 }
 
