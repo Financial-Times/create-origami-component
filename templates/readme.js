@@ -97,5 +97,6 @@ State | Major Version | Last Minor Release | Migration guide |
 If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/${name}/issues), visit [#${answers.slack}](https://financialtimes.slack.com/messages/${answers.slack}/) or email [${answers.email}](mailto:${answers.email}).
 
 ## Licence
-This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).`;
+This software is published by the Financial Times under the [MIT licence](http://opensource.org/licenses/MIT).
+`;
 };
