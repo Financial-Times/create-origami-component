@@ -102,6 +102,7 @@ Array [
   ".eslintrc.js",
   ".github",
   ".gitignore",
+  ".remarkrc.js",
   ".stylelintrc.js",
   "README.md",
   "bower.json",
