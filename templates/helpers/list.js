@@ -7,6 +7,10 @@ module.exports = {
 			template: 'origami-manifest'
 		},
 		{
+			path: './.remarkrc.js',
+			template: 'remarkrc-js'
+		},
+		{
 			path: './package.json',
 			template: 'package-json'
 		},
