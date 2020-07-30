@@ -19,7 +19,7 @@ _A short description of what the component does._
 
 _Usage instructions for the component. We've broken this down by Markup, JavaScript, Sass, etc. You may add more sections as needed._
 
-### Markup
+## Markup
 
 _Markup documentation for the component. Including css classes, data attributes, and tags for variations of the component._
 _Demo markup is also shown in the registry. For complex markup it can be useful to describe the markup and link to the registry demos for a full example._
@@ -30,7 +30,7 @@ _Remember to start your codeblocks with three backticks and "html" so your marku
 \`\`\`
 
 ${answers.scss ? `
-### Sass
+## Sass
 
 _Sass documentation. With instructions to include styles with a primary mixin, what options are available, brand support where applicable._
 _For complex components it may be helpful to document apis with SassDoc and link to the components SassDoc in the Origami Registry._
