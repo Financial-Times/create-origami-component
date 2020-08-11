@@ -8,6 +8,7 @@ module.exports = answers => {
 
 _A short description of what the component does._
 
+- [Usage](#usage)
 - [Markup](#markup) ${answers.scss ? `
 - [Sass](#sass)`: ``} ${answers.javascript ? `
 - [JavaScript](#javascript)`: ``}
@@ -17,7 +18,11 @@ _A short description of what the component does._
 - [Contact](#contact)
 - [Licence](#licence)
 
-_Usage instructions for the component. We've broken this down by Markup, JavaScript, Sass, etc. You may add more sections as needed._
+_Instructions for the component. We've broken this down by Markup, JavaScript, Sass, etc. You may add more sections as needed._
+
+## Usage
+
+Check out [how to include Origami components in your project](https://origami.ft.com/docs/components/#including-origami-components-in-your-project) to get started with \`${name}\`.
 
 ## Markup
 
