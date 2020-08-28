@@ -1,3 +1,4 @@
+name: Sync labels
 on: [issues, pull_request]
 jobs:
   sync-labels:
