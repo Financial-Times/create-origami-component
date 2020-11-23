@@ -27,8 +27,8 @@ module.exports = answers => {
 			return {};
 		}
 		return Object.keys(${elementName}.dataset).reduce((options, key) => {
-			// Ignore data-o-component
-			if (key === 'oComponent') {
+			// Ignore keys which are not in the component's namespace
+			if (!key.match(/^${camelCase(name)}(\\w)(\\w+)$/)) {
 				return options;
 			}
 			// Build a concise key and get the option value
