@@ -6,8 +6,8 @@ module.exports = answers => {
 
 	return `/* eslint-env mocha */
 /* global proclaim sinon */
-import * as fixtures from './helpers/fixtures';
-import ${className} from '../../main';
+import * as fixtures from './helpers/fixtures.js';
+import ${className} from '../../main.js';
 
 describe("${className}", () => {
 	it('is defined', () => {

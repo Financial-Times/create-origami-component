@@ -1,10 +1,11 @@
+const { scss } = require('./helpers/list.js');
 const { camelCase } = require('./helpers/name-formats.js');
 
 
 module.exports = answers => {
 	const name = answers.name;
 
-	return `# ${name}
+	return `# @financial-times/${name}
 
 _A short description of what the component does._
 
@@ -44,11 +45,14 @@ _Remember to start your codeblocks with three backticks and "scss" so your marku
 Use \`@include ${camelCase(name)}()\` to include styles for all \`${name}\` features.
 
 \`\`\`scss
-@include oTable();
+@import "@financial-times/${name}";
+
+@include ${camelCase(name)}();
 \`\`\`
+
 `: ``}
 ${answers.javascript ? `
-### JavaScript
+## JavaScript
 
 _JavaScript documentation. Including how to initialise the component, available options, and common usecases._
 _For complex components it may be helpful to document apis with JSDoc and link to the components JSDocs in the Origami Registry._
