@@ -1,3 +1,3 @@
 module.exports = () => `module.exports = {
-    "extends": "stylelint-config-origami-component"
+	"extends": "stylelint-config-origami-component"
 };\n`;
