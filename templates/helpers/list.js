@@ -1,13 +1,13 @@
 const { withoutPrefix } = require('./name-formats.js');
 
 module.exports = {
-	config: [
+	sharedConfig: [
 		{
 			path: './origami.json',
 			template: 'origami-manifest'
 		},
 		{
-			path: './.remarkrc.js',
+			path: './.remarkrc.cjs',
 			template: 'remarkrc-js'
 		},
 		{
@@ -15,20 +15,12 @@ module.exports = {
 			template: 'package-json'
 		},
 		{
-			path: './bower.json',
-			template: 'bower-json'
-		},
-		{
 			path: './.gitignore',
 			template: 'gitignore'
 		},
 		{
-			path: './.eslintrc.js',
-			template: 'eslintrc-js'
-		},
-		{
-			path: './.stylelintrc.js',
-			template: 'stylelintrc-js'
+			path: './.npmignore',
+			template: 'npmignore'
 		},
 		{
 			path: './.dependabot',
@@ -91,6 +83,14 @@ module.exports = {
 				template: 'src-js'
 			},
 			{
+				path: `.eslintignore`,
+				template: 'eslintignore'
+			},
+			{
+				path: './.eslintrc.cjs',
+				template: 'eslintrc-js'
+			},
+			{
 				path: `./test/js/${withoutPrefix(name)}.test.js`,
 				template: 'test-js'
 			},
@@ -106,12 +106,24 @@ module.exports = {
 			template: 'main-scss'
 		},
 		{
+			path: './_index.scss',
+			template: 'index-scss'
+		},
+		{
 			path: `./src/scss/_variables.scss`,
 			template: 'scss-variables'
 		},
 		{
 			path: `./src/scss/_brand.scss`,
 			template: 'scss-brand'
+		},
+		{
+			path: `.stylelintignore`,
+			template: 'stylelintignore'
+		},
+		{
+			path: './.stylelintrc.cjs',
+			template: 'stylelintrc-js'
 		},
 		{
 			path: `./test/scss/index.test.scss`,
