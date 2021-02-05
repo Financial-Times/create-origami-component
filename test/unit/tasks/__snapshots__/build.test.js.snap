@@ -10,8 +10,6 @@ Array [
 
 exports[`Build successfully writes a folder tree with a '.gitignore' 1`] = `undefined`;
 
-exports[`Build successfully writes a folder tree with a 'bower.json' 1`] = `undefined`;
-
 exports[`Build successfully writes a folder tree with a 'demos' folder 1`] = `
 Array [
   "src",
@@ -34,6 +32,8 @@ exports[`Build successfully writes a folder tree with a 'demos/src/demo.mustache
 exports[`Build successfully writes a folder tree with a 'demos/src/demo.scss' file 1`] = `undefined`;
 
 exports[`Build successfully writes a folder tree with a 'demos/src/pa11y.mustache' file 1`] = `undefined`;
+
+exports[`Build successfully writes a folder tree with a 'package.json' 1`] = `undefined`;
 
 exports[`Build successfully writes a folder tree with a 'src/' folder 1`] = `
 Array [
@@ -99,13 +99,16 @@ exports[`Build successfully writes a folder tree with a 'test/scss/main' file 1`
 exports[`Build successfully writes a folder tree with a root folder 1`] = `
 Array [
   ".dependabot",
-  ".eslintrc.js",
+  ".eslintignore",
+  ".eslintrc.cjs",
   ".github",
   ".gitignore",
-  ".remarkrc.js",
-  ".stylelintrc.js",
+  ".npmignore",
+  ".remarkrc.cjs",
+  ".stylelintignore",
+  ".stylelintrc.cjs",
   "README.md",
-  "bower.json",
+  "_index.scss",
   "demos",
   "main.js",
   "main.scss",

@@ -34,7 +34,7 @@ class Build {
 
 		const files = require(this.templatePath + 'helpers/list.js');
 
-		await this.build(files.config);
+		await this.build(files.sharedConfig);
 
 		await this.build(files.workflows(this.component.githubTeam));
 
