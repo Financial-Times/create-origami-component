@@ -4,7 +4,7 @@ const details = answers => {
 	"keywords": ${JSON.stringify(answers.keywords)},
 	"origamiType": "module",
 	"origamiCategory": "${answers.category}",
-	"origamiVersion": 1,
+	"origamiVersion": 2,
 	"brands": ${JSON.stringify(answers.brands)},
 	"support": "https://github.com/Financial-Times/${answers.name}/issues",
 	"supportContact": {

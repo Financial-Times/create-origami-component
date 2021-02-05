@@ -44,9 +44,9 @@ describe('Build', () => {
 			expect(gitIgnore).toMatchSnapshot();
 		});
 
-		test("with a 'bower.json'", async () => {
-			let bowerJson = await fs.access(`${rootPath}/bower.json`);
-			expect(bowerJson).toMatchSnapshot();
+		test("with a 'package.json'", async () => {
+			let packageJson = await fs.access(`${rootPath}/package.json`);
+			expect(packageJson).toMatchSnapshot();
 		});
 
 		test("with an 'origami.json'", async () => {

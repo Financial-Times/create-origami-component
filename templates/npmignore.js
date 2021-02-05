@@ -8,5 +8,11 @@ return `.DS_Store
 .idea/
 /demos/local
 /coverage
-./types`;
+.eslintrc.js
+.github
+.gitignore
+.remarkrc.js
+.stylelintrc.js
+test
+`;
 };
