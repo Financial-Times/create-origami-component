@@ -12,8 +12,8 @@
     "cli-ux": "^5.4.5",
     "fs-extra": "^9.0.0",
     "inquirer": "^7.1.0",
-    "tree-node-cli": "^1.2.5",
-    "snyk": "^1.316.2"
+    "snyk": "^1.316.2",
+    "tree-node-cli": "^1.2.5"
   },
   "devDependencies": {
     "jest": "^26.0.0",
