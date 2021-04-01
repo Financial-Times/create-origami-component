@@ -4,7 +4,7 @@ module.exports = (answers) => {
 		"name": `@financial-times/${answers.name}`,
 		"version": "0.0.0",
 		"description": answers.description,
-		"keywords": [],
+		"keywords": JSON.stringify(answers.keywords),
 		"homepage": `https://registry.origami.ft.com/components/${answers.name}`,
 		"bugs": {
 			"url": `https://github.com/Financial-Times/${answers.name}/issues`
