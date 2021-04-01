@@ -1,7 +1,5 @@
 const details = answers => {
 	return `{
-	"description": "${answers.description}",
-	"keywords": ${JSON.stringify(answers.keywords)},
 	"origamiType": "module",
 	"origamiCategory": "${answers.category}",
 	"origamiVersion": 2,
@@ -13,7 +11,7 @@ const details = answers => {
 	},
 	"supportStatus": "${answers.status}",
 	"browserFeatures": {}`;
-}
+};
 
 const demos = (answers) => {
 	return `
