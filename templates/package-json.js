@@ -17,7 +17,6 @@ module.exports = (answers) => {
 		"author": "",
 		"type": "module",
 		"devDependencies": {
-			"origami-ci-tools": "3.0.0-beta.6",
 			"remark": "^12.0.1",
 			"remark-lint": "^7.0.1",
 			"remark-preset-lint-origami-component": "^2.0.0-beta.1"
