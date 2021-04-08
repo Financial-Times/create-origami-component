@@ -31,24 +31,13 @@ module.exports = (answers) => {
 
 	if (answers.javascript) {
 		Object.assign(packageJson, {
-			"exports": {
-				".": {
-					"browser": "./main.js"
-				}
-			},
 			"browser": "./main.js",
-			"types": "./types/main.d.ts"
 		});
 
-		Object.assign(packageJson.scripts, {
-			"build": "tsc src/**/*.js main.js --declaration --allowJs --emitDeclarationOnly --outDir types",
-			"version": "npm run build"
-		});
 
 		Object.assign(packageJson.devDependencies, {
 			"eslint": "^7.19.0",
-			"eslint-config-origami-component": "^2.1.0",
-			"typescript": "^4.0.5"
+			"eslint-config-origami-component": "^2.1.0"
 		});
 	}
 
