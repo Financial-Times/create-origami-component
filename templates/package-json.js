@@ -29,7 +29,7 @@ module.exports = (answers) => {
 
 	if (answers.javascript) {
 		Object.assign(packageJson, {
-			"browser": "./main.js",
+			"browser": "main.js",
 		});
 
 		Object.assign(packageJson.devDependencies, {
