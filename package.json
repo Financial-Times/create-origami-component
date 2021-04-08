@@ -6,7 +6,7 @@
   "bin": {
     "create-origami-component": "./bin/run"
   },
-  "bugs": "https://github.com/Financial-Times/origami-authoring-tools/issues",
+  "bugs": "https://github.com/Financial-Times/create-origami-component/issues",
   "dependencies": {
     "chalk": "^4.0.0",
     "cli-ux": "^5.4.5",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/Financial-Times/create-origami-component",
   "license": "MIT",
   "main": "src/index.js",
-  "repository": "Financial-Times/origami-authoring-tools",
+  "repository": "Financial-Times/create-origami-component",
   "scripts": {
     "test": "npm run test-unit && npm run test-integration",
     "test-unit": "jest test/unit/**/*.test.js",
