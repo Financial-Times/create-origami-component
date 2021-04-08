@@ -2,7 +2,7 @@ const details = answers => {
 	return `{
 	"origamiType": "module",
 	"origamiCategory": "${answers.category}",
-	"origamiVersion": 2,
+	"origamiVersion": "2.0",
 	"brands": ${JSON.stringify(answers.brands)},
 	"support": "https://github.com/Financial-Times/${answers.name}/issues",
 	"supportContact": {
