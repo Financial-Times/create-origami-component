@@ -50,8 +50,16 @@ module.exports = {
 				original: 'workflows/automatic-tag-and-release.yml'
 			},
 			{
-				path: './.github/workflows/release-origami-component.yml',
-				original: 'workflows/release-origami-component.yml'
+				path: './.github/workflows/percy.yml',
+				original: 'workflows/percy.yml'
+			},
+			{
+				path: './.github/workflows/publish-to-npm-as-latest.yml',
+				original: 'workflows/publish-to-npm-as-latest.yml'
+			},
+			{
+				path: './.github/workflows/publish-to-npm-as-prerelease.yml',
+				original: 'workflows/publish-to-npm-as-prerelease.yml'
 			},
 			{
 				path: './.github/workflows/sync-repo-labels.yml',
