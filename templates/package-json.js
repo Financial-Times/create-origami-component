@@ -21,8 +21,6 @@ module.exports = (answers) => {
 			"remark-lint": "^7.0.1",
 			"remark-preset-lint-origami-component": "^2.0.0-beta.1"
 		},
-		"dependencies": {},
-		"peerDependencies": {},
 		"scripts": {},
 		"engines": {
 			"npm": ">=7"
@@ -33,7 +31,6 @@ module.exports = (answers) => {
 		Object.assign(packageJson, {
 			"browser": "./main.js",
 		});
-
 
 		Object.assign(packageJson.devDependencies, {
 			"eslint": "^7.19.0",
@@ -49,10 +46,22 @@ module.exports = (answers) => {
 	}
 
 	if (answers.brands) {
-		Object.assign(packageJson.peerDependencies, {
+		packageJson.peerDependencies = {
 			"@financial-times/o-brand": "^4.0.0-beta.0"
-		});
+		};
 	}
 
-	return JSON.stringify(packageJson, null, "\t");
+	// Sort the devDependencies alphabetically just like npm does
+	packageJson.devDependencies = sortObjectByKeys(packageJson.devDependencies);
+
+	return JSON.stringify(packageJson, null, "\t") + "\n";
 };
+
+
+function sortObjectByKeys(object) {
+	return Object.fromEntries(
+		Object.entries(object).sort(([key1],[key2]) => {
+			return key1.localeCompare(key2)
+		})
+	);
+}
