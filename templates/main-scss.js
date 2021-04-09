@@ -3,7 +3,7 @@ const { camelCase, lowercase } = require('./helpers/name-formats.js');
 module.exports = answers => {
 	const name = answers.name;
 
-	return `@import '@financial-times/o-brand';
+	return `@import '@financial-times/o-brand/main';
 
 @import 'src/scss/variables';
 ${answers.brands ? `@import 'src/scss/brand';` : ''}
