@@ -114,10 +114,6 @@ module.exports = {
 			template: 'main-scss'
 		},
 		{
-			path: './_index.scss',
-			template: 'index-scss'
-		},
-		{
 			path: `./src/scss/_variables.scss`,
 			template: 'scss-variables'
 		},

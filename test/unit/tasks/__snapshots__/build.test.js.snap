@@ -108,7 +108,6 @@ Array [
   ".stylelintignore",
   ".stylelintrc.cjs",
   "README.md",
-  "_index.scss",
   "demos",
   "main.js",
   "main.scss",
