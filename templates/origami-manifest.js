@@ -2,7 +2,7 @@ const details = answers => {
 	return `{
 	"description": "${answers.description}",
 	"keywords": ${JSON.stringify(answers.keywords)},
-	"origamiType": "module",
+	"origamiType": "component",
 	"origamiCategory": "${answers.category}",
 	"origamiVersion": 2,
 	"brands": ${JSON.stringify(answers.brands)},
