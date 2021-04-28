@@ -17,6 +17,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+          persist-credentials: false
+    - run: git config --global url."https://${{ secrets.ORIGAMI_GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2.1.5
       with:
