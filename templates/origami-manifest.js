@@ -1,7 +1,6 @@
 const details = answers => {
 	return `{
 	"origamiType": "component",
-	"origamiCategory": "${answers.category}",
 	"origamiVersion": "2.0",
 	"brands": ${JSON.stringify(answers.brands)},
 	"support": "https://github.com/Financial-Times/${answers.name}/issues",
