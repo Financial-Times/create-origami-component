@@ -84,18 +84,6 @@ module.exports = {
 			"maintained"
 		]
 	},
-	category: {
-		name: "category",
-		type: "list",
-		message: "component category (https://origami.ft.com/spec/v1/manifest/#origamicategory)",
-		default: "components",
-		choices: [
-			"components",
-			"utilities",
-			"primitives",
-			"layouts"
-		]
-	},
 	brands: {
 		name: "brands",
 		type: "checkbox",
