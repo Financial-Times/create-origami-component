@@ -46,7 +46,6 @@ class Boilerplate {
 		const response = await this.prompt([
 			this.questions.description,
 			this.questions.keywords,
-			this.questions.category,
 			this.questions.brands,
 			this.questions.javascript,
 			this.questions.scss,
