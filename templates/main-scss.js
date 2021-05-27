@@ -21,12 +21,5 @@ ${answers.brands ? `@import 'src/scss/brand';` : ''}
 		display: block;
 	}
 }
-
-@if ($${name}-is-silent == false) {
-	@include ${camelCase(name)}();
-
-	// Set to silent again to avoid being output twice
-	$${name}-is-silent: true !global;
-}
 `;
 };

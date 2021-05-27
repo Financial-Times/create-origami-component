@@ -1,3 +1,3 @@
-module.exports = answers => {
-	return `$${answers.name}-is-silent: true !default;\n`;
+module.exports = (answers) => {
+	return `// Add any global Sass variables for ${answers.name} here.`;
 };
