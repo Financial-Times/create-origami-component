@@ -23,7 +23,7 @@ _Instructions for the component. We've broken this down by Markup, JavaScript, S
 
 ## Usage
 
-Check out [how to include Origami components in your project](https://origami.ft.com/docs/components/#including-origami-components-in-your-project) to get started with \`${name}\`.
+Check out [how to include Origami components in your project](https://origami.ft.com/docs/components/#including-components-in-your-project) to get started with \`${name}\`.
 
 ## Markup
 
@@ -58,7 +58,7 @@ _JavaScript documentation. Including how to initialise the component, available 
 _For complex components it may be helpful to document apis with JSDoc and link to the components JSDocs in the Origami Registry._
 _Remember to start your codeblocks with three backticks and "js" so your js is syntax highlighted correctly._
 
-JavaScript is initialised automatically for [Origami Build Service](https://www.ft.com/__origami/service/build/v2/) users. If your project is using a manual build process, [initialise  \`${name}\` manually](https://origami.ft.com/docs/components/initialising/).
+JavaScript is initialised automatically for [Origami Build Service](https://www.ft.com/__origami/service/build/v2/) users. If your project is using a manual build process, [initialise  \`${name}\` manually](https://origami.ft.com/docs/tutorials/manual-build/).
 
 For example call the \`init\` method to initialise all \`${name}\` instances in the document:
 
@@ -74,8 +74,6 @@ import ${camelCase(name)} from '${name}';
 const ${camelCase(name)}Element = document.getElementById('#my-${name}-element');
 ${camelCase(name)}.init(${camelCase(name)}Element);
 \`\`\`
-
-[Learn more about Origami component initialisation](https://origami.ft.com/docs/components/initialising/).
 `: ``}
 
 ## Troubleshooting
