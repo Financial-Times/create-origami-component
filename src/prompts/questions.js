@@ -5,7 +5,7 @@ module.exports = {
 		message: "component name (required)",
 		validate: value => {
 			if (!value) {
-				return "please enter a name for your component\nhttps://origami.ft.com/spec/v1/components/#naming-conventions"
+				return "please enter a name for your component\nhttps://origami.ft.com/docs/components/code/#naming-conventions"
 			}
 			return true
 		}
@@ -35,7 +35,7 @@ module.exports = {
 		message: "description (required)",
 		validate: value => {
 			if (!value) {
-				return "please enter a description for your component\nhttps://origami.ft.com/spec/v1/manifest/#description"
+				return "please enter a description for your component\nhttps://origami.ft.com/docs/manifests/origami-json/#description"
 			}
 			return true
 		}
@@ -76,7 +76,7 @@ module.exports = {
 	status: {
 		name: "status",
 		type: "list",
-		message: "support status (https://origami.ft.com/spec/v1/manifest/#supportstatus)",
+		message: "support status (https://origami.ft.com/docs/manifests/origami-json/#supportstatus)",
 		default: "experimental",
 		choices: [
 			"active",
@@ -87,7 +87,7 @@ module.exports = {
 	brands: {
 		name: "brands",
 		type: "checkbox",
-		message: "supported brands (https://origami.ft.com/docs/components/branding/)",
+		message: "supported brands (https://origami.ft.com/docs/components/customisation/#brands)",
 		default: ["master"],
 		choices: [
 			"master",
