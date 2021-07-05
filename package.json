@@ -19,7 +19,7 @@
     "jest": "^26.0.0",
     "mocha": "^8.0.1",
     "nixt": "github:vesln/nixt#d2075099ecf935c870705fa5d5de437113d4d272",
-    "origami-build-tools": "prerelease",
+    "origami-build-tools": "^11",
     "rimraf": "^3.0.2"
   },
   "engines": {
