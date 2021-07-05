@@ -19,7 +19,7 @@ module.exports = (answers) => {
 		"devDependencies": {
 			"remark": "^12.0.1",
 			"remark-lint": "^7.0.1",
-			"remark-preset-lint-origami-component": "^2.0.0-beta.1"
+			"remark-preset-lint-origami-component": "^2.0.0"
 		},
 		"scripts": {},
 		"engines": {
@@ -47,7 +47,7 @@ module.exports = (answers) => {
 
 	if (answers.brands) {
 		packageJson.peerDependencies = {
-			"@financial-times/o-brand": "^4.0.0-beta.0"
+			"@financial-times/o-brand": "^4.0.0"
 		};
 	}
 
