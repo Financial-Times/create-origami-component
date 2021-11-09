@@ -101,7 +101,7 @@ describe('Boilerplate', () => {
 				email: 'origami.support@ft.com',
 				slack: '#ft-origami',
 				status: 'experimental',
-				brands: ['master'],
+				brands: ['core'],
 				javascript: true,
 				scss: true,
 				demos: true
@@ -129,7 +129,7 @@ describe('Boilerplate', () => {
 				email: 'origami.support@ft.com',
 				slack: '#ft-origami',
 				status: 'experimental',
-				brands: ['master'],
+				brands: ['core'],
 				javascript: true,
 				scss: true,
 				demos: true
