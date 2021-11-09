@@ -88,9 +88,9 @@ module.exports = {
 		name: "brands",
 		type: "checkbox",
 		message: "supported brands (https://origami.ft.com/docs/components/customisation/#brands)",
-		default: ["master"],
+		default: ["core"],
 		choices: [
-			"master",
+			"core",
 			"internal",
 			"whitelabel"
 		]
